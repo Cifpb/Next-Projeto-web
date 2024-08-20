@@ -1,95 +1,52 @@
+import { Carousel } from "antd";
+import Footer from "./footer/footer";
+import Header from "./header/header";
+import "./page.module.css";
+import { carouselImages, times, trabalhos, renderizadorCards } from './homeArrays/arrays';
 import Image from "next/image";
-import styles from "./page.module.css";
 
 export default function Home() {
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.js</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
+    <div className="pagina-inicial">
+      <Header />
+      <div className="telaH"> 
+        <Carousel autoplay>
+          {carouselImages.map((image) => (
+            <div key={image.id}>
+               <Image src={image.img} alt= "Logo" className= "img-carrosel"/>
+            </div>
+          ))}
+        </Carousel>
+
+          <center>
+            <h1 className="home-text"> PRINCIPAIS TRABALHOS </h1>
+          </center>
+          <div className="trabalhos-img">
+            {trabalhos.map((trabalho) => (
+              <div className="item" key={trabalho.id} id={trabalho.id}>
+                <Image src={trabalho.img} alt= {trabalho.description}/>
+                <p className="text-descritivo">{trabalho.description}</p>
+              </div>
+            ))}
+          </div>
+
+          <center>
+            <h1 className="home-text"> NOVIDADES </h1>
+          </center>
+          {renderizadorCards()}
+
+          <center>
+            <h1 className="time-text"> QUEM JÁ FEZ OU FAZ </h1>
+            <h2 className="time1-text"> PARTE DO TIME </h2>
+            {times.map((time) => (
+              <div key={time.id} id={time.id}>
+                <Image src={time.img} className="times-img"/>
+              </div>
+            ))}
+          </center>
       </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+      <Footer />
+    </div>
   );
 }

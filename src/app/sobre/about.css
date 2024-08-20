@@ -1,0 +1,103 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Century Gothic', sans-serif;
+  }
+  
+  .sobre-empresa {
+    margin-top: 2%;
+    text-align: justify;
+    background: linear-gradient(to left, #FFB300 5%, #FDCA05 15%, #ffffff 80%);
+  }
+  .sobre-empresa2 {
+    text-align: justify;
+    background: linear-gradient(to left, #FFB300 5%, #FDCA05 15%, #ffffff 80%);
+  }
+  
+  .container {
+    display: flex;
+    max-width: 90%;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    padding: 4% 10% 4%;
+  }
+  
+  .text-sobre {
+    font-size: 110%;
+    text-indent: 5%;
+    margin-right: 5%;
+    margin-left: 5%;
+  }
+  
+  .text-dono { 
+    font-size: 110%;
+    text-indent: 5%;
+    width: 200%;
+    margin-left: 10%; 
+  }
+  
+  .text-s{
+    text-indent: 25%;
+    margin-top: 0.1%;
+    font-size: 120%;
+    text-decoration: underline #FDCA05;;
+  }
+  
+  .divisao {
+    display: inline;
+    padding: 15%;
+  }
+  
+  .img-sobre>img {
+    width: 300%;
+    height: auto;
+  }
+  
+  .text-about {
+    color: rgb(83, 83, 83);
+  }
+  
+  .text-about>h1 {
+    color: #202020;
+  }
+  
+  .img-dono>img{
+    display: inline;
+    width: 180%; 
+    height: auto;
+    margin-left: 30%;
+    border-radius: 10%;
+    margin-bottom: 30%;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  }
+  
+  @media screen and (max-width: 600px) {
+    .container{
+      max-height: 120%;
+      max-width: 200%;
+      font-size: 80%;
+      padding: 12% 2% 0% 2%;
+      flex-direction:column;
+      justify-content:start;
+    }
+    .img-sobre>img{
+     display:none;
+    }
+    .text-dono {
+      width:90%;
+      margin-left: 2%;
+      z-index:1;
+      margin-bottom: 8%;
+    }
+    .img-dono>img{
+      width: 60%;
+      margin-right: 20%;
+      margin-left: 20%;
+    }
+    .divisao{
+      display:none;
+    }
+  }
+  

@@ -1,0 +1,225 @@
+
+.cadastro{
+    width: 82%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.pt1{
+   display: flex;
+   justify-content: flex-start;
+ }
+
+ .imagem{
+   margin-left: 73%;
+    height: 80vh;
+    width: 50vh;
+    display: flex;
+    padding: 1rem;
+    z-index: 2;
+    margin-top: 5%;
+}
+.texto{
+   z-index: 2;
+   position: absolute;
+   margin-left: 22%;
+   margin-top: 13%;
+   font-size: 130%;
+}
+  .retanguloAmarelo {
+    margin-left: 20%;
+    margin-top: 2%;
+    height: 90%;
+    width: 50%;
+    border: 2px solid #FDCA05;
+    position: relative;
+
+  }
+
+.etapas{
+  display: flex;
+  font-size: 2vh;
+  gap: 16%;
+  margin-left: 12%;
+  margin-top: 10%;
+
+}
+
+.dados{
+  margin-left: 10%;
+  margin-top: 5%;
+  gap: 50%;
+  align-items: center;
+  font-size: 2vh;
+}
+input[type="text"],
+input[type="date"],
+input[type="email"],
+input[type="password"]{
+  width: 90%; 
+  padding: 1vh;
+  border: 1px solid #e7e4e4; 
+  border-radius: 10px; 
+  background-color: #ebe5e5;  
+  font-size: 1.5vh; 
+  margin-bottom: 2%;  
+  outline: 0;
+  cursor: pointer;
+}
+.senha{
+  position: relative;
+}
+.icone-olho{
+  background-color: transparent; 
+  border: none; 
+  cursor: pointer; 
+  outline: none; 
+  position: absolute;
+  padding-top: 2.5%;
+  right: 12%;
+  margin-top: -0.5%;
+  color: #8f8f8f;
+}
+.Proximo{
+  background: linear-gradient(to bottom, #FFD54F, #FDCA05);
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  color: #ffffff;
+  padding: 1%;
+  background-color: #FDCA05;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: none;
+  margin-left: 75%;
+  z-index: 2;
+  font-size: 2vh;
+  margin-top: 20%;
+}
+.Proximo1{
+  background: linear-gradient(to bottom, #FFD54F, #FDCA05);
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  color: #ffffff;
+  padding: 1%;
+  background-color: #FDCA05;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: none;
+  z-index: 2;
+  font-size: 2vh;
+  margin-right: 30%;
+}
+.Proximo2{
+  background: linear-gradient(to bottom, #FFD54F, #FDCA05);
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  color: #ffffff;
+  padding: 1%;
+  background-color: #FDCA05;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: none;
+  margin-left: 75%;
+  z-index: 2;
+  font-size: 2vh;
+  margin-top: 30%;
+}
+.nave{
+  background-color: #FDCA05;
+  width: 100%;
+  height: 6%;
+  border-radius: 20px;
+  position: relative;
+  z-index: 3;
+}
+.nave input{
+  width: 30%;
+  height: 75%;
+  margin-top: 0.4%;
+  accent-color: #FDCA05;
+}
+.volta{
+  position: relative;
+  color: #292929;
+  text-decoration: none;
+  z-index: 1;
+  margin-left: 15%;
+  width: 10%;
+}
+
+.botoes{
+  display: flex;
+  gap: 50%;
+  margin-top: 35%;
+}
+.textofinal{
+  text-align: center;
+  margin-top: 18%;
+  font-size: 190%;
+}
+@media screen and (max-width: 600px) {
+  .texto{
+     display: none;
+  }
+  .imagem {
+        display: none;
+    }
+   .retanguloAmarelo{
+        width: 110%;
+        height: 60%;
+        margin-right: 5%;
+        border-radius: 20px;
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    }
+  .etapas{
+    font-size: 90%;
+    gap: 5%;
+    margin-left: 5%;
+  }
+  .nave{
+    margin-top: 5%;
+    width: 100%;
+    height: 7%;
+    border-radius: 0px;
+  }
+  input[type="text"],
+  input[type="date"],
+  input[type="email"],
+  input[type="password"]{
+    margin-top: 5%;
+  }
+  .linha{
+    display: none;
+  }
+  .Proximo{
+    margin-top: 10%;
+    margin-left: 60%;
+  }
+  .Proximo1{
+    margin-right: 25%;
+    margin-top: 30%;
+
+  }
+  .senha i{
+     margin-top: 7%;
+  }
+  .volta{
+    margin-top: 30%;
+    margin-left:15%;
+  }
+  .textofinal{
+    margin-top: 40%;
+    font-size: 150%;
+  }
+  .Proximo2{
+    margin-top: 30%;
+    margin-left: 65%;
+  }
+}
