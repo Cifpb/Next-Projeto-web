@@ -8,6 +8,7 @@ import Image from "next/image";
 import './login.css';
 import Link from 'next/link';
 
+
 export default function Login() {
 
   const [mostrarSenha, setMostrarSenha] = useState(false);
@@ -29,7 +30,7 @@ export default function Login() {
       <div className="pag-login">
         <div className="elem-login">
           <div className="imagem-login">
-            <Image src={Limg} alt= "imagem-login"/>
+           <Image src={Limg} alt= "imagem-login"/>
           </div>
           <div className="form-login">
             <h2 className="texto-principal">LOGIN</h2>
@@ -53,14 +54,14 @@ export default function Login() {
                 </button>
               </div>
               <div className="formulario-links">
-                <a href="Reset.jsx">Esqueceu a senha?</a>
+                <Link href="/redefinir-senha"> Esqueceu a senha?  </Link>
                 <div className="formulario-grupo">
                   <center>
                     <input type="submit" defaultValue="Entrar" />
                   </center>
                 </div>
                 <span className="texto-criar-conta">Ainda não tem conta?</span>
-                <Link href="/cadastrar">Cadastre-se</Link>
+                <Link href="/cadastrar"> Cadastre-se </Link>
               </div>
             </form>
           </div>

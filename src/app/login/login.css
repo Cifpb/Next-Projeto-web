@@ -8,20 +8,21 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 90%;
+  margin-top: 5%;
+  height: 100%;
   width: 100%;
 }
 
 .imagem-login {
   display: flex;
-  width: 25%;
-  height: 90%;
-  margin-top: 6.5%;
+  width: 15%;
+  height: 40%;
+  margin-right: 10%;
 }
 
 .form-login {
-  width: 30%;
-  height: 64%;
+  width: 36%;
+  height: 80%;
   padding: 2%;
   border: 1px solid #f6b927;
   background-color: #fff;
@@ -32,7 +33,7 @@
   flex-direction: row;
   margin-bottom: 6%;
   width: 100%;
-  height: 80vh;
+  height: 100%;
   justify-content:center;
   align-items: center;
 }
@@ -54,7 +55,7 @@
 .formulario-grupo input[type="email"],
 .formulario-grupo input[type="password"],
 .formulario-grupo input[type="text"] {
-  width: 100%; 
+  width: 90%; 
   padding: 2%;
   border-radius: 15px;
   border: 1px solid #bababa;
@@ -74,12 +75,13 @@
   outline: none; 
   position: absolute;
   font-size: 90%;
-  right: 3%;
+  right: 7%;
   color: #8f8f8f;
+  margin-top: 2% ;
 }
 
 .formulario-grupo input[type="submit"] {
-  width: 30%;
+  width: 20%;
   font-size: 95%;
   margin-bottom: 5%;
   padding: 2% 1%;
@@ -112,6 +114,7 @@
   font-size: 85%;
   cursor: pointer;
   margin-bottom: 3%;
+  margin-right: 7%;
 }
 
 .formulario-links a:hover {
@@ -134,14 +137,14 @@
   .imagem-login {
     display: none;
   }
-  
+
   .form-login {
     width: 65%;
     height: auto;
     margin-top: 4%;
     margin-bottom: 4%;
   }
-  
+
   .texto-principal {
     font-size: 90%;
     margin-bottom: 10%;
@@ -182,3 +185,4 @@
     font-size: 65%;
   }
 }
+
