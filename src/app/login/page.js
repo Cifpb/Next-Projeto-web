@@ -61,7 +61,7 @@ export default function Login() {
                   </center>
                 </div>
                 <span className="texto-criar-conta">Ainda não tem conta?</span>
-                <Link href="/cadastrar"> Cadastre-se </Link>
+                <Link href="/cadastrar/dados-pessoais"> Cadastre-se </Link>
               </div>
             </form>
           </div>
