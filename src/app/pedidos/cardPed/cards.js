@@ -1,9 +1,10 @@
 import React from 'react';
-import "./Requests.css";
-import ped from "../../../public/pedidos/cards/ped.png";
-import ped1 from "../../../public/pedidos/cards/ped1.png";
-import ped2 from "../../../public/pedidos/cards/ped2.png";
-import ped3 from "../../../public/pedidos/cards/ped3.png";
+import '../pedidos.css';
+import Image from "next/image";
+import ped from "../../../../public/pedidos/cards/ped.png";
+import ped1 from "../../../../public/pedidos/cards/ped1.png";
+import ped2 from "../../../../public/pedidos/cards/ped2.png";
+import ped3 from "../../../../public/pedidos/cards/ped3.png";
 
 // Lista de Pedidos Solicitados
 let pedidosSoli = [
@@ -49,7 +50,7 @@ const PedidosSolicitados = ({ pedidosSoli = [] }) => {
         <div className="cards-conj-pedido">
             {pedidosSoli.map((pedido, index) => (
                 <div className="card-pedido" key={index}>
-                    <img className="img-pedido" src={pedido.img} alt="Imagem de Pedido" />
+                    <Image className="img-pedido" src={pedido.img} alt="Imagem de Pedido" />
                     <p className="id-pedido"><strong>{pedido.id}</strong></p>
                     <p className="estado-pedido"><strong>{pedido.estado}</strong></p>
                 </div>

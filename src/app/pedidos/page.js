@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
-import "./Requests.css";
+"use client";
+import React, { useState } from "react"; 
+import "./pedidos.css";
 import Header from "../header/header";
 import Footer from "../footer/footer";
-import MenuPed from "../menudepedidos/menu";
-import { PedidosSolicitados, pedidosSoli } from "../cardPed/cards";
+import MenuPed from "./menudepedidos/menu";
+import { PedidosSolicitados, pedidosSoli } from "./cardPed/cards";
 
 const Requests1 = () => {
 

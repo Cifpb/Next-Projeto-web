@@ -1,0 +1,377 @@
+.pedidos {
+    font-family: 'Century Gothic', sans-serif;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    height: 100vh; 
+    width: 100%;
+    display: flex;
+}
+
+.container-pedido {
+    width: 15%;
+    height: 100%;
+    background: #FDCA05;
+    transition: .3s;
+    box-shadow: 1px 0px 3px rgba(0, 0, 0, 0.5);
+}
+
+.btn-pedido {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn-pedido img {
+    padding: 0 12px;
+    transition: .3s;
+    height: 50%;
+}
+
+.menu-pedido {
+    height: 60px;
+    border-bottom: .5px solid #bc8506;
+    color: #FDCA05;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.menu-pedido:hover {
+    padding-left: 5px;
+    background: #FDCA05;
+    transition: .3s;
+}
+
+.icon-pedido {
+    flex: 2;
+    min-width: 45%;
+    max-width: 45%;
+    margin-left: 35%;
+}
+
+.texto-pedido {
+    margin-right: 25%;
+    width: 40%;
+    font-size: 70%;
+    color: #fff;
+    transition: .3s;
+    text-shadow: 0.1em 0.1em 0.2em #946800;
+}
+
+.oculto-pedido {
+    width: 4%;
+}
+
+.oculto-pedido .texto-pedido {
+    display: none;
+}
+
+.oculto-pedido .btn-pedido img {
+    transform: rotate(-180deg);
+}
+
+a {
+    flex: 2;
+    text-decoration: none;
+    color: #fff;
+}
+
+.bloco-pedido {
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    padding: 1%;
+    z-index: 1;
+}
+
+.cards-conj-pedido {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    height: 25%;
+    padding: 0.5%;
+}
+
+.card-pedido.hidden {
+    position: absolute;
+    visibility: hidden;
+}
+
+.card-pedido {
+    visibility: visible;
+    position: relative;
+    margin: 1%;
+    width: 12%;
+    height: 100%;
+    background-color: #e8e3e3ff;
+    border-radius: 10px;
+    box-shadow: 1px 0px 3px rgba(0, 0, 0, 0.5);
+    flex-direction: column;
+    align-items: center;
+    z-index: 2;
+    min-height: 100%;
+}
+
+.img-pedido {
+    border-radius: 5%;
+    margin-left: 1.5%;
+    margin-top: 3%;
+    width: 97%;
+    height: auto;
+}
+
+.id-pedido {
+    font-size: 70%;
+    margin-left: 13%;
+    margin-top: 0.5%;
+    height: 0.5%;
+}
+
+.estado-pedido {
+    font-size: 80%;
+    color: #e0c200;
+    margin-left: 13%;
+    margin-top: 13%;
+}
+
+.valor-pedido1 {
+    margin-top: 11%;
+    display: flex;
+    font-size: 70%;
+    margin-left: 13%;
+    height: 8%;
+}
+
+.valor-pedido2{
+    padding: 0.5%;
+    margin-right: 14%;
+    height: 8%;
+}
+
+.data-pedido {
+    margin-top: 2%;
+    font-size: 60%;
+    margin-left: 13%;
+    height: 2%;
+}
+
+
+.infor-pedido {
+    height: 5%;
+    width: 35%;
+    margin-left: 40%;
+    margin-top: 15%;
+    opacity: 40%;
+    z-index: 1 ;
+}
+
+@media screen and (max-width: 1030px) {
+    .container-pedido {
+        width: 45%;
+        height: 290%;
+    }
+    .btn-pedido {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .btn-pedido img {
+        padding: 0 12px;
+        transition: .3s;
+        height: 25%;
+    }
+    .menu-pedido {
+        height: 90px;
+        border-bottom: .5px solid #bc8506;
+        color: #FDCA05;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+    }
+    .menu-pedido:hover {
+        padding-left: 3px;
+        background: #FDCA05;
+        transition: .3s;
+    }
+    .oculto-pedido {
+        width: 10%;
+        height: 290%;
+    }
+    .icon-pedido {
+        flex: 2;
+        min-width: 40%;
+        max-width: 40%;
+        margin-left: 25%;
+    }
+
+    .bloco-pedido {
+        width: 100%;
+    }
+    .texto-pedido {
+        font-size: 65%;
+    }
+    .cards-conj-pedido{
+        padding:2%;
+        margin-left:3%;
+        height: 20%;
+   }
+    .card-pedido {
+        width: 45%;
+        flex-wrap: wrap;
+
+    }
+    .id-pedido {
+        font-size: 65%;
+        margin-left: 6%;
+        height: 0.5%;
+    }
+    .estado-pedido {
+        font-size: 65%;
+        margin-left: 6%;
+        margin-top: 25%;
+    }
+    .valor-pedido1 {
+        font-size: 80%;
+        margin-left: 6%;
+        height: 8%;
+        margin-top: 12%;
+    }
+    .data-pedido {
+        padding: 3%;
+        font-size: 80%;
+        margin-left: 6%;
+        height: 2%;
+    }
+}
+
+
+/*Tela pedidos*/
+
+
+.tela-pedido {
+    height: 100%;
+    width: 100%;
+    padding: 60px 40px 0px 60px;
+    display: flex;
+}
+
+.dados-pedido {
+    height: 100%;
+    width: 55%;
+}
+
+.imagens-pedido {
+    display: flex;
+    height: 14%;
+}
+
+.vermais {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.imagePed {
+    margin: 0.5%;
+    border-radius: 10%;
+    z-index: 1;
+    display: flex;
+}
+
+.img-mais {
+    margin: 0.5%;
+    border-radius: 10%;
+    z-index: 1;
+    display: flex;
+    box-shadow: 7px 7px #b1afaf;
+}
+
+.quantidade-produtos {
+    z-index: 2;
+    display: flex;
+    position: absolute;
+    margin-left: 4%;
+    margin-top: 2.5%;
+}
+
+.id-pedidoSolicitado {
+    margin-left: 1%;
+    margin-top: 3%;
+    height: 3%;
+}
+
+.data-pedidoSolicitado {
+    margin-left: 2%;
+    margin-top: 3%;
+    height: 0.5%;
+    font-size: 15px;
+}
+
+.prazo-pedidoSolicitado {
+    margin-left: 2%;
+    margin-top: 3%;
+    height: 0.5%;
+    font-size: 15px;
+    color: #e0c200;
+}
+
+.parte-inferiorPed {
+    display: flex;
+    padding: 80px 20px 10px 25px;
+    gap: 20%;
+}
+
+.valor-pedidoPed {
+    color: #e0c200;
+    height: 0.5%;
+}
+
+.valorfinal-ped {
+    display: flex;
+}
+
+.status-pedido {
+    height: 100%;
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-left: 10%;
+}
+
+
+
+.status-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.icon-status {
+    width: 40px;
+    height: 40px;
+    margin-right: 20px;
+}
+
+.status-info {
+    background: #f1f1f1;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.status-data {
+    font-size: 12px;
+    color: #999;
+}
+
+.status-titulo {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.status-descricao {
+    font-size: 14px;
+    color: #333;
+}
