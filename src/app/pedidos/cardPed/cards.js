@@ -88,7 +88,7 @@ const PedidosAndamento = ({ pedidosAndamen = [] }) => {
         <div className="cards-conj-pedido">
             {pedidosAndamen.map((pedido, index) => (
                 <div className="card-pedido" key={index}>
-                    <img className="img-pedido" src={pedido.img} alt="Imagem de Pedido" />
+                    <Image className="img-pedido" src={pedido.img} alt="Imagem de Pedido" />
                     <p className="id-pedido"><strong>{pedido.id}</strong></p>
                     <div className="valor-pedido1">
                         <p className="valor-total-pedido"> Total:</p>
@@ -132,7 +132,7 @@ const PedidosConcluidos = ({ pedidosConclu = [] }) => {
      <div className="cards-conj-pedido">
     {pedidosConclu.map((pedido, index) => (
         <div className="card-pedido">
-        <img className="img-pedido" src={pedido.img} alt="img-Ped" />
+        <Image className="img-pedido" src={pedido.img} alt="img-Ped" />
         <p className="id-pedido"><strong>{pedido.id}</strong></p>
         <div className="valor-pedido1">
           <p className="valor-total-pedido">Total:</p>

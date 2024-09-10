@@ -70,12 +70,12 @@ export default function Register3() {
             />
           </div>
           <p className="textofinal">
-            Seja bem vindo à família
+          Cadastro realizado com sucesso.
             <br />
-            Sala da Mídia!
+            Seja bem-vindo à familia 
+           <br/> Sala da Mídia!
           </p>
-          <div className="linha" />
-          <Link href="Sobre"><button className="Proximo">Ir para Início</button></Link> 
+          <Link href="Sobre"><button className="Proximo2">ir para pagina Inícial</button></Link> 
         </div>
       </div>
       <Footer />

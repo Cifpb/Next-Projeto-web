@@ -39,7 +39,7 @@ return (
       </div>
       <div className="linha-cab" />
       <div className="botoes-cab">
-        <Link href="/inicio" className="botao-cab"> INÍCIO </Link>
+        <Link href="/" className="botao-cab"> INÍCIO </Link>
         <Link href="/sobre" className="botao-cab"> SOBRE </Link>
         <Link href="/catalogo" className="botao-cab"> CATÁLOGO </Link>
         <Link href="/pedidos" className="botao-cab"> PEDIDOS </Link>
