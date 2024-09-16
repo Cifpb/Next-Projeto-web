@@ -1,6 +1,7 @@
 import React from 'react';
 import '../pedidos.css';
 import Image from "next/image";
+import Link from 'next/link';
 import ped from "../../../../public/pedidos/cards/ped.png";
 import ped1 from "../../../../public/pedidos/cards/ped1.png";
 import ped2 from "../../../../public/pedidos/cards/ped2.png";
@@ -88,7 +89,8 @@ const PedidosAndamento = ({ pedidosAndamen = [] }) => {
         <div className="cards-conj-pedido">
             {pedidosAndamen.map((pedido, index) => (
                 <div className="card-pedido" key={index}>
-                    <Image className="img-pedido" src={pedido.img} alt="Imagem de Pedido" />
+                     <Link href="/pedidos/pedido">
+                    <Image className="img-pedido" src={pedido.img} alt="Imagem de Pedido" /></Link>
                     <p className="id-pedido"><strong>{pedido.id}</strong></p>
                     <div className="valor-pedido1">
                         <p className="valor-total-pedido"> Total:</p>
