@@ -12,7 +12,7 @@ import Link from 'next/link';
 export default function Header(){
 return (
   <div className="tela-cab">
-    <div className="retangulo">
+    <div className="retanguloHeader">
       <div className="parte1" />
       <div className="parte2" />
       <div className="parte1" />

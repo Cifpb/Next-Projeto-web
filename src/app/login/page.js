@@ -54,7 +54,7 @@ export default function Login() {
                 </button>
               </div>
               <div className="formulario-links">
-                <Link href="/redefinir-senha"> Esqueceu a senha?  </Link>
+                <Link href="/redefinir-senha"> Esqueceu a senha? </Link>
                 <div className="formulario-grupo">
                   <center>
                     <input type="submit" defaultValue="Entrar" />

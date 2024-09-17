@@ -16,7 +16,7 @@ body{
     background-color: white;
   }
   
-  .retangulo {
+  .retanguloHeader {
     display: flex;
     height: 10px;
   }

@@ -12,7 +12,7 @@ export default function Footer() {
 return (
   <div className="tela-rodape">
     <div className= "footer">
-      <div className="retangulo">
+      <div className="retanguloFooter">
         <div className="parte1" />
         <div className="parte2" />
         <div className="parte1" />
