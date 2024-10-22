@@ -1,0 +1,182 @@
+.telaC {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Century Gothic', sans-serif;
+  }
+  
+  /* Menu (Filtro, Favoritos, Carrinho) */
+  .menuCat {
+    margin-top: 1%;
+    display: flex;
+    background-color: #FDCA05;
+    height: 35px;
+    justify-content: space-between;
+  }
+  
+  .filtro,
+  .favorito,
+  .carrinho {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: #121212;
+    font-size: 125%;
+    outline: none; 
+  }
+  
+  .filtro:hover,
+  .favorito:hover,
+  .carrinho:hover {
+    color: #fff;
+  }
+  
+  .itens-direita {
+    padding: 0.1% 0.7%;
+    position: relative;
+  }
+  
+  .fundo-itens {
+    display: flex;
+    background-color: #fdca05;
+    z-index: 1;
+    position: absolute;
+    left: 0;
+    width: 350%;
+    height: auto;
+  }
+  
+  .menu-itens .ant-menu-submenu-title, .menu-itens .ant-menu-item a {
+    color: #414141;
+    font-size: 90%;
+  }
+  
+  .menu-itens .ant-menu-item a:hover {
+    font-weight: bold;
+  }
+  
+  .itens-esquerda {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0.4% 1.5%; 
+  }
+  
+  .espaco-fc {
+    margin: 20%;
+  }
+  
+  /* Imagem Decorativa */
+  .catalogo-img {
+    position: relative;
+    margin-top: 0.5%;
+    margin-bottom: 3%;
+    width: 98%;
+    height: auto;
+    z-index: 0;
+  }
+  
+  /* Texto (Navegue por nosso Catálogo) */
+  .navegador-text {
+    font-size: 150%;
+    color: #171717;
+    font-weight: bold;
+  }
+  
+  .decoracao-line {
+    margin-top: 2%;
+    display: flex;
+    background-color: #FFD54F;
+    height: 5px;
+    width: 8%;
+  }
+  
+  /* Produtos (Carrosel) */
+  .carrosel {
+    margin-top: 3%;
+    text-align: center; 
+    margin-bottom: 2%;
+  }
+  
+  /* Estilo para o indicador ativo do Carousel autoplay */
+  .ant-carousel .slick-dots li.slick-active button {
+    background-color: #FFD54F; 
+  }
+  
+  /* Estilo para os demais indicadores do Carousel autoplay */
+  .ant-carousel .slick-dots li button {
+    background-color: gray; 
+  }
+  
+  .atencao-text {
+    margin-top: 2%;
+    margin-bottom: 4%;
+    color: #414141;
+    font-size: 97%;
+    font-weight: bolder;
+  }
+  
+  @media screen and (max-width: 600px) {
+  
+    .menuCat {
+      height: 25px;
+      margin-top: 2%;
+    }
+  
+    .filtro,
+    .favorito,
+    .carrinho {
+      font-size: 90%;
+    }
+  
+    .itens-direita {
+      padding: 0.1% 0.7%;
+    }
+  
+    .itens-esquerda {
+      padding: 1% 3%;
+    }
+  
+    .favorito {
+      margin-right: 30%;
+    }
+  
+    .fundo-itens {
+      flex-direction: column;
+      width: 326%;
+      height: auto;
+    }
+  
+    .menu-itens .ant-menu-submenu-title, .menu-itens .ant-menu-item a {
+       font-size: 55%;
+    }
+  
+    .catalogo-img {
+      margin-top: 1%;
+      margin-bottom: 8%;
+      width: 100%;
+    }
+  
+    .navegador-text {
+      font-size: 95%;
+    }
+  
+    .decoracao-line {
+      width: 10%;
+    }
+  
+    /* Estilo para o indicador ativo do Carousel autoplay */
+    .ant-carousel .slick-dots li.slick-active button {
+      margin-top: 85%; 
+    }
+  
+    /* Estilo para os demais indicadores do Carousel autoplay */
+    .ant-carousel .slick-dots li button {
+      margin-top: 130%; 
+    }
+  
+    .atencao-text {
+      font-size: 60%;
+      padding: 7%;
+    }
+  }
