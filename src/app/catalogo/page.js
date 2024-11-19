@@ -9,7 +9,7 @@ import { prodListaMV } from "../produtos_Midia_Visual/page";
 import { MdFavoriteBorder } from 'react-icons/md';
 import { HiOutlineShoppingCart } from 'react-icons/hi';
 import { RiMenuSearchLine, RiMenuSearchFill } from "react-icons/ri";
-import Cimg from "../public/imagens/catalogo/decoracao-img.png";
+import Cimg from "../../../public/catalogo/decoracao-img.png";
 
 export default function Catalog() {
 

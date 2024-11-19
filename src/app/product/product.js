@@ -1,17 +1,17 @@
 import React from "react";
-import { useFavoriteContext } from './context/FavoritesContext';
-import { useCartContext } from './context/CartContext';
+import { useFavoriteContext } from "../context/FavoritesContext";
+import { useCartContext } from '../context/CartContext';
 import { MdFavorite, MdFavoriteBorder } from 'react-icons/md';
 import { HiShoppingCart, HiOutlineShoppingCart } from 'react-icons/hi';
-import { prodListaMV } from "./ProductsMV";
-import Pimg1 from "../public/imagens/produtos/img-virgem-prod/logotipo.png";
-import Pimg2 from "../public/imagens/produtos/img-virgem-prod/proj.png";
-import Pimg3 from "../public/imagens/produtos/img-virgem-prod/flyer.png";
-import Pimg4 from "../public/imagens/produtos/img-virgem-prod/motion.png";
-import CRimg1 from "../public/imagens/carrinho/icon1.png";
-import CRimg2 from "../public/imagens/carrinho/icon2.png";
-import CRimg3 from "../public/imagens/carrinho/icon3.png";
-import CRimg4 from "../public/imagens/carrinho/icon4.png";
+import { prodListaMV } from "../produtos_Midia_Visual/page";
+import Pimg1 from "../../../public/produtos/img-virgem-prod/logotipo.png";
+import Pimg2 from "../../../public/produtos/img-virgem-prod/proj.png";
+import Pimg3 from "../../../public/produtos/img-virgem-prod/flyer.png";
+import Pimg4 from "../../../public/produtos/img-virgem-prod/motion.png";
+import CRimg1 from "../../../public/produtos/carrinho/icon1.png";
+import CRimg2 from "../../../public/produtos/carrinho/icon2.png";
+import CRimg3 from "../../../public/produtos/carrinho/icon3.png";
+import CRimg4 from "../../../public/produtos/carrinho/icon4.png";
 
 // Função para obter a promoção do produto com base nos cards
 const getPromotionProduct = (subCategory) => {
