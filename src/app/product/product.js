@@ -9,6 +9,7 @@ import CRimg2 from "../../../public/produtos/carrinho/icon2.png";
 import CRimg3 from "../../../public/produtos/carrinho/icon3.png";
 import CRimg4 from "../../../public/produtos/carrinho/icon4.png";
 import './product.css';
+import Link from 'next/link';
 import Image from "next/image";
 
 
@@ -21,24 +22,29 @@ export default async function Product({ product }) {
 
   return (
     <div className="produto">
-      
-      
+
+
       <Image src={Pimg1} className="prod-img" alt="logo" />
-      <h1 className="cat-text">{product.categoria}</h1>
+      <h1 className="cat-text">Mídia Visual</h1>
       <h2 className="sub-text">
         {product.sub_categoria}</h2>
       <div className="linha-esquerda"></div>
       <div className="icones">
         <button type="button" className="icone-fav">
-         <MdFavoriteBorder /> 
+          <MdFavoriteBorder />
         </button>
-         
-        <button className="preco"> R$ {product.valor} </button>
-        
-         
-        
+        <button type="button" className="icone-car">
+          <HiOutlineShoppingCart />
+        </button>
+
+        <Link href={`/product/${product.id}`} passHref>
+          <button className="preco"> R$ {product.valor} </button>
+        </Link>
+
+
+
       </div>
-      
-   </div>
+
+    </div>
   );
 }

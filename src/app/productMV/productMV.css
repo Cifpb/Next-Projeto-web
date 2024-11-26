@@ -1,0 +1,270 @@
+.tela-produto {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Century Gothic', sans-serif;
+  }
+  
+  .parte3 {
+    flex: 1;
+    background-color: #FDCA05;
+  }
+  
+  .galeria-text {
+    font-size: 150%;
+    color: #171717;
+    font-weight: bold;
+    margin-top: 3%;
+    margin-bottom: 1%;
+  }
+  
+  .line {
+    display: flex;
+    background-color: #FFD54F;
+    height: 4px;
+    width: 8%;
+    margin-bottom: 2%;
+  }
+  
+  /* Carrosel */
+  .galeria-img {
+    margin-top: 0.5%;
+    margin-bottom: 2%;
+    width: 100%;
+    height: auto;
+  }
+  
+  .promo-fita2 {
+    font-size: 100%; 
+    width: 1%; 
+    position: absolute;
+    top: 7%;
+    padding: 5px 0; 
+    color: white;
+    text-align: center;
+    transform: rotate(-45deg) translateX(-20%);
+  }
+  
+  .itens-juntos-MV {
+    display: flex;
+    gap: 25%;
+    width: 80%;
+    margin: auto;
+    margin-top: 1%;
+    margin-bottom: 3%;
+  }
+  
+  .itens-direita-text {
+    width: 50%;
+  }
+  
+  .categoria-text {
+    font-size: 150%;
+    font-weight: bold;
+    color: #fdca05;
+    line-height: 2; 
+    text-transform: uppercase;
+  }
+  
+  .nomeProd-text {
+    font-size: 135%;
+    font-weight: bold;
+    color: #414141;
+    line-height: 0.1; 
+    text-transform: capitalize;
+  }
+  
+  .descricao-text {
+    font-size: 115%;
+    color: #121212;;
+    font-weight: bold;
+    margin-top: 10%;
+  }
+  
+  .conteudoDes-text {
+    font-size: 100%;
+    font-weight: normal;
+    color: #0d0d0d;
+    text-align: justify;
+    padding: 0;
+    margin-top: 2%;
+  }
+  
+  .itens-esquerda-pag {
+    width: 28%;
+  }
+  
+  .favorito-PM, .carrinho-PM {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 150%;
+    margin-top: 5%;
+    margin-bottom: 3%;
+    margin-right: 4%;
+  }
+  
+  .favorito-PM:hover, .carrinho-PM:hover {
+    color: #fdca05; 
+  }
+  
+  .pagamento-pix {
+    display: flex;
+    align-items: center;
+    gap: 2%;
+    margin-bottom: 3%;
+  }
+  
+  .tipopg1-text {
+    font-size: 120%;
+    font-weight: bold;
+    color: #0d0d0d;
+  }
+  
+  .pix-text {
+    font-size: 90%;
+    font-weight: normal;
+    color: #0d0d0d;
+    display: inline-block;
+  }
+  
+  .tipopg2-text, .tipopg3-text {
+    font-size: 100%;
+    padding: 3% 0%;
+    color: #0d0d0d;
+  }
+  
+  .tipopg2-text {
+    font-weight: bold;
+    text-decoration: underline;
+    margin-left: 4%;
+    margin-right: 15%;
+  }
+  
+  .tipopg3-text {
+    font-weight: normal;
+    margin-left: 4%;
+  }
+  
+  .cartao-credito {
+    display: flex;
+    margin-top: 1%;
+    background-color: #ededed;
+    border: 1px solid #666666;
+    width: 93%;
+    height: auto;
+  }
+  
+  .botao-adicionar {
+    border: none;
+    color: white;
+    font-weight: bold;
+    font-size: 100%;
+    text-align: center;
+    transition: all 0.3s ease;
+    background: linear-gradient(to bottom, #FFD54F, #FFB300);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 4% 5%;
+    margin: 10% 13%;
+    cursor: pointer;
+  }
+  
+  .botao-adicionar:hover {
+    background: linear-gradient(to bottom, #FFB300, #FFD54F);
+  }
+  
+  .botao-adicionar:active {
+    background: linear-gradient(to bottom, #FFD54F, #FFB300);
+    color: black;
+  }
+  
+  @media screen and (max-width: 600px) {
+  
+    .galeria-text {
+      margin-top: 8%;
+      font-size: 90%;
+    }
+  
+    .line {
+      margin-top: 2%;
+      margin-bottom: 5%;
+      width: 10%;
+    }
+  
+    .itens-juntos-MV {
+      gap: 18%;
+      width: 90%;
+      margin-top: 8%;
+      margin-bottom: 9%;
+    }
+  
+    .itens-direita-text, .itens-esquerda-pag {
+      width: 45%;
+    }
+  
+    .categoria-text {
+      font-size: 80%;
+    }
+  
+    .nomeProd-text {
+      font-size: 74%;
+    }
+  
+    .descricao-text {
+      font-size: 72%;
+      margin-top: 32%;
+    }
+  
+    .conteudoDes-text {
+      font-size: 70%;
+      margin-top: 4%;
+    }
+  
+    .favorito-PM, .carrinho-PM {
+      font-size: 80%;
+      margin-right: 6%;
+      margin-top: 6%;
+    }
+  
+    .pagamento-pix {
+      flex-direction: column;
+      margin-top: 1%;
+    }
+  
+    .tipopg1-text {
+      font-size: 70%;
+      text-align: center;
+      border-bottom: solid #FDCA05;
+      width: 100%;
+      padding-bottom: 1%;
+    }
+  
+    .pix-text {
+      font-size: 55%;
+      margin-bottom: 5%;
+      margin-top: 1%;
+    }
+  
+    .tipopg2-text {
+      font-size: 65%;
+      margin-bottom: -6%;
+    }
+  
+    .tipopg3-text {
+      font-size: 65%;
+      margin-top: 5%;
+    }
+  
+    .cartao-credito {
+      flex-direction: column;
+      width: 100%;
+    }
+  
+    .botao-adicionar {
+      font-size: 60%;
+      padding: 4% 10%;
+      margin: 10% 10%;
+    }
+  }
