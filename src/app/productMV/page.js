@@ -30,7 +30,7 @@ import db from "@/lib/db";
 
 export default async function ProductsMV({ productsMV, id }) {
 
-    const produtos = await db.query("select * from produto");
+    
 
   return (
     <div className="tela-produto">
