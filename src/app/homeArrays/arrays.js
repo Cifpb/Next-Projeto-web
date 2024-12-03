@@ -5,9 +5,12 @@ import Timg1 from "../../../public/home/trabalhos/musical.png";
 import Timg2 from "../../../public/home/trabalhos/midia.png";
 import Timg3 from "../../../public/home/trabalhos/plotagem.png";
 import Timg4 from "../../../public/home/trabalhos/identidade.png";
-import CDimg1 from "../../../public/home/cards/a-loba.png";
-import CDimg2 from "../../../public/home/cards/dono.png";
-import CDimg3 from "../../../public/home/cards/plot-matheus.png";
+import CDimg1 from "../../../public/home/planos/imagens/imagem-plano.png";
+import CDimg2 from "../../../public/home/planos/imagens/imagem-plano.png";
+import CDimg3 from "../../../public/home/planos/imagens/imagem-plano.png";
+// import DPpdf1 from "../../../public/home/planos/documentos/documento-plano1.pdf";
+// import DPpdf2 from "../../../public/home/planos/documentos/documento-plano2.pdf";
+// import DPpdf3 from "../../../public/home/planos/documentos/documento-plano3.pdf";
 import MPimg from "../../../public/home/marcas/times.png";
 import Image from "next/image";
 import { Carousel } from "antd";
@@ -47,7 +50,7 @@ const cards = [
     img: CDimg1,
     content:
       "15 post Mensais. 15 Stories Mensais. Desenvolvimento das Artes. Desenvolvimento do Conteúdo.",
-    document: DPpdf1,
+    // document: DPpdf1,
     emblem: "",
   },
   {
@@ -58,7 +61,7 @@ const cards = [
     img: CDimg2,
     content:
       "24 post Mensais. 24 Stories Mensais. Desenvolvimento das Artes. Desenvolvimento do Conteúdo. Gerenciamento de Anúncios.",
-    document: DPpdf2,
+    // document: DPpdf2,
     emblem: "",
   },
   {
@@ -69,7 +72,7 @@ const cards = [
     img: CDimg3,
     content:
       "Quantidade de post Mensais LIVRE. Quantidade de Stories Mensais LIVRE. Desenvolvimento das Artes. Desenvolvimento do Conteúdo. Gerenciamento de Anúncios.",
-    document: DPpdf3,
+    // document: DPpdf3,
     emblem: "",
   },
 ];
@@ -86,7 +89,7 @@ const cardTela = (card) => (
         {card.promotion}
       </div>
     )}
-    <img src={card.img} className="imagemCard" alt="logo" />
+    <Image src={CDimg1} className="imagemCard" alt="logo" />
     <div className="contentCard">
       <div className="conteudoDiv">
         {card.content.split(".").map((sentence, index) => {
@@ -97,7 +100,7 @@ const cardTela = (card) => (
         })}
       </div>
       <button type="button" className="botao-card">
-        <a className="texto-bntCard" href={card.document}>
+        <a className="texto-bntCard">
           SAIBA MAIS
         </a>
       </button>
