@@ -37,8 +37,12 @@ export default async function Product({ product }) {
           <HiOutlineShoppingCart />
         </button>
 
-        <Link href={`/product/${product.id}`} passHref>
-          <button className="preco"> R$ {product.valor} </button>
+        <Link href={`/produtos/${product.id}`}>
+          <button className="preco">
+            <div className="texto-bnt">
+              R$ {product.valor}
+            </div>
+          </button>
         </Link>
 
 

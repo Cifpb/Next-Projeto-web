@@ -26,11 +26,15 @@ import PGimg3 from "../../../public/produtos/produtos-pag/projG/projG1.png";
 import PGimg4 from "../../../public/produtos/produtos-pag/projG/projG1.png";
 import PGimg5 from "../../../public/produtos/produtos-pag/projG/projG1.png";
 import PGimg6 from "../../../public/produtos/produtos-pag/projG/projG1.png";
-import db from "@/lib/db";
+import { getprodutoById } from "@/lib/produto";
 
-export default async function ProductsMV({ productsMV, id }) {
+export default async function ProductsMV({ productsMV, params }) {
 
-    
+  const produtoMV = await getprodutoById(params.id);
+
+  if (!produto) {
+    return <p>Produto não encontrado</p>;
+  }
 
   return (
     <div className="tela-produto">
