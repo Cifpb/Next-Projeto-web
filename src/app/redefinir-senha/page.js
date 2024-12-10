@@ -3,10 +3,9 @@ import Header from "../header/header";
 import Footer from "../footer/footer";
 
 export default function Reset() {
-
-    return(
+  return (
     <div>
-     <Header/>
+      <Header />
       <div>
         <div className={style.pag_red}>
           <div className={style.elem_red}>
@@ -18,21 +17,30 @@ export default function Reset() {
               <form action="login" method="post">
                 <div className={style.formulario_email}>
                   <label htmlFor="email"></label>
-                  <input type="email" id="email" maxLength={50} placeholder="E-mail" required autoComplete="off" />
+                  <input
+                    type="email"
+                    id="email"
+                    maxLength={50}
+                    placeholder="E-mail"
+                    required
+                    autoComplete="off"
+                  />
                 </div>
-                <div className="formulario_grupo">
-                  <center> <input type="submit" value="Enviar Link" /> </center>
+                <div className={style.formulario_grupo}>
+                  <center>
+                    <input type="submit" value="Enviar Link" />
+                  </center>
                 </div>
               </form>
-              <div className="voltar_link">
+              <div className={style.voltar_link}>
                 <a href="/login">Voltar ao Login</a>
               </div>
             </div>
           </div>
-          <div className="desbo_rodape" />
+          <div className={style.desbo_rodape} />
         </div>
       </div>
-      <Footer/>
-      </div>
-    );
-  }
+      <Footer />
+    </div>
+  );
+}
