@@ -1,13 +1,32 @@
 /*--------------------------------------------------------------------------------------------------*/
 /* Tela de Redefinir Senha */
 
-.texto2 {
+  .pag_red {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
+    height: 100%;
+    width: 100%;
+  }
+
+  .elem_red {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 6%;
+    width: 100%;
+    height: 100%;
+    justify-content:center;
+    align-items: center;
+  }
+
+  .texto2 {
     color: #fcb900;
     font-size: 120%;
     margin-top: 7%;
   }
   
-  .form-redefinir {
+  .form_redefinir {
     width: 35vw;
     height: min(60vh, 100%);
     padding: 2%;
@@ -19,7 +38,7 @@
     z-index: 2;
   }
   
-  .formulario-email input[type="email"] {
+  .formulario_email input[type="email"] {
     width: 80%;
     padding: 2%;
     border-radius: 15px;
@@ -30,14 +49,14 @@
     margin-top: 10%;
   }
   
-  .formulario-email input[type="email"]::placeholder {
+  .formulario_email input[type="email"]::placeholder {
     opacity: 0.5;
     color: #5f5959;
   }
   
-  .desbo-rodape {
+  .desbo_rodape {
     position: absolute;
-    top: 71.5%;
+    top: 63%;
     width: 100%;
     height: 35%;
     background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #fcb900 100%);
@@ -45,7 +64,7 @@
     z-index: 1;
   }
   
-  .voltar-link a {
+  .voltar_link a {
     display: flex;
     justify-content: flex-end;
     margin-right: 8%;
@@ -56,24 +75,24 @@
     margin-bottom: 3%;
   }
   
-  .voltar-link a:hover {
+  .voltar_link a:hover {
     color: #cc930f;
   }
   
-  .voltar-link a:active {
+  .voltar_link a:active {
     color: #a76c0b;
   }
   
   @media screen and (max-width: 600px) {
   
-    .form-redefinir {
+    .form_redefinir {
       width: 65%;
       height: auto;
       margin-top: 4%;
       margin-bottom: 4%;
     }
   
-    .texto-principal {
+    .texto_principal {
       font-size: 90%;
       margin-bottom: 10%;
     }
@@ -83,30 +102,30 @@
       margin-bottom: 8%;
     }
   
-    .formulario-email input[type="email"] {
+    .formulario_email input[type="email"] {
       width: 90%;
       padding: 1.5%;
     }
   
-    .formulario-email input::placeholder {
+    .formulario_email input::placeholder {
       font-size: 65%;
       text-indent: 3%;
     }
   
-    .voltar-link a {
+    .voltar_link a {
       width: 100%;
       font-size: 60%;
       margin-bottom: 7%;
     }
   
-    .formulario-grupo input[type="submit"] {
+    .formulario_grupo input[type="submit"] {
       width: 30%;
       padding: 1.5%;
       margin-bottom: 7%;
       font-size: 65%;
     }
   
-    .desbo-rodape {
+    .desbo_rodape {
       top: 55.5%;
       height: 35%;
     }

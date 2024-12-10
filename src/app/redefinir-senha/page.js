@@ -1,4 +1,4 @@
-import "./redefinir.css";
+import style from "./page.module.css";
 import Header from "../header/header";
 import Footer from "../footer/footer";
 
@@ -7,29 +7,29 @@ export default function Reset() {
     return(
     <div>
      <Header/>
-      <div className="Reset">
-        <div className="pag-login">
-          <div className="elem-login">
-            <div className="form-redefinir">
-              <h2 className="texto-principal">REDEFINIR SENHA</h2>
-              <p className="texto2">
+      <div>
+        <div className={style.pag_red}>
+          <div className={style.elem_red}>
+            <div className={style.form_redefinir}>
+              <h2 className={style.texto_principal}>REDEFINIR SENHA</h2>
+              <p className={style.texto2}>
                 Informe um email e enviaremos um link <br /> para recuperar sua senha.
               </p>
               <form action="login" method="post">
-                <div className="formulario-email">
+                <div className={style.formulario_email}>
                   <label htmlFor="email"></label>
                   <input type="email" id="email" maxLength={50} placeholder="E-mail" required autoComplete="off" />
                 </div>
-                <div className="formulario-grupo">
-                  <center> <input type="submit" defaultValue="Enviar Link" /> </center>
+                <div className="formulario_grupo">
+                  <center> <input type="submit" value="Enviar Link" /> </center>
                 </div>
               </form>
-              <div className="voltar-link">
+              <div className="voltar_link">
                 <a href="/login">Voltar ao Login</a>
               </div>
             </div>
           </div>
-          <div className="desbo-rodape" />
+          <div className="desbo_rodape" />
         </div>
       </div>
       <Footer/>

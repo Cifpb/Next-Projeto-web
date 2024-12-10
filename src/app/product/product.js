@@ -37,7 +37,7 @@ export default async function Product({ product }) {
           <HiOutlineShoppingCart />
         </button>
 
-        <Link href={`/produtos/${product.id}`}>
+        <Link href={`/productMV/${product.id}`}>
           <button className="preco">
             <div className="texto-bnt">
               R$ {product.valor}

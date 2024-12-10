@@ -15,9 +15,9 @@
 
 .imagem-login {
   display: flex;
-  width: 15%;
-  height: 40%;
+  width: 20%;
   margin-right: 10%;
+  border: 1px solid #f6b927;
 }
 
 .form-login {
@@ -50,12 +50,13 @@
 .formulario-grupo {
   margin-bottom: 2%;
   position: relative;
+  margin-left: 3%;
 }
 
 .formulario-grupo input[type="email"],
 .formulario-grupo input[type="password"],
 .formulario-grupo input[type="text"] {
-  width: 90%; 
+  width: 95%; 
   padding: 2%;
   border-radius: 15px;
   border: 1px solid #bababa;
@@ -114,7 +115,7 @@
   font-size: 85%;
   cursor: pointer;
   margin-bottom: 3%;
-  margin-right: 7%;
+  margin-right: 5%;
 }
 
 .formulario-links a:hover {
@@ -130,6 +131,7 @@
   justify-content: flex-end;
   color: #333;
   font-size: 85%;
+  margin-right: 5%;
 }
 
 @media screen and (max-width: 600px) {
