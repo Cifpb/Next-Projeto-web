@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 
-.pag-login {
+.pag_login {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,14 +13,14 @@
   width: 100%;
 }
 
-.imagem-login {
+.imagem_login {
   display: flex;
   width: 20%;
   margin-right: 10%;
   border: 1px solid #f6b927;
 }
 
-.form-login {
+.form_login {
   width: 36%;
   height: 80%;
   padding: 2%;
@@ -28,7 +28,7 @@
   background-color: #fff;
 }
 
-.elem-login {
+.elem_login {
   display: flex;
   flex-direction: row;
   margin-bottom: 6%;
@@ -38,7 +38,7 @@
   align-items: center;
 }
 
-.texto-principal {
+.texto_principal {
   font-weight: bold;
   color: black;
   font-size: 170%;
@@ -47,15 +47,15 @@
   margin-bottom: 5%;
 }
 
-.formulario-grupo {
+.formulario_grupo {
   margin-bottom: 2%;
   position: relative;
   margin-left: 3%;
 }
 
-.formulario-grupo input[type="email"],
-.formulario-grupo input[type="password"],
-.formulario-grupo input[type="text"] {
+.formulario_grupo input[type="email"],
+.formulario_grupo input[type="password"],
+.formulario_grupo input[type="text"] {
   width: 95%; 
   padding: 2%;
   border-radius: 15px;
@@ -63,13 +63,13 @@
   background-color: #ffffff;
 }
 
-.formulario-grupo input[type="email"] ::placeholder,
-.formulario-grupo input[type="password"] ::placeholder {
+.formulario_grupo input[type="email"] ::placeholder,
+.formulario_grupo input[type="password"] ::placeholder {
   opacity: 0.5;
   color: #b8b7b7;
 }
 
-.icone-eye {
+.icone_eye {
   background-color: transparent; 
   border: none; 
   cursor: pointer; 
@@ -81,7 +81,7 @@
   margin-top: 2% ;
 }
 
-.formulario-grupo input[type="submit"] {
+.formulario_grupo input[type="submit"] {
   width: 20%;
   font-size: 95%;
   margin-bottom: 5%;
@@ -99,15 +99,15 @@
   align-items: center;
 }
 
-.formulario-grupo input[type="submit"]:hover {
+.formulario_grupo input[type="submit"]:hover {
   background: linear-gradient(to bottom, #FFB300, #FFD54F);
 }
 
-.formulario-grupo input[type="submit"]:active {
+.formulario_grupo input[type="submit"]:active {
   background: linear-gradient(to bottom, #FFA000, #FFC107);
 }
 
-.formulario-links a {
+.formulario_links a {
   display: flex;
   justify-content: flex-end;
   color: #FCB900;
@@ -118,7 +118,7 @@
   margin-right: 5%;
 }
 
-.formulario-links a:hover {
+.formulario_links a:hover {
   color: #cc930f;
 }
 
@@ -126,7 +126,7 @@
   color: #a76c0b;
 }
 
-.texto-criar-conta {
+.texto_criar_conta {
   display: flex;
   justify-content: flex-end;
   color: #333;
@@ -136,51 +136,51 @@
 
 @media screen and (max-width: 600px) {
 
-  .imagem-login {
+  .imagem_login {
     display: none;
   }
 
-  .form-login {
+  .form_login {
     width: 65%;
     height: auto;
     margin-top: 4%;
     margin-bottom: 4%;
   }
 
-  .texto-principal {
+  .texto_principal {
     font-size: 90%;
     margin-bottom: 10%;
   }
 
-  .formulario-grupo input[type="email"],
-  .formulario-grupo input[type="password"],
-  .formulario-grupo input[type="text"] {
+  .formulario_grupo input[type="email"],
+  .formulario_grupo input[type="password"],
+  .formulario_grupo input[type="text"] {
     width: 100%;
     padding: 1.5%;
   }
 
-  .formulario-grupo input[type="email"]::placeholder,
-  .formulario-grupo input[type="password"]::placeholder {
+  .formulario_grupo input[type="email"]::placeholder,
+  .formulario_grupo input[type="password"]::placeholder {
     font-size: 65%; 
     text-indent: 3%; 
   }
 
-  .icone-eye {
+  .icone_eye {
     padding-top: 8%;
     font-size: 60%;
   }
 
-  .formulario-links a {
+  .formulario_links a {
     width: 100%;
     font-size: 60%;
     margin-bottom: 7%;
   }
 
-  .texto-criar-conta {
+  .texto_criar_conta {
     font-size: 60%;
   }
 
-  .formulario-grupo input[type="submit"] {
+  .formulario_grupo input[type="submit"] {
     width: 30%;
     padding: 1.5%;
     margin-bottom: 7%;
