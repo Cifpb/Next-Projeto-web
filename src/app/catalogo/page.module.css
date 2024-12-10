@@ -32,12 +32,12 @@
     color: #fff;
   }
   
-  .itens-direita {
+  .itens_direita {
     padding: 0.1% 0.7%;
     position: relative;
   }
   
-  .fundo-itens {
+  .fundo_itens {
     display: flex;
     background-color: #fdca05;
     z-index: 1;
@@ -47,27 +47,27 @@
     height: auto;
   }
   
-  .menu-itens .ant-menu-submenu-title, .menu-itens .ant-menu-item a {
+  .menu_itens .ant-menu_submenu-title, .menu_itens .ant_menu_item a {
     color: #414141;
     font-size: 90%;
   }
   
-  .menu-itens .ant-menu-item a:hover {
+  .menu_itens .ant_menu_item a:hover {
     font-weight: bold;
   }
   
-  .itens-esquerda {
+  .itens_esquerda {
     display: flex;
     justify-content: flex-end;
     padding: 0.4% 1.5%; 
   }
   
-  .espaco-fc {
+  .espaco_fc {
     margin: 20%;
   }
   
   /* Imagem Decorativa */
-  .catalogo-img {
+  .catalogo_img {
     position: relative;
     margin-top: 0.5%;
     margin-bottom: 3%;
@@ -77,13 +77,13 @@
   }
   
   /* Texto (Navegue por nosso Catálogo) */
-  .navegador-text {
+  .navegador_text {
     font-size: 150%;
     color: #171717;
     font-weight: bold;
   }
   
-  .decoracao-line {
+  .decoracao_line {
     margin-top: 2%;
     display: flex;
     background-color: #FFD54F;
@@ -108,7 +108,7 @@
     background-color: gray; 
   }
   
-  .atencao-text {
+  .atencao_text {
     margin-top: 2%;
     margin-bottom: 4%;
     color: #414141;
@@ -129,11 +129,11 @@
       font-size: 90%;
     }
   
-    .itens-direita {
+    .itens_direita {
       padding: 0.1% 0.7%;
     }
   
-    .itens-esquerda {
+    .itens_esquerda {
       padding: 1% 3%;
     }
   
@@ -141,27 +141,27 @@
       margin-right: 30%;
     }
   
-    .fundo-itens {
+    .fundo_itens {
       flex-direction: column;
       width: 326%;
       height: auto;
     }
   
-    .menu-itens .ant-menu-submenu-title, .menu-itens .ant-menu-item a {
+    .menu_itens .ant_menu_submenu-title, .menu_itens .ant_menu_item a {
        font-size: 55%;
     }
   
-    .catalogo-img {
+    .catalogo_img {
       margin-top: 1%;
       margin-bottom: 8%;
       width: 100%;
     }
   
-    .navegador-text {
+    .navegador_text {
       font-size: 95%;
     }
   
-    .decoracao-line {
+    .decoracao_line {
       width: 10%;
     }
   
@@ -175,7 +175,7 @@
       margin-top: 130%; 
     }
   
-    .atencao-text {
+    .atencao_text {
       font-size: 60%;
       padding: 7%;
     }

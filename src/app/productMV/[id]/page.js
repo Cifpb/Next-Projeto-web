@@ -1,40 +1,36 @@
-import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
-import { HiOutlineShoppingCart, HiShoppingCart } from "react-icons/hi";
+import { MdFavoriteBorder } from "react-icons/md";
+import { HiOutlineShoppingCart } from "react-icons/hi";
 import Footer from "../../footer/footer";
 import { Carousel } from "antd";
 import { getprodutoById } from "@/lib/produto";
 import Image from "next/image";
+import style from './page.module.css';
 
 export default async function ProductsMV({ productsMV, params }) {
 
   const produtoMV = await getprodutoById(params.id);
 
-  if (!produtoMV) {
-    return <p>Produto não encontrado</p>;
-  }
-
   return (
-    <div className="tela-produto">
-      <div className="idVisual">
-        <div className="retangulo">
-          <div className="parte1" />
-          <div className="parte3" />
-          <div className="parte1" />
+    <div className={style.tela_produto}>
+      <div className={style.idVisual}>
+        <div className={style.retanguloProdMV}>
+          <div className={style.parte1} />
+          <div className={style.parte3} />
+          <div className={style.parte1} />
         </div>
 
         <center>
-          <h1 className="galeria-text"> EXPLORE NOSSA GALERIA </h1>
-          <div className="line"></div>
+          <h1 className={style.galeria_text}>EXPLORE NOSSA GALERIA</h1>
+          <div className={style.line}></div>
         </center>
 
         <Carousel autoplay>
           <div>
-            {produtoMV.oferta != "" && (
+            {produtoMV.oferta !== "" && (
               <div
-                className="promo-fita2"
+                className={style.promo_fita2}
                 style={{
-                  backgroundColor:
-                  produtoMV.oferta === "Novo" ? "#388E3C" : "#D32F2F",
+                  backgroundColor: produtoMV.oferta === "Novo" ? "#388E3C" : "#D32F2F",
                 }}
               >
                 {produtoMV.oferta}
@@ -42,48 +38,37 @@ export default async function ProductsMV({ productsMV, params }) {
             )}
             <Image src="/produtos/produtos-pag/logotipo/logotipo1.png" fill={true} />
           </div>
-          <div>
-          <Image src="/produtos/produtos-pag/logotipo/logotipo1.png" fill={true}/>
-          </div>
-          <div>
-          <Image src="/produtos/produtos-pag/logotipo/logotipo1.png" fill={true} />
-          </div>
-          <div>
-          <Image src="/produtos/produtos-pag/logotipo/logotipo1.png" fill={true} />
-          </div>
-          <div>
-          <Image src="/produtos/produtos-pag/logotipo/logotipo1.png" fill={true} />
-          </div>
-          <div>
-          <Image src="/produtos/produtos-pag/logotipo/logotipo1.png" fill={true} />
-          </div>
+          <div><Image src="/produtos/produtos-pag/logotipo/logotipo1.png" fill={true} /></div>
+          <div><Image src="/produtos/produtos-pag/logotipo/logotipo1.png" fill={true} /></div>
+          <div><Image src="/produtos/produtos-pag/logotipo/logotipo1.png" fill={true} /></div>
+          <div><Image src="/produtos/produtos-pag/logotipo/logotipo1.png" fill={true} /></div>
+          <div><Image src="/produtos/produtos-pag/logotipo/logotipo1.png" fill={true} /></div>
         </Carousel>
 
-        <div className="itens-juntos-MV">
-          <div className="itens-direita-text">
-            <h1 className="categoria-text">Mídia Visual</h1>
-            <h2 className="nomeProd-text">{produtoMV.sub_categoria}</h2>
-            <h1 className="descricao-text"> DESCRIÇÃO </h1>
-            <h2 className="conteudoDes-text">{produtoMV.descricao}</h2>
+        <div className={style.itens_juntos_MV}>
+          <div className={style.itens_direita_text}>
+            <h1 className={style.categoria_text}>Mídia Visual</h1>
+            <h2 className={style.nomeProd_text}>{produtoMV.sub_categoria}</h2>
+            <h1 className={style.descricao_text}>DESCRIÇÃO</h1>
+            <h2 className={style.conteudoDes_text}>{produtoMV.descricao}</h2>
           </div>
 
-          <div className="itens-esquerda-pag">
-            <button type="button" className="favorito-PM"> <MdFavoriteBorder /></button>
-            <button type="button" className="carrinho-PM"> <HiOutlineShoppingCart /> </button>
-            <div className="pagamento-pix">
-              <h1 className="tipopg1-text">
+          <div className={style.itens_esquerda_pag}>
+            <button type="button" className={style.favorito_PM}><MdFavoriteBorder /></button>
+            <button type="button" className={style.carrinho_PM}><HiOutlineShoppingCart /></button>
+            <div className={style.pagamento_pix}>
+              <h1 className={style.tipopg1_text}>
                 A partir de R$ {produtoMV.valor}
               </h1>
-              <h2 className="pix-text"> no pix </h2>
+              <h2 className={style.pix_text}>no pix</h2>
             </div>
-            <div className="cartao-credito">
-              <h1 className="tipopg2-text"> cartão de crédito </h1>
-              <h2 className="tipopg3-text">
-                
+            <div className={style.cartao_credito}>
+              <h1 className={style.tipopg2_text}>cartão de crédito</h1>
+              <h2 className={style.tipopg3_text}>
                 R$ 1200,00 <br /> 100,00 X 12
               </h2>
             </div>
-            <button type="button" className="botao-adicionar"> Adicionar ao Carrinho </button>
+            <button type="button" className={style.botao_adicionar}>Adicionar ao Carrinho</button>
           </div>
         </div>
       </div>

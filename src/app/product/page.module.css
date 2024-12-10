@@ -10,7 +10,7 @@
     overflow: hidden; 
   }
   
-  .promo-fita3 {
+  .promo_fita3 {
     font-size: 100%;
     position: absolute;
     top: 6%; 
@@ -23,26 +23,26 @@
     transform: rotate(-45deg);
   }
   
-  .prod-img {
+  .prod_img {
     width: 100%;
     height: auto; 
     margin-top: 3%;
   }
   
-  .cat-text, .sub-text {
+  .cat_text, .sub_text {
     font-size: 120%;
     font-weight: bold;
     text-align: left;
     padding: 0% 4%;
   }
   
-  .cat-text {
+  .cat_text {
     color: #fdca05;
     margin-top: 2%;
     text-transform: uppercase;
   }
   
-  .sub-text {
+  .sub_text {
     color: #ffffff;
     margin-top: 1.5%;
     text-transform: capitalize;
@@ -58,7 +58,7 @@
     gap: 40%;
   }
   
-  .icone-fav, .icone-car {
+  .icone_fav, .icone_car {
     background-color: transparent;
     border: none;
     cursor: pointer;
@@ -66,7 +66,7 @@
     font-size: 125%;
   }
   
-  .icone-fav:hover, .icone-car:hover {
+  .icone_fav:hover, .icone_car:hover {
     color: #fdca05; 
   }
   
@@ -84,14 +84,14 @@
     right: 4%;
   }
   
-  .texto-bnt {
+  .texto_bnt {
     text-decoration: none;
     color: #414141;
     font-size: 90%;
     font-weight: bolder;
   }
   
-  .texto-bnt:hover {
+  .texto_bnt:hover {
     color: black;
   }
   
@@ -110,16 +110,16 @@
       height: auto;
     }
   
-    .prod-img {
+    .prod_img {
       margin-top: 6%;
     }
   
-    .cat-text,
-    .sub-text {
+    .cat_text,
+    .sub_text {
       font-size: 70%;
     }
   
-    .sub-text {
+    .sub_text {
       margin-bottom: 5%;
     }
   
@@ -129,8 +129,8 @@
       gap: 40%;
     }
   
-    .icone-fav,
-    .icone-car {
+    .icone_fav,
+    .icone_car {
       font-size: 80%;
     }
   
@@ -140,7 +140,7 @@
       padding: 1% 2%;
     }
   
-    .texto-bnt {
+    .texto_bnt {
       font-size: 55%;
     }
   }

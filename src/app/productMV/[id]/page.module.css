@@ -1,9 +1,24 @@
-.tela-produto {
+.tela_produto {
     height: 100%;
     width: 100%;
     margin: 0;
     padding: 0;
     font-family: 'Century Gothic', sans-serif;
+  }
+
+  .retanguloProdMV {
+    display: flex;
+    height: 10px;
+  }
+  
+  .parte1 {
+    flex: 1;
+    background-color: #2B2B2B;
+  }
+  
+  .parte2 {
+    flex: 1;
+    background-color: #FDCA05;
   }
   
   .parte3 {
@@ -11,7 +26,7 @@
     background-color: #FDCA05;
   }
   
-  .galeria-text {
+  .galeria_text {
     font-size: 150%;
     color: #171717;
     font-weight: bold;
@@ -28,14 +43,14 @@
   }
   
   /* Carrosel */
-  .galeria-img {
+  .galeria_img {
     margin-top: 0.5%;
     margin-bottom: 2%;
     width: 100%;
     height: auto;
   }
-  
-  .promo-fita2 {
+
+  .promo_fita2 {
     font-size: 100%; 
     width: 1%; 
     position: absolute;
@@ -46,7 +61,7 @@
     transform: rotate(-45deg) translateX(-20%);
   }
   
-  .itens-juntos-MV {
+  .itens_juntos_MV {
     display: flex;
     gap: 25%;
     width: 80%;
@@ -55,11 +70,11 @@
     margin-bottom: 3%;
   }
   
-  .itens-direita-text {
+  .itens_direita_text {
     width: 50%;
   }
   
-  .categoria-text {
+  .categoria_text {
     font-size: 150%;
     font-weight: bold;
     color: #fdca05;
@@ -67,7 +82,7 @@
     text-transform: uppercase;
   }
   
-  .nomeProd-text {
+  .nomeProd_text {
     font-size: 135%;
     font-weight: bold;
     color: #414141;
@@ -75,14 +90,14 @@
     text-transform: capitalize;
   }
   
-  .descricao-text {
+  .descricao_text {
     font-size: 115%;
     color: #121212;;
     font-weight: bold;
     margin-top: 10%;
   }
   
-  .conteudoDes-text {
+  .conteudoDes_text {
     font-size: 100%;
     font-weight: normal;
     color: #0d0d0d;
@@ -91,11 +106,11 @@
     margin-top: 2%;
   }
   
-  .itens-esquerda-pag {
+  .itens_esquerda_pag {
     width: 28%;
   }
   
-  .favorito-PM, .carrinho-PM {
+  .favorito_PM, .carrinho_PM {
     background-color: transparent;
     border: none;
     cursor: pointer;
@@ -105,49 +120,49 @@
     margin-right: 4%;
   }
   
-  .favorito-PM:hover, .carrinho-PM:hover {
+  .favorito_PM:hover, .carrinho_PM:hover {
     color: #fdca05; 
   }
   
-  .pagamento-pix {
+  .pagamento_pix {
     display: flex;
     align-items: center;
     gap: 2%;
     margin-bottom: 3%;
   }
   
-  .tipopg1-text {
+  .tipopg1_text {
     font-size: 120%;
     font-weight: bold;
     color: #0d0d0d;
   }
   
-  .pix-text {
+  .pix_text {
     font-size: 90%;
     font-weight: normal;
     color: #0d0d0d;
     display: inline-block;
   }
   
-  .tipopg2-text, .tipopg3-text {
+  .tipopg2_text, .tipopg3_text {
     font-size: 100%;
     padding: 3% 0%;
     color: #0d0d0d;
   }
   
-  .tipopg2-text {
+  .tipopg2_text {
     font-weight: bold;
     text-decoration: underline;
     margin-left: 4%;
     margin-right: 15%;
   }
   
-  .tipopg3-text {
+  .tipopg3_text {
     font-weight: normal;
     margin-left: 4%;
   }
   
-  .cartao-credito {
+  .cartao_credito {
     display: flex;
     margin-top: 1%;
     background-color: #ededed;
@@ -156,7 +171,7 @@
     height: auto;
   }
   
-  .botao-adicionar {
+  .botao_adicionar {
     border: none;
     color: white;
     font-weight: bold;
@@ -171,18 +186,18 @@
     cursor: pointer;
   }
   
-  .botao-adicionar:hover {
+  .botao_adicionar:hover {
     background: linear-gradient(to bottom, #FFB300, #FFD54F);
   }
   
-  .botao-adicionar:active {
+  .botao_adicionar:active {
     background: linear-gradient(to bottom, #FFD54F, #FFB300);
     color: black;
   }
   
   @media screen and (max-width: 600px) {
   
-    .galeria-text {
+    .galeria_text {
       margin-top: 8%;
       font-size: 90%;
     }
@@ -193,47 +208,47 @@
       width: 10%;
     }
   
-    .itens-juntos-MV {
+    .itens_juntos_MV {
       gap: 18%;
       width: 90%;
       margin-top: 8%;
       margin-bottom: 9%;
     }
   
-    .itens-direita-text, .itens-esquerda-pag {
+    .itens_direita_text, .itens_esquerda_pag {
       width: 45%;
     }
   
-    .categoria-text {
+    .categoria_text {
       font-size: 80%;
     }
   
-    .nomeProd-text {
+    .nomeProd_text {
       font-size: 74%;
     }
   
-    .descricao-text {
+    .descricao_text {
       font-size: 72%;
       margin-top: 32%;
     }
   
-    .conteudoDes-text {
+    .conteudoDes_text {
       font-size: 70%;
       margin-top: 4%;
     }
   
-    .favorito-PM, .carrinho-PM {
+    .favorito_PM, .carrinho_PM {
       font-size: 80%;
       margin-right: 6%;
       margin-top: 6%;
     }
   
-    .pagamento-pix {
+    .pagamento_pix {
       flex-direction: column;
       margin-top: 1%;
     }
   
-    .tipopg1-text {
+    .tipopg1_text {
       font-size: 70%;
       text-align: center;
       border-bottom: solid #FDCA05;
@@ -241,28 +256,28 @@
       padding-bottom: 1%;
     }
   
-    .pix-text {
+    .pix_text {
       font-size: 55%;
       margin-bottom: 5%;
       margin-top: 1%;
     }
   
-    .tipopg2-text {
+    .tipopg2_text {
       font-size: 65%;
       margin-bottom: -6%;
     }
   
-    .tipopg3-text {
+    .tipopg3_text {
       font-size: 65%;
       margin-top: 5%;
     }
   
-    .cartao-credito {
+    .cartao_credito {
       flex-direction: column;
       width: 100%;
     }
   
-    .botao-adicionar {
+    .botao_adicionar {
       font-size: 60%;
       padding: 4% 10%;
       margin: 10% 10%;
