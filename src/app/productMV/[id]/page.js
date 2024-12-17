@@ -1,12 +1,11 @@
 import { MdFavoriteBorder } from "react-icons/md";
-import { HiOutlineShoppingCart } from "react-icons/hi";
 import Footer from "../../footer/footer";
 import { Carousel } from "antd";
 import { getprodutoById } from "@/lib/produto";
 import Image from "next/image";
 import style from './page.module.css';
 
-export default async function ProductsMV({ productsMV, params }) {
+export default async function ProductsMV({ params }) {
 
   const produtoMV = await getprodutoById(params.id);
 
@@ -55,7 +54,6 @@ export default async function ProductsMV({ productsMV, params }) {
 
           <div className={style.itens_esquerda_pag}>
             <button type="button" className={style.favorito_PM}><MdFavoriteBorder /></button>
-            <button type="button" className={style.carrinho_PM}><HiOutlineShoppingCart /></button>
             <div className={style.pagamento_pix}>
               <h1 className={style.tipopg1_text}>
                 A partir de R$ {produtoMV.valor}

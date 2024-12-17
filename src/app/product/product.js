@@ -36,9 +36,9 @@ export default async function Product({ product }) {
         </button>
 
         <Link href={`/productMV/${product.id}`}>
-          <button className={style.preco}>
+          <button type="button" className={style.preco}>
             <div className={style.texto_bnt}>
-              R$ {product.valor}
+              R$ {Number(product.valor).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
             </div>
           </button>
         </Link>

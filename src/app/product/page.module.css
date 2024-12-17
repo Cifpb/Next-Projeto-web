@@ -76,18 +76,20 @@
     box-shadow: 0% 0.4% 0.6% rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
     border: none;
-    padding: 1% 3%;
+    padding: 4% 7%; 
     border-radius: 5px;
     cursor: pointer;
-    position: absolute; 
-    top: 78%;
-    right: 4%;
+    position: absolute;
+    top: 80%;
+    right: 15%;
+    font-size: 1.05em; 
+    margin-top: 10px; 
   }
   
   .texto_bnt {
     text-decoration: none;
     color: #414141;
-    font-size: 90%;
+    font-size: 90%; 
     font-weight: bolder;
   }
   
@@ -101,7 +103,7 @@
   
   .preco:active {
     background: linear-gradient(to bottom, #FFD54F, #FFB300);
-  }
+  }  
   
   @media screen and (max-width: 600px) {
   
