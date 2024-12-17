@@ -1,23 +1,25 @@
 "use client";
+import Image from "next/image";
+import Link from 'next/link';
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { HiShoppingCart } from "react-icons/hi";
 import { MdFavoriteBorder, MdRemove, MdAdd } from "react-icons/md";
 import { TbHeartPlus } from "react-icons/tb";
 import { RiDeleteBin6Line } from "react-icons/ri";
-import { useFavoriteContext } from "./context/FavoritesContext";
-import { useCartContext } from "./context/CartContext";
-import Footer from "./Footer";
+import Footer from "../footer/footer";
 
 export default function Cart() {
-  const { cart, updateQuantity, removeFromCart } = useCartContext();
-  const { addFavorite } = useFavoriteContext();
+
+  // const { cart, updateQuantity, removeFromCart } = useCartContext();
+  // const { addFavorite } = useFavoriteContext(); 
+
   const [metodoPagamento, setMetodoPagamento] = useState("");
   const [janelaModal, setJanelaModal] = useState(false);
   const [produtoId, setProdutoId] = useState(null);
   const [selecionados, setSelecionados] = useState({});
   const [todosSelecionados, setTodosSelecionados] = useState(false);
 
+  {/*
   // Atualiza o estado de selecionados quando o carrinho muda
   useEffect(() => {
     const novosSelecionados = {};
@@ -145,6 +147,8 @@ export default function Cart() {
     return subtotal * (1 + juros);
   };
 
+  */}
+
   // Mensagens dos Métodos de Pagamento
   const getMensagemPagamento = () => {
     if (metodoPagamento === "pix") {
@@ -157,6 +161,7 @@ export default function Cart() {
     return "";
   };
 
+  {/*
   // Prazo
   const calcularPrazoEstimado = () => {
     let prazoMinimoTotal = 0;
@@ -192,6 +197,7 @@ export default function Cart() {
   };
 
   const { prazoMinimoTotal, prazoMaximoTotal } = calcularPrazoEstimado();
+  */}
 
   return (
     <div className="tela-cart">
@@ -215,14 +221,15 @@ export default function Cart() {
 
       <div className="conteudo">
         <section>
-          <table>
+          <table className= "table">
             <thead>
-              <tr>
-                <th>
+              <tr className= "tr">
+                <th className= "th">
+                   {/*
                   <button
                     className={`select-product ${todosSelecionados ? "selected" : ""}`}
                     onClick={() => selecionarTodos()}
-                  ></button>
+                  ></button> */}
                   <span className="th-text">Todos</span>
                 </th>
                 <th>Produto</th>
@@ -232,7 +239,8 @@ export default function Cart() {
                 <th> </th>
               </tr>
             </thead>
-            <tbody>
+            {/*
+            <tbody className= "tbody">
               {cart.map((item, index) => (
                 <tr key={item.id}>
                   <td>
@@ -287,32 +295,34 @@ export default function Cart() {
                       maximumFractionDigits: 2,
                     })}
                   </td>
+
                   <td>
-                    <button
-                      className="listaFav-bnt"
-                      onClick={() => openModal(item.id)}
+                     <button
+                      // className="listaFav-bnt"
+                      // onClick={() => openModal(item.id)}
                     >
                       <TbHeartPlus />
                     </button>
-                  </td>
-                </tr>
+                  </td> 
+                </tr> 
               ))}
-            </tbody>
+            </tbody> */}
           </table>
         </section>
-        <aside>
+        <aside className= "aside">
           <div className="caixa">
             <center>
               {" "}
               <header className="resumo-text">Resumo da Compra</header>{" "}
             </center>
+            {/*
             <div className="informacao">
               {prazoMinimoTotal > 0 && prazoMaximoTotal > 0 && (
                 <p className="prazo">
                   Prazo Estimado: {prazoMinimoTotal} a {prazoMaximoTotal} dias
                   úteis
                 </p>
-              )}
+              )}  */}
               <br />
               <div className="metodos-pagamento">
                 <div className="metodo-pagamento">
@@ -367,16 +377,18 @@ export default function Cart() {
             </div>
             <div id="subtotal" className="sub">
               <span className="texto-abaixo">Sub-total:</span>
+               {/*
               <span>
                 R${" "}
                 {calcularSubtotal().toLocaleString("pt-BR", {
                   minimumFractionDigits: 2,
                   maximumFractionDigits: 2,
                 })}
-              </span>
+              </span>  */}
             </div>
-            <footer>
+
               <span className="texto-abaixo">Total:</span>
+               {/*
               <span className="total_final">
                 R${" "}
                 {calcularTotalComJuros().toLocaleString("pt-BR", {
@@ -385,7 +397,7 @@ export default function Cart() {
                 })}
               </span>
             </footer>
-          </div>
+          </div> */}
           <center>
             <Link to="/">
               <button type="button" className="bnt-finalizarCart">
@@ -396,7 +408,7 @@ export default function Cart() {
         </aside>
       </div>
 
-      {/* Janela Modal (Caixa de Diálogo) */}
+      {/* Janela Modal (Caixa de Diálogo) 
       {janelaModal && (
         <div className="fundo-modalC">
           <div className="confirm-modalC">
@@ -417,7 +429,7 @@ export default function Cart() {
             </div>
           </div>
         </div>
-      )}
+      )} */}
 
       <Footer />
     </div>

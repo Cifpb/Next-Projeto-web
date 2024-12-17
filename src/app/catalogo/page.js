@@ -26,7 +26,7 @@ export default async function Catalog() {
   function getItem(label, key, path) {
     return {
       key,
-      label: <Link href={path} className={style.menu_link}>{label}</Link>,  
+      label: <Link href={path} className={style.menu_link}>{label}</Link>,
     };
   }
 
@@ -89,7 +89,7 @@ export default async function Catalog() {
           <div className={style.decoracao_line}></div>
         </center>
 
-        <Carousel autoplay>
+        <Carousel autoplay  dots={{ className: style.custom_dots }} >
           {matrizProdutos.map((prods) => (
             <div className={style.carrosel}>
               <Product product={prods[0]} />

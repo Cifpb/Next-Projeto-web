@@ -105,17 +105,12 @@
   margin-bottom: 2%;
 }
 
-/* Indicador ativo do Carousel */
-.ant-carousel .slick-dots li.slick-active button {
-  background-color: #FFD54F !important;
+/* Estilização do indicador Carrosel */
+.custom_dots li button {
+  background-color: gray !important; 
   border: none;
-}
-
-/* Outros indicadores */
-.ant-carousel .slick-dots li button {
-  background-color: gray !important;
-  border: none;
-}
+  opacity: 0.2;
+} 
 
 .atencao_text {
   margin-top: 2%;
