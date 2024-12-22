@@ -90,6 +90,7 @@ a {
     flex-wrap: wrap;
     height: 25%;
     padding: 0.5%;
+    width: 100%;
 }
 
 .card-pedido.hidden {
@@ -101,7 +102,7 @@ a {
     visibility: visible;
     position: relative;
     margin: 1%;
-    width: 12%;
+    width: 10%;
     height: 100%;
     background-color: #e8e3e3ff;
     border-radius: 10px;
