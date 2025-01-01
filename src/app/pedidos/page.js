@@ -4,7 +4,7 @@ import Footer from "../footer/footer";
 import MenuPed from "./menudepedidos/menu";
 import Image from "next/image";
 import ped from '../../../public/pedidos/cards/ped.png';
-import db from "@/lib/db";
+import db from "../../lib/db";
 
 export default async function Requests1() {
   const pedidos = await db.query("SELECT * FROM pedidos WHERE estado = 'Aguardando'");

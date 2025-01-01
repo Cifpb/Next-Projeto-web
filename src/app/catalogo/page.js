@@ -9,7 +9,7 @@ import Footer from "../footer/footer";
 import Product from "../product/product";
 import Cimg from "../../../public/catalogo/decoracao-img.png";
 import style from './page.module.css';
-import db from "@/lib/db";
+import db from '../../lib/db';
 
 export default async function Catalog() {
 

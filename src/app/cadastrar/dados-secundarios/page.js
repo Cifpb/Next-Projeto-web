@@ -8,10 +8,10 @@ import Image from "next/image";
 import Link from 'next/link';
 import ClienteForm from '../../../componentes/cliente/clienteFrom';
 
-export default function Register1() {
+export default function Register2() {
 
   // Conecção com o BD
-  const [clientes, setClientes] = useState([]);
+  const [clientes, setClientes] = useState([])
 
   useEffect(() => {
     fetchClientes()
@@ -41,7 +41,7 @@ export default function Register1() {
       <Header />
       <div className={style.cadastro}>
         <div className={style.pt1}>
-          <Image src={Cad} alt="imagem" className={style.imagem}/>
+          <Image src={Cad} alt="imagem" className={style.imagem} />
           <p className={style.texto}><strong>Cadastre-se <br />para obter<br /> nossos Serviços.</strong></p>
         </div>
         <div className={style.retanguloAmarelo}>
@@ -51,12 +51,12 @@ export default function Register1() {
             <p><strong>Concluído!</strong></p>
           </div>
           <div className={style.nave} style={{ textAlign: 'center' }}>
-            <input type="radio" id="radio1" name="radios" value="opcao1" defaultChecked />
-            <input type="radio" id="radio2" name="radios" value="opcao2" disabled />
+            <input type="radio" id="radio1" name="radios" value="opcao1" disabled />
+            <input type="radio" id="radio2" name="radios" value="opcao2" defaultChecked />
             <input type="radio" id="radio3" name="radios" value="opcao3" disabled />
           </div>
 
-          <ClienteForm onAddCliente={addCliente} etapa="dados-pessoais" />
+          <ClienteForm onAddCliente={addCliente} etapa="dados-secundarios" />
 
         </div>
       </div>

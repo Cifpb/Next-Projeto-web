@@ -1,9 +1,9 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Cad from "../../../../public/cadastrar/cad.png";
-import "../cadastrar.css";
 import Header from "../../header/header";
 import Footer from "../../footer/footer";
+import style from '../page.module.css';
 import Image from "next/image";
 import Link from 'next/link';
 
@@ -15,12 +15,12 @@ export default function Register3() {
   }, []);
 
   return (
-    <div className="Tela-cadastro">
+    <div className={style.tela_cadastro}>
       <Header />
-      <div className="cadastro">
-        <div className="pt1">
-          <Image src={Cad} alt="imagem" className="imagem" />
-          <p className="texto">
+      <div className={style.cadastro}>
+        <div className={style.pt1} >
+          <Image src={Cad} alt="imagem" className={style.imagem}/>
+          <p className={style.texto}>
             <strong>
               Cadastre-se <br />
               para obter
@@ -28,8 +28,8 @@ export default function Register3() {
             </strong>
           </p>
         </div>
-        <div className="retanguloAmarelo">
-          <div className="etapas">
+        <div className={style.retanguloAmarelo}>
+          <div className={style.etapas}>
             <p>
               <strong>Seus dados</strong>
             </p>
@@ -40,7 +40,7 @@ export default function Register3() {
               <strong>Concluído!</strong>
             </p>
           </div>
-          <div className="nave" style={{ textAlign: "center" }}>
+          <div className={style.nave} style={{ textAlign: "center" }}>
             <input
               type="radio"
               id="radio1"
@@ -69,13 +69,13 @@ export default function Register3() {
               onChange={() => setSelectedRadio("radio3")}
             />
           </div>
-          <p className="textofinal">
+          <p className={style.textofinal} >
           Cadastro realizado com sucesso.
             <br />
             Seja bem-vindo à familia 
            <br/> Sala da Mídia!
           </p>
-          <Link href="Sobre"><button className="Proximo2">ir para pagina Inícial</button></Link> 
+          <Link href="/"><button className={style.proximo_2}>Pagina Inícial</button></Link> 
         </div>
       </div>
       <Footer />
