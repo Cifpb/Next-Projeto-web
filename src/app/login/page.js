@@ -2,26 +2,12 @@
 import React, { useState } from "react"; 
 import Header from "../header/header";
 import Footer from "../footer/footer";
-import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
-import Limg from "../../../public/login/img.png";
+import Limg from "../../../public/login/img1.png";
 import Image from "next/image";
 import style from './page.module.css';
-import Link from 'next/link';
+import LoginFrom from '../../componentes/loginCliente/loginFrom';
 
 export default function Login() {
-
-  const [mostrarSenha, setMostrarSenha] = useState(false);
-
-  const autMostrarSenha = () => {
-    setMostrarSenha(!mostrarSenha);
-    let senha = document.getElementById("password");
-
-    if (senha.type === "password") {
-      senha.type = "text";
-    } else {
-      senha.setAttribute('type', 'password');
-    }
-  };
 
   return (
     <div className={style.logando}>
@@ -33,46 +19,9 @@ export default function Login() {
           </div>
           <div className={style.form_login}>
             <h2 className={style.texto_principal}>LOGIN</h2>
-            <form action="#aqui usa o backend" method="post">
-              <div className={style.formulario_grupo}>
-                <label htmlFor="email"></label>
-                <input
-                  type="email"
-                  id="email"
-                  placeholder="E-mail"
-                  required
-                  autoComplete="off"
-                />
-              </div>
-              <div className={style.formulario_grupo}>
-                <label htmlFor="password"></label>
-                <input
-                  type={mostrarSenha ? "text" : "password"} // Usando o estado mostrarSenha para alternar entre "text" e "password"
-                  id="password"
-                  minLength={8}
-                  maxLength={12}
-                  placeholder="Senha"
-                  required
-                />
-                <button
-                  type="button"
-                  className={style.icone_eye}
-                  onClick={autMostrarSenha}
-                >
-                  {mostrarSenha ? <FaRegEyeSlash /> : <FaRegEye />}
-                </button>
-              </div>
-              <div className={style.formulario_links}>
-                <Link href="/redefinir-senha"> Esqueceu a senha? </Link>
-                <div className={style.formulario_grupo}>
-                  <center>
-                    <input type="submit" defaultValue="Entrar" />
-                  </center>
-                </div>
-                <span className={style.texto_criar_conta}>Ainda não tem conta?</span>
-                <Link href="/cadastrar/dados-pessoais"> Cadastre-se </Link>
-              </div>
-            </form>
+    
+            <LoginFrom />
+
           </div>
         </div>
       </div>

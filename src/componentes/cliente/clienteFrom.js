@@ -34,8 +34,8 @@ export default function ClienteForm({ onAddCliente, etapa }) {
   useEffect(() => {
 
     setFormValid(
-      email.length >= 10 &&
-      email.length <= 50 &&
+      email.length >= 25 &&
+      email.length <= 150 &&
       senha.length >= 8 &&
       senha.length <= 12
     );
@@ -147,7 +147,7 @@ export default function ClienteForm({ onAddCliente, etapa }) {
         </>
       )}
 
-      {erro && <div style={{ margin: '10px 10% 20px', color: '#d32f2f', backgroundColor: '#ffebee', border: '1px solid #ffcdd2', borderRadius: '5px', padding: '8px 12px', fontSize: '14px', fontWeight: '500' }}>{erro}</div>}
+      {erro && <div className={style.erro_email}>{erro}</div>}
       {/* Renderizar dados secundários */}
       {etapa === "dados-secundarios" && (
         <>
@@ -158,8 +158,7 @@ export default function ClienteForm({ onAddCliente, etapa }) {
                 type="email"
                 className={style.inputComum}
                 placeholder="E-mail"
-                maxLength="50"
-                minLength="10"
+                
                 required
                 autoComplete="email"
                 value={email}
@@ -190,7 +189,12 @@ export default function ClienteForm({ onAddCliente, etapa }) {
 
           <div className={style.botoes}>
             <Link href="dados-pessoais" className={style.volta}>Voltar</Link>
-            <button type="submit" className={style.proximo_1} disabled={!formValid}>Prosseguir</button>
+            <button
+              type="submit"
+              className={`${style.proximo_1} ${!formValid ? style.disabled : ''}`}
+              disabled={!formValid}>
+              Prosseguir
+            </button>
           </div>
         </>
       )}

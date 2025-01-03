@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import db from '../../../lib/db';
+import bcrypt from 'bcrypt'; //Criptografia
 
 // Método GET para obter todos os clientes
 export async function GET() {
@@ -17,7 +18,7 @@ export async function GET() {
     return NextResponse.json(result.rows, { status: 200 });
   } catch (error) {
     console.error('Erro ao listar clientes:', error);
-    return NextResponse.json({ error: 'Erro interno ao listar clientes' }, { status: 500 });
+    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
   }
 }
 
@@ -40,10 +41,13 @@ export async function POST(request) {
       );
     }
 
-    // Inserir novo cliente
+    // Criptografar a senha usando bcrypt
+    const hashedPassword = await bcrypt.hash(senha, 10); // O '10' é o saltRounds, o nível de segurança (mais alto é mais seguro)
+
+    // Inserir novo cliente com a senha criptografada
     const result = await client.query(
       'INSERT INTO cliente (nome_completo, telefone, data_nascimento, email, senha) VALUES ($1, $2, $3, $4, $5) RETURNING *',
-      [nome_completo, telefone, data_nascimento, email, senha]
+      [nome_completo, telefone, data_nascimento, email, hashedPassword] // Usando a senha criptografada
     );
 
     client.release();
