@@ -15,6 +15,7 @@ export default function ClienteForm({ onAddCliente, etapa }) {
   const [mostrarSenha, setMostrarSenha] = useState(false);
   const [formValid, setFormValid] = useState(false);
   const [erro, setErro] = useState('');
+  const [erroEmail, setErroEmail] = useState(''); 
 
   let handleTelChange = (e) => {
     let value = e.target.value;
@@ -34,10 +35,10 @@ export default function ClienteForm({ onAddCliente, etapa }) {
   useEffect(() => {
 
     setFormValid(
-      email.length >= 25 &&
+      email.length >= 10 &&
       email.length <= 150 &&
       senha.length >= 8 &&
-      senha.length <= 12
+      senha.length <= 12 
     );
   }, [email, senha]);
 
@@ -52,7 +53,7 @@ export default function ClienteForm({ onAddCliente, etapa }) {
 
   const router = useRouter();
 
-  const handleSubmit = async (e) => {
+  /*const handleSubmit = async (e) => {
     e.preventDefault();
     setErro(''); // Limpa erros anteriores
 
@@ -79,7 +80,41 @@ export default function ClienteForm({ onAddCliente, etapa }) {
       setErro('Erro inesperado. Tente novamente mais tarde.');
       console.error(error);
     }
-  };
+  };*/
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setErro('');
+    setErroEmail(''); // Limpa o erro de e-mail
+  
+    const clienteCompleto = { nome_completo, telefone, data_nascimento, email, senha };
+    try {
+      const response = await fetch('/api/cliente', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(clienteCompleto)
+      });
+  
+      const data = await response.json();
+  
+      if (!response.ok) {
+        if (response.status === 400 && data.error.includes('E-mail')) {
+          setErroEmail(data.error); // Define erro específico para e-mail inválido
+        } else {
+          setErro(data.error || 'Erro ao cadastrar cliente.');
+        }
+        return;
+      }
+  
+      await onAddCliente(clienteCompleto);
+      localStorage.removeItem('cliente_parcial');
+      router.push('/cadastrar/concluido');
+  
+    } catch (error) {
+      setErro('Erro inesperado. Tente novamente mais tarde.');
+      console.error(error);
+    }
+  };  
 
   return (
     <form onSubmit={handleSubmit}>
@@ -148,6 +183,8 @@ export default function ClienteForm({ onAddCliente, etapa }) {
       )}
 
       {erro && <div className={style.erro_email}>{erro}</div>}
+      {erroEmail && <div className={style.erro_email}>{erroEmail}</div>}
+
       {/* Renderizar dados secundários */}
       {etapa === "dados-secundarios" && (
         <>
@@ -158,7 +195,8 @@ export default function ClienteForm({ onAddCliente, etapa }) {
                 type="email"
                 className={style.inputComum}
                 placeholder="E-mail"
-                
+                maxLength="150"
+                minLength="10"
                 required
                 autoComplete="email"
                 value={email}
@@ -191,7 +229,7 @@ export default function ClienteForm({ onAddCliente, etapa }) {
             <Link href="dados-pessoais" className={style.volta}>Voltar</Link>
             <button
               type="submit"
-              className={`${style.proximo_1} ${!formValid ? style.disabled : ''}`}
+              className={style.proximo_1}
               disabled={!formValid}>
               Prosseguir
             </button>
