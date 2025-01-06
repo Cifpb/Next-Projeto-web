@@ -42,7 +42,7 @@ export default function Register1() {
       <div className={style.cadastro}>
         <div className={style.pt1}>
           <Image src={Cad} alt="imagem" className={style.imagem}/>
-          <p className={style.texto}><strong>Cadastre-se <br />para obter<br /> nossos Serviços.</strong></p>
+          <p className={style.texto}><strong>Cadastre-se <br />para obter<br /> nossos <br />Serviços.</strong></p>
         </div>
         <div className={style.retanguloAmarelo}>
           <div className={style.etapas}>

@@ -1,7 +1,7 @@
 import { MdFavoriteBorder } from "react-icons/md";
 import Footer from "../../footer/footer";
 import { Carousel } from "antd";
-import { getprodutoById } from "@/lib/produto";
+import { getprodutoById } from '../../../lib/produto';
 import Image from "next/image";
 import style from './page.module.css';
 

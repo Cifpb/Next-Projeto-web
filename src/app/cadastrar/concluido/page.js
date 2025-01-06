@@ -24,7 +24,8 @@ export default function Register3() {
             <strong>
               Cadastre-se <br />
               para obter
-              <br /> nossos Serviços.
+              <br /> nossos <br />
+              Serviços.
             </strong>
           </p>
         </div>

@@ -1,6 +1,28 @@
 import { NextResponse } from "next/server";
 import db from '../../../lib/db';
-import bcrypt from 'bcrypt'; //Criptografia
+import bcrypt from 'bcrypt'; // Criptografia
+import dns from 'dns'; // Validação DNS
+
+// Função para validar formato de e-mail (Regex)
+const validarEmail = (email) => {
+  const regex = /^[a-zA-Z0-9](?!.*\.\.)[a-zA-Z0-9._%+-]*[a-zA-Z0-9]@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  return regex.test(email);
+};
+
+// Função para validar domínio do e-mail (DNS)
+const validarDominioEmail = (email) => {
+  const dominio = email.split('@')[1];
+
+  return new Promise((resolve) => {
+    dns.resolveMx(dominio, (err, addresses) => {
+      if (err || !addresses || addresses.length === 0) {
+        resolve(false); // Domínio inválido ou sem registros MX
+      } else {
+        resolve(true); // Domínio válido com registros MX
+      }
+    });
+  });
+};
 
 // Método GET para obter todos os clientes
 export async function GET() {
@@ -22,30 +44,26 @@ export async function GET() {
   }
 }
 
-// Função para validar e-mail
-const validarEmail = (email) => {
-  //Padrão TEXTO@TEXTO.TEXTO
-  //const regex = /^[^\s]+@[^\s]+\.[^\s]+$/;
-  const regex = /^[a-zA-Z0-9](?!.*\.\.)[a-zA-Z0-9._%+-]*[a-zA-Z0-9]@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-  return regex.test(email);
-};
-
 // Método POST para cadastrar cliente
 export async function POST(request) {
   try {
     const { nome_completo, telefone, data_nascimento, email, senha } = await request.json();
 
-    // Validação do formato do e-mail
-    if (!validarEmail(email)) {
+    // 1️⃣ Validação do formato e do domínio do e-mail
+    const emailValido = validarEmail(email);
+    const dominioValido = await validarDominioEmail(email);
+
+    // Verifica se qualquer uma das validações falhou
+    if (!emailValido || !dominioValido) {
       return NextResponse.json(
-        { error: 'E-mail inválido. Insira um endereço de e-mail correto.' }, 
+        { error: 'E-mail inválido. Insira um endereço de e-mail correto.' },
         { status: 400 }
       );
     }
 
     const client = await db.connect();
 
-    // Verificar se o email já existe
+    // 3️⃣ Verificar se o e-mail já existe no banco de dados
     const emailExistente = await client.query(
       'SELECT * FROM cliente WHERE email = $1',
       [email]
@@ -54,15 +72,15 @@ export async function POST(request) {
     if (emailExistente.rows.length > 0) {
       client.release();
       return NextResponse.json(
-        { error: 'E-mail já cadastrado. Por favor, use outro para continuar.' }, 
+        { error: 'E-mail já cadastrado. Por favor, use outro para continuar.' },
         { status: 400 }
       );
     }
 
-    // Criptografar a senha usando bcrypt
+    // 4️⃣ Criptografar a senha usando bcrypt
     const hashedPassword = await bcrypt.hash(senha, 10);
 
-    // Inserir novo cliente com senha criptografada
+    // 5️⃣ Inserir novo cliente com senha criptografada
     const result = await client.query(
       'INSERT INTO cliente (nome_completo, telefone, data_nascimento, email, senha) VALUES ($1, $2, $3, $4, $5) RETURNING *',
       [nome_completo, telefone, data_nascimento, email, hashedPassword]

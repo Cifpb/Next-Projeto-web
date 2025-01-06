@@ -1,19 +1,17 @@
-import Image from "next/image";
+import Image from 'next/image';
 import Link from 'next/link';
 import { MdFavoriteBorder } from 'react-icons/md';
 import { HiOutlineShoppingCart } from 'react-icons/hi';
-import { RiMenuSearchLine, RiMenuSearchFill } from "react-icons/ri";
-import { Carousel } from "antd";
-import { Button, Menu } from 'antd';
-import Footer from "../footer/footer";
-import Product from "../product/product";
-import Cimg from "../../../public/catalogo/decoracao-img.png";
+import { Carousel } from 'antd';
+import Footer from '../footer/footer';
+import Product from '../product/product';
+import MenuProdutos from '../../componentes/produtos/menu';
+import Cimg from '../../../public/catalogo/decoracao-img.png';
 import style from './page.module.css';
 import db from '../../lib/db';
 
 export default async function Catalog() {
-
-  const produtos = await db.query("select * from produto");
+  const produtos = await db.query('select * from produto');
 
   const size = produtos.rows.length / 2;
   let matrizProdutos = [];
@@ -22,7 +20,6 @@ export default async function Catalog() {
     matrizProdutos[i] = [produtos.rows[j++], produtos.rows[j++]];
   }
 
-  // Função para criar os itens do menu
   function getItem(label, key, path) {
     return {
       key,
@@ -30,44 +27,21 @@ export default async function Catalog() {
     };
   }
 
-  // Construção do menu de categorias
   const items = [
     {
       label: <span className={style.menu_midia_visual}>MÍDIA VISUAL</span>,
       key: 'sub1',
       children: produtos.rows.map(produto =>
-        getItem(
-          produto.sub_categoria,
-          produto.id,
-          `/productMV/${produto.id}`
-        )
+        getItem(produto.sub_categoria, produto.id, `/productMV/${produto.id}`)
       ),
     },
   ];
-
-  // Arumar o Menu 
-  // Deve aparecer este icone RiMenuSearchLine e o menu deve estar fechado
-  // Deve aparecer este icone RiMenuSearchFill e o menu deve estar aberto
 
   return (
     <div className={style.telaC}>
       <div className={style.catalogo}>
         <div className={style.menuCat}>
-          <div className={style.itens_direita}>
-            <Button type="button" className={style.filtro}>
-              <RiMenuSearchLine />
-            </Button>
-            <div className={style.fundo_itens}>
-              <Menu
-                className={style.menu_itens}
-                defaultSelectedKeys={['1']}
-                defaultOpenKeys={['sub1']}
-                mode="inline"
-                theme="white"
-                items={items}
-              />
-            </div>
-          </div>
+          <MenuProdutos items={items} />
           <div className={style.itens_esquerda}>
             <Link href="/favoritos">
               <button type="button" className={style.favorito}>
@@ -89,9 +63,9 @@ export default async function Catalog() {
           <div className={style.decoracao_line}></div>
         </center>
 
-        <Carousel autoplay  dots={{ className: style.custom_dots }} >
+        <Carousel autoplay dots={{ className: style.custom_dots }}>
           {matrizProdutos.map((prods) => (
-            <div className={style.carrosel}>
+            <div className={style.carrosel} key={prods[0]?.id}>
               <Product product={prods[0]} />
               {prods[1] && <Product product={prods[1]} />}
             </div>
@@ -103,7 +77,6 @@ export default async function Catalog() {
             ATENÇÃO: OS PREÇOS DOS PRODUTOS ABAIXO SÃO ESTIMATIVOS E PODEM VARIAR DE ACORDO COM A SOLICITAÇÃO FEITA PARA CADA PRODUTO, APÓS O DIÁLOGO NO WHATSAPP COM O PROPRIETÁRIO.
           </h1>
         </center>
-
       </div>
       <Footer />
     </div>
