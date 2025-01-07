@@ -33,6 +33,7 @@ export default function ClienteLogin() {
 
             if (response.ok) {
                 // Login bem-sucedido, redireciona o usuário para a página inicial
+                sessionStorage.setItem('logado', 'true'); // Salva no armazenamentoSessao
                 router.push('/');
             } else {
                 // Se houver erro, mostra a mensagem de erro
