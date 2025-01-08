@@ -10,6 +10,7 @@ import Cimg from '../../../public/catalogo/decoracao-img.png';
 import style from './page.module.css';
 import db from '../../lib/db';
 
+
 export default async function Catalog() {
   const produtos = await db.query('select * from produto');
 
@@ -40,22 +41,8 @@ export default async function Catalog() {
   return (
     <div className={style.telaC}>
       <div className={style.catalogo}>
-        <div className={style.menuCat}>
-          <MenuProdutos items={items} />
-          <div className={style.itens_esquerda}>
-            <Link href="/favoritos">
-              <button type="button" className={style.favorito}>
-                <MdFavoriteBorder />
-              </button>
-            </Link>
-            <div className={style.espaco_fc}></div>
-            <Link href="/carrinho">
-              <button type="button" className={style.carrinho}>
-                <HiOutlineShoppingCart />
-              </button>
-            </Link>
-          </div>
-        </div>
+        
+        <MenuProdutos items={items} />
 
         <center>
           <Image src={Cimg} className={style.catalogo_img} alt="logo" />

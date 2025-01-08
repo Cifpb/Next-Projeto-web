@@ -1,149 +1,151 @@
 .produto {
-    position: relative;
-    display: inline-block;
-    width: 42vw; 
-    height: 32vh; 
-    background-color: #414141;
-    border-radius: 20px;
-    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
-    margin: 2%;
-    overflow: hidden; 
+  position: relative;
+  display: inline-block;
+  width: 42vw;
+  height: 32vh;
+  background-color: #414141;
+  border-radius: 20px;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+  margin: 2%;
+  overflow: hidden;
+}
+
+.promo_fita3 {
+  font-size: 100%;
+  position: absolute;
+  top: 6%;
+  z-index: 1;
+  color: white;
+  padding: 0.5% 0;
+  text-align: center;
+  left: -6%;
+  width: 20%;
+  transform: rotate(-45deg);
+}
+
+.prod_img {
+  width: 100%;
+  height: auto;
+  margin-top: 3%;
+}
+
+.cat_text,
+.sub_text {
+  font-size: 120%;
+  font-weight: bold;
+  text-align: left;
+  padding: 0% 4%;
+}
+
+.cat_text {
+  color: #fdca05;
+  margin-top: 2%;
+  text-transform: uppercase;
+}
+
+.sub_text {
+  color: #ffffff;
+  margin-top: 1.5%;
+  text-transform: capitalize;
+}
+
+.icones {
+  display: flex;
+  margin-bottom: 2%;
+  padding: 0% 5%;
+  position: absolute;
+  top: 67%;
+  right: 1%;
+  gap: 40%;
+}
+
+.icone_fav,
+.icone_car {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: #ffffff;
+  font-size: 125%;
+}
+
+.icone_fav:hover,
+.icone_car:hover {
+  color: #fdca05;
+}
+
+.preco {
+  display: flex;
+  background: linear-gradient(to bottom, #FFD54F, #FFB300);
+  box-shadow: 0% 0.4% 0.6% rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  border: none;
+  padding: 4% 7%;
+  border-radius: 5px;
+  cursor: pointer;
+  position: absolute;
+  top: 80%;
+  right: 15%;
+  font-size: 1.05em;
+  margin-top: 10px;
+}
+
+.texto_bnt {
+  text-decoration: none;
+  color: #414141;
+  font-size: 90%;
+  font-weight: bolder;
+}
+
+.texto_bnt:hover {
+  color: black;
+}
+
+.preco:hover {
+  background: linear-gradient(to bottom, #FFB300, #FFD54F);
+}
+
+.preco:active {
+  background: linear-gradient(to bottom, #FFD54F, #FFB300);
+}
+
+@media screen and (max-width: 600px) {
+
+  .produto {
+    width: 80vw;
+    height: auto;
   }
-  
-  .promo_fita3 {
-    font-size: 100%;
-    position: absolute;
-    top: 6%; 
-    z-index: 1; 
-    color: white;
-    padding: 0.5% 0; 
-    text-align: center;
-    left: -6%; 
-    width: 20%;
-    transform: rotate(-45deg);
-  }
-  
+
   .prod_img {
-    width: 100%;
-    height: auto; 
-    margin-top: 3%;
+    margin-top: 6%;
   }
-  
-  .cat_text, .sub_text {
-    font-size: 120%;
-    font-weight: bold;
-    text-align: left;
-    padding: 0% 4%;
-  }
-  
-  .cat_text {
-    color: #fdca05;
-    margin-top: 2%;
-    text-transform: uppercase;
-  }
-  
+
+  .cat_text,
   .sub_text {
-    color: #ffffff;
-    margin-top: 1.5%;
-    text-transform: capitalize;
+    font-size: 70%;
   }
-  
+
+  .sub_text {
+    margin-bottom: 5%;
+  }
+
   .icones {
-    display: flex;
-    margin-bottom: 2%;
-    padding: 0% 5%;
-    position: absolute; 
-    top: 67%;
-    right: 1%;
+    top: 65%;
+    right: 2%;
     gap: 40%;
   }
-  
-  .icone_fav, .icone_car {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    color: #ffffff;
-    font-size: 125%;
+
+  .icone_fav,
+  .icone_car {
+    font-size: 80%;
   }
-  
-  .icone_fav:hover, .icone_car:hover {
-    color: #fdca05; 
-  }
-  
+
   .preco {
-    display: flex;
-    background: linear-gradient(to bottom, #FFD54F, #FFB300);
-    box-shadow: 0% 0.4% 0.6% rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-    border: none;
-    padding: 4% 7%; 
-    border-radius: 5px;
-    cursor: pointer;
-    position: absolute;
     top: 80%;
-    right: 15%;
-    font-size: 1.05em; 
-    margin-top: 10px; 
+    right: 4.5%;
+    padding: 1% 2%;
   }
-  
+
   .texto_bnt {
-    text-decoration: none;
-    color: #414141;
-    font-size: 90%; 
-    font-weight: bolder;
+    font-size: 55%;
   }
-  
-  .texto_bnt:hover {
-    color: black;
-  }
-  
-  .preco:hover {
-    background: linear-gradient(to bottom, #FFB300, #FFD54F);
-  }
-  
-  .preco:active {
-    background: linear-gradient(to bottom, #FFD54F, #FFB300);
-  }  
-  
-  @media screen and (max-width: 600px) {
-  
-    .produto {
-      width: 80vw;
-      height: auto;
-    }
-  
-    .prod_img {
-      margin-top: 6%;
-    }
-  
-    .cat_text,
-    .sub_text {
-      font-size: 70%;
-    }
-  
-    .sub_text {
-      margin-bottom: 5%;
-    }
-  
-    .icones {
-      top: 65%;
-      right: 2%;
-      gap: 40%;
-    }
-  
-    .icone_fav,
-    .icone_car {
-      font-size: 80%;
-    }
-  
-    .preco {
-      top: 80%;
-      right: 4.5%;
-      padding: 1% 2%;
-    }
-  
-    .texto_bnt {
-      font-size: 55%;
-    }
-  }
-  
+}

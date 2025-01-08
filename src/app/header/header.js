@@ -68,8 +68,6 @@ export default function Header() {
           ) : (
             <Link href="/login" className="botao-cab botao-login">LOGIN</Link>
           )}
-
-
         </nav>
       </div>
     </div>
