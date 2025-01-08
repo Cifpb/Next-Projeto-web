@@ -1,95 +1,159 @@
-.tela-perfil-completa{
-    margin: 0;
-    padding: 0;
+/* Tela Completa */
+.tela-perfil-completa {
+  margin: 0;
+  padding: 0;
 }
-.tela-perfil{
-    margin-top: 1%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(to bottom,#fdca05 12%,#1f1e1e 45%,#ffffff 45%);
-    height: 100vh;
-    font-family: 'Century Gothic', sans-serif;
-  }
-  
-  .perfil {
-    width: 50%;
-    padding: 2%;
 
+/* Tela de Perfil */
+.tela-perfil {
+  margin-top: 1.5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to bottom, #FFD54F 0%, #f1f1f0 50%);
+  height: 90vh;
+  font-family: 'Century Gothic', sans-serif;
+}
+
+/* Perfil */
+.perfil {
+  width: 65%;
+  max-width: 750px;
+  padding: 2%;
+}
+
+/* Retângulos */
+.retangulo {
+  border-radius: 15px;
+  border: 1px solid #d6d6d6;
+  padding: 2%;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Foto, Nome e Email */
+.foto-nome-email {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.foto-container {
+  display: flex;
+  justify-content: center;
+}
+
+.foto-perfil {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  margin: 0.5rem 0;
+  border: 2px solid #B0B0B0;
+}
+
+.nome-perfil {
+  margin: 0.5rem 0 0.2rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.email-perfil {
+  margin: 0;
+  color: #666;
+}
+
+/* Dados Pessoais */
+.dados-pessoais {
+  margin-top: 0.5rem;
+}
+
+.titulo-dados {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 3%;
+  margin-left: 1%;
+  margin-top: 1%;
+}
+
+/* Estrutura das colunas */
+.conteudo-dados {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.coluna-esquerda {
+  flex: 1;
+  border-right: 1px solid #a9a9a9; 
+  padding-right: 1rem; 
+}
+
+.coluna-direita {
+  flex: 1;
+  padding-left: 1rem; 
+}
+
+/* Campos de Dados */
+.campo {
+  margin-bottom: 1rem;
+}
+
+.rotulo {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 0.2rem;
+  margin-left: 2%;
+}
+
+.valor {
+  font-size: 1rem;
+  color: #444;
+  margin-bottom: 0.5rem;
+  margin-left: 2%;
+}
+
+/* Ícones de Ação */
+.icones-acoes {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.8rem;
+  margin-right: 6%;
+  justify-content: flex-end;
+}
+
+.icone-editar,
+.icone-deletar {
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.icone-editar:hover {
+  color: #2e7d32;
+  transform: scale(1.1);
+}
+
+.icone-deletar:hover {
+  color: #d32f2f;
+  transform: scale(1.1);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .perfil {
+    width: 90%;
   }
-  
-  .retangulo {
-    border-radius: 23px;
-    border: 1px solid #d6d6d6ff;
-    margin-bottom: 2%;
-    padding: 2%;
-    background-color: #ffffff;
-  }
-  
-  .foto-nome-email {
-    display: flex;
+
+  .conteudo-dados {
     flex-direction: column;
-    align-items: center;
   }
-  
-  .foto-container{
-    width: 60%;
-    display: flex;
+
+  .linha-divisoria {
+    display: none;
+  }
+
+  .icones-acoes {
     justify-content: center;
-  
   }
-  
-  .foto-perfil{
-    border-radius: 50%;
-    width: 150px;
-    height: 150px;
-    margin: 2%;
-  }
-  
-  .nome-perfil{
-    margin: 0;
-    text-align: center;
-  }
-  .email-perfil{
-    margin: 0;
-  }
-  
-  .dado-contato{
-    display: flex;
-    justify-content: space-between;
-    position: relative; /* Adicionado */
-  }
-  
-  .dado, .contato {
-    width: 46%;
-  }
-  
-  .dado-perfil{
-    border-right: 1px solid #d6d6d6ff;
-    padding-right: 2%;
-  }
-  
-  .contato-perfil{
-    padding-left: 2% 
-  } 
-  
-  .botao-editar{
-   margin-right: 2%; 
-    width: 20%;
-    height: 40px;
-    border-radius: 23px;
-    border: none;
-    background-color: #fdca05;
-    color: #ffffff;
-    font-size: 16px;
-    font-weight: bold;
-    font-family: 'Century Gothic', sans-serif;
-    cursor: pointer;
-    position: absolute; 
-    bottom: 1.5%; 
-    right: 1%; 
-  }
-  
-  
-  
-  
+}

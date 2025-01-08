@@ -23,7 +23,6 @@ export default function Product({ product }) {
       </center>
     );
   };
-  
 
   const handleClick = (action) => {
     if (!logado) {

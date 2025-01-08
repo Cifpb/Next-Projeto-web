@@ -12,6 +12,7 @@ import db from '../../lib/db';
 
 
 export default async function Catalog() {
+  
   const produtos = await db.query('select * from produto');
 
   const size = produtos.rows.length / 2;
