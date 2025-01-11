@@ -52,36 +52,7 @@ export default function ClienteForm({ onAddCliente, etapa }) {
   }, []);
 
   const router = useRouter();
-
-  /*const handleSubmit = async (e) => {
-    e.preventDefault();
-    setErro(''); // Limpa erros anteriores
-
-    const clienteCompleto = { nome_completo, telefone, data_nascimento, email, senha };
-    try {
-      const response = await fetch('/api/cliente', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(clienteCompleto)
-      });
-
-      if (!response.ok) {
-        const data = await response.json();
-        setErro(data.error || 'Erro ao cadastrar cliente.');
-        return;
-      }
-
-      await onAddCliente(clienteCompleto);
-      localStorage.removeItem('cliente_parcial');
-
-      // Redireciona para a tela de conclusão
-      router.push('/cadastrar/concluido');
-    } catch (error) {
-      setErro('Erro inesperado. Tente novamente mais tarde.');
-      console.error(error);
-    }
-  };*/
-
+      
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErro('');

@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import db from '../../../lib/db';
 import bcrypt from 'bcrypt';
 
+
 export async function POST(request) {
   try {
     const { email, senha } = await request.json();
@@ -24,11 +25,19 @@ export async function POST(request) {
       return NextResponse.json({ error: 'Usuário ou senha inválidos' }, { status: 401 });
     }
 
-    // Se passar pelas verificações, significa que o login foi bem-sucedido
-    return NextResponse.json({ message: 'Login bem-sucedido' }, { status: 200 });
+    // Configura o cookie seguro com o clienteId
+    const response = NextResponse.json({ message: 'Login bem-sucedido' }, { status: 200 });
+    response.cookies.set('clienteId', cliente.id, {
+      httpOnly: true, // Impede acesso via JavaScript (prevenir ataques)
+      secure: process.env.NODE_ENV === 'production', // Apenas HTTPS em produção
+      sameSite: 'strict', // Previne envio de cookies de sites externos
+      maxAge: 60 * 60 * 24, // 1 dia em segundos
+      path: '/', // Faz o cookie estar disponível em toda a aplicação
+    });
 
+    return response; // Retorna a resposta com o cookie configurado
+    
   } catch (error) {
-    // Em caso de erro inesperado, exibe no console e retorna um status 500
     console.error('Erro ao verificar login:', error);
     return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
   }

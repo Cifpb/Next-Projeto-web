@@ -27,16 +27,14 @@ const validarDominioEmail = (email) => {
 // Método GET para obter todos os clientes
 export async function GET() {
   try {
-    // Conecta ao banco de dados
+    
     const client = await db.connect();
     
-    // Executa a consulta para obter todos os clientes
     const result = await client.query('SELECT * FROM cliente');
     
     // Libera a conexão do banco de dados
     client.release();
     
-    // Retorna os dados dos clientes como resposta
     return NextResponse.json(result.rows, { status: 200 });
   } catch (error) {
     console.error('Erro ao listar clientes:', error);
@@ -55,10 +53,7 @@ export async function POST(request) {
 
     // Verifica se qualquer uma das validações falhou
     if (!emailValido || !dominioValido) {
-      return NextResponse.json(
-        { error: 'E-mail inválido. Insira um endereço de e-mail correto.' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'E-mail inválido. Insira um endereço de e-mail correto.', code: 'INVALID_EMAIL' },  { status: 400 });
     }
 
     const client = await db.connect();
@@ -71,10 +66,7 @@ export async function POST(request) {
 
     if (emailExistente.rows.length > 0) {
       client.release();
-      return NextResponse.json(
-        { error: 'E-mail já cadastrado. Por favor, use outro para continuar.' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'E-mail já cadastrado. Por favor, use outro para continuar.', code: 'INVALID_EMAIL_DOMAIN' }, { status: 400 });
     }
 
     // 4️⃣ Criptografar a senha usando bcrypt
