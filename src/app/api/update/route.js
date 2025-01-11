@@ -11,7 +11,7 @@ export async function POST(request) {
       return NextResponse.json({ error: 'Usuário não autenticado ou ID inválido.' }, { status: 400 });
     }
 
-    const { nome_completo, data_nascimento, cpf, telefone, cidade, bairro, rua } = await request.json();
+    const { nome_completo, data_nascimento, cpf, telefone, pais, estado } = await request.json();
 
     const client = await db.connect();
 
@@ -21,11 +21,10 @@ export async function POST(request) {
         data_nascimento = $2, 
         cpf = $3, 
         telefone = $4, 
-        cidade = $5,
-        bairro = $6,
-        rua = $7
-       WHERE id = $8`,
-      [nome_completo, data_nascimento, cpf, telefone, cidade, bairro, rua, parseInt(clienteId, 10)]
+        pais = $5,
+        estado = $6,
+       WHERE id = $7`,
+      [nome_completo, data_nascimento, cpf, telefone, pais, estado, parseInt(clienteId, 10)]
     );
 
     client.release();

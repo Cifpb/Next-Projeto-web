@@ -92,8 +92,8 @@ export default function Profile() {
                   <p className="valor">{cliente.telefone}</p>
                 </div>
                 <div className="campo">
-                  <p className="rotulo">Endereço:</p>
-                  <p className="valor">{`${cliente.rua}, ${cliente.bairro}, ${cliente.cidade}`}</p>
+                  <p className="rotulo">Localização:</p>
+                  <p className="valor">{`${cliente.pais}, ${cliente.estado}`}</p>
                 </div>
                 <div className="icones-acoes">
                   <TbEdit className="icone-editar" onClick={handleEdit} />

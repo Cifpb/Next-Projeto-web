@@ -18,7 +18,7 @@ export async function GET(request) {
 
         // Consulta para buscar os dados do cliente
         const result = await client.query(
-            'SELECT nome_completo, email, data_nascimento, cpf, telefone, cidade FROM cliente WHERE id = $1',
+            'SELECT nome_completo, email, data_nascimento, cpf, telefone, pais, estado FROM cliente WHERE id = $1',
             [parseInt(clienteId, 10)] 
             // O clienteId é necessário aqui para identificar de forma única o cliente no banco de dados.
         );

@@ -14,8 +14,49 @@ export default function ClienteForm({ onAddCliente, etapa }) {
   const [senha, setSenha] = useState('');
   const [mostrarSenha, setMostrarSenha] = useState(false);
   const [formValid, setFormValid] = useState(false);
+  const [formValidDP, setFormValidDP] = useState(false);
   const [erro, setErro] = useState('');
-  const [erroEmail, setErroEmail] = useState(''); 
+  const [erroEmail, setErroEmail] = useState('');
+  const [erroDataNascimento, setErroDataNascimento] = useState('');
+
+  const validarDataNascimento = (data) => {
+    const hoje = new Date();
+    const dataSelecionada = new Date(data);
+
+    const idadeMinima = new Date(hoje.getFullYear() - 18, hoje.getMonth(), hoje.getDate());
+    const idadeMaxima = new Date(hoje.getFullYear() - 85, hoje.getMonth(), hoje.getDate());
+
+    if (dataSelecionada > idadeMinima) {
+      setErroDataNascimento('Você precisa ter no mínimo 18 anos para se cadastrar.');
+      return false;
+    } else if (dataSelecionada < idadeMaxima) {
+      setErroDataNascimento('A idade máxima permitida é de 80 anos.');
+      return false;
+    }
+    setErroDataNascimento('');
+    return true;
+  };
+
+  const handleDataNascimentoChange = (e) => {
+    const data = e.target.value;
+    setDataNascimento(data);
+
+    if (data) {
+      validarDataNascimento(data);
+    }
+  };
+
+  useEffect(() => {
+
+    const nomeValido = nome_completo.length >= 10 && nome_completo.length <= 150;
+    const telefoneNumerico = telefone.replace(/\D/g, '');
+    const telefoneValido = telefoneNumerico.length === 13;
+    // const dataValida = validarDataNascimento(data_nascimento);
+    const dataValida = data_nascimento !== '';
+  
+    // Atualizar a validade do formulário com base em todas as condições
+    setFormValidDP(nomeValido && telefoneValido && dataValida);
+  }, [nome_completo, telefone, data_nascimento]);
 
   let handleTelChange = (e) => {
     let value = e.target.value;
@@ -27,7 +68,7 @@ export default function ClienteForm({ onAddCliente, etapa }) {
       setTelefone(value);
     }
   };
-
+  
   let autMostrarSenha = () => {
     setMostrarSenha(!mostrarSenha);
   };
@@ -38,7 +79,7 @@ export default function ClienteForm({ onAddCliente, etapa }) {
       email.length >= 10 &&
       email.length <= 150 &&
       senha.length >= 8 &&
-      senha.length <= 12 
+      senha.length <= 12
     );
   }, [email, senha]);
 
@@ -52,12 +93,12 @@ export default function ClienteForm({ onAddCliente, etapa }) {
   }, []);
 
   const router = useRouter();
-      
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErro('');
     setErroEmail(''); // Limpa o erro de e-mail
-  
+
     const clienteCompleto = { nome_completo, telefone, data_nascimento, email, senha };
     try {
       const response = await fetch('/api/cliente', {
@@ -65,9 +106,9 @@ export default function ClienteForm({ onAddCliente, etapa }) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(clienteCompleto)
       });
-  
+
       const data = await response.json();
-  
+
       if (!response.ok) {
         if (response.status === 400 && data.error.includes('E-mail')) {
           setErroEmail(data.error); // Define erro específico para e-mail inválido
@@ -76,21 +117,22 @@ export default function ClienteForm({ onAddCliente, etapa }) {
         }
         return;
       }
-  
+
       await onAddCliente(clienteCompleto);
       localStorage.removeItem('cliente_parcial');
       router.push('/cadastrar/concluido');
-  
+
     } catch (error) {
       setErro('Erro inesperado. Tente novamente mais tarde.');
       console.error(error);
     }
-  };  
+  };
 
   return (
     <form onSubmit={handleSubmit}>
 
       {/* Renderizar dados pessoais */}
+      {erroDataNascimento && <div className={style.erro}>{erroDataNascimento}</div>}
       {etapa === "dados-pessoais" && (
         <>
           <div className={style.dados}>
@@ -100,8 +142,8 @@ export default function ClienteForm({ onAddCliente, etapa }) {
                 type="text"
                 className={style.inputComum}
                 placeholder="Nome Completo"
-                maxLength="50"
-                minLength="15"
+                maxLength="150"
+                minLength="10"
                 required
                 value={nome_completo}
                 onChange={(e) => setNome_completo(e.target.value)}
@@ -124,11 +166,9 @@ export default function ClienteForm({ onAddCliente, etapa }) {
               <input
                 type="date"
                 className={style.inputComum}
-                max="2007-01-01"
-                min="1944-01-01"
                 required
                 value={data_nascimento}
-                onChange={(e) => setDataNascimento(e.target.value)}
+                onChange={handleDataNascimentoChange}
               />
             </label></p>
 
@@ -136,6 +176,7 @@ export default function ClienteForm({ onAddCliente, etapa }) {
               <button
                 type="button"
                 className={style.proximo}
+                disabled={!formValidDP}
                 onClick={() => {
                   localStorage.setItem('cliente_parcial', JSON.stringify({
                     nome_completo,
@@ -148,13 +189,12 @@ export default function ClienteForm({ onAddCliente, etapa }) {
               </button>
             </Link>
 
-
           </div>
         </>
       )}
 
-      {erro && <div className={style.erro_email}>{erro}</div>}
-      {erroEmail && <div className={style.erro_email}>{erroEmail}</div>}
+      {erro && <div className={style.erro}>{erro}</div>}
+      {erroEmail && <div className={style.erro}>{erroEmail}</div>}
 
       {/* Renderizar dados secundários */}
       {etapa === "dados-secundarios" && (
