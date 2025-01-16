@@ -30,13 +30,13 @@ const times = [{ id: "times01", img: MPimg }];
 
 // Lista de Principais Trabalhos
 const trabalhos = [
-  { id: "trabalho1", img: Timg1, description: "DEsenvolvimeto DE LOGOTIPOS" },
-  { id: "trabalho2", img: Timg2, description: "DESIGN DE FLYERS" },
-  { id: "trabalho3", img: Timg3, description: "Arte para Projetos Gráficos" },
+  { id: "trabalho1", img: Timg1, description: "LOGOTIPOS/Identidade Visual" },
+  { id: "trabalho2", img: Timg2, description: "FLYERS" },
+  { id: "trabalho3", img: Timg3, description: "Projetos Gráficos" },
   {
     id: "trabalho4",
     img: Timg4,
-    description: "GESTÃO ESTRATÉGICA DE REDES SOCIAIS",
+    description: "Motions",
   },
 ];
 

@@ -10,7 +10,6 @@ import Cimg from '../../../public/catalogo/decoracao-img.png';
 import style from './page.module.css';
 import db from '../../lib/db';
 
-
 export default async function Catalog() {
   
   const produtos = await db.query('select * from produto');

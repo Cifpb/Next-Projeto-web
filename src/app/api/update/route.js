@@ -22,7 +22,7 @@ export async function POST(request) {
         cpf = $3, 
         telefone = $4, 
         pais = $5,
-        estado = $6,
+        estado = $6
        WHERE id = $7`,
       [nome_completo, data_nascimento, cpf, telefone, pais, estado, parseInt(clienteId, 10)]
     );
