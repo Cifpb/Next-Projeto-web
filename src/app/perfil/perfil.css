@@ -165,10 +165,38 @@
   margin-top: 10px;
 }
 
-.modal-content input {
+.inputs {
   width: 100%;
   padding: 8px;
   margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+}
+
+.inputs:focus {
+  border-color: #F2E0A1;
+  outline: none;
+}
+
+.select-group {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.select-group select {
+  flex: 1;
+  padding: 8px;
+  font-size: 14px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.select-group select:focus {
+  border-color:  #F2E0A1;
+  outline: none;
 }
 
 .actions {

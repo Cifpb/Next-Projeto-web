@@ -126,7 +126,7 @@
   opacity: 0.6;
 }
 
-.proximo_1{
+.proximo_1 {
   background: linear-gradient(to bottom, #FFD54F, #FDCA05);
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;

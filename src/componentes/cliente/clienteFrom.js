@@ -47,11 +47,9 @@ export default function ClienteForm({ onAddCliente, etapa }) {
   };
 
   useEffect(() => {
-
     const nomeValido = nome_completo.length >= 10 && nome_completo.length <= 150;
     const telefoneNumerico = telefone.replace(/\D/g, '');
     const telefoneValido = telefoneNumerico.length === 13;
-    // const dataValida = validarDataNascimento(data_nascimento);
     const dataValida = data_nascimento !== '';
   
     // Atualizar a validade do formulário com base em todas as condições
