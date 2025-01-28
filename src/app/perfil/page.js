@@ -1,16 +1,16 @@
 'use client';
 import { useState, useEffect } from 'react';
-import PRimg from '../../../public/perfil/foto-perfil.png';
 import Header from '../header/header';
 import Footer from '../footer/footer';
 import Image from "next/image";
 import { TbEdit } from "react-icons/tb";
 import { RiDeleteBin6Line } from "react-icons/ri";
+import { FaCircleUser } from 'react-icons/fa6';
 import './perfil.css';
 import UpdateFrom from '../../componentes/perfil/updateFrom';
 
 export default function Profile() {
-  const [cliente, setCliente] = useState(null);  
+  const [cliente, setCliente] = useState(null);
   const [loading, setLoading] = useState(true);
   const [isEditing, setIsEditing] = useState(false);
   const [updatedCliente, setUpdatedCliente] = useState(cliente);
@@ -37,10 +37,16 @@ export default function Profile() {
     fetchCliente();
   }, []);
 
+   // Função para formatar a data
+   const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+    return date.toLocaleDateString('pt-BR', options);  // Exibe no formato 'dd/mm/yyyy'
+  };
 
   // Exibe um carregamento enquanto os dados não estão disponíveis
   if (!cliente) {
-    return <center style={{ marginTop: '25%', fontFamily: 'Century Gothic, sans-serif', fontSize: '1.5rem'  }}>Carregando...</center>;
+    return <center style={{ marginTop: '25%', fontFamily: 'Century Gothic, sans-serif', fontSize: '1.5rem' }}>Carregando...</center>;
   }
 
   const handleEdit = () => {
@@ -51,7 +57,7 @@ export default function Profile() {
     const updatedData = { ...newData, email: cliente.email }; // Garantir que o email seja incluído
     setUpdatedCliente(updatedData); // Atualiza os dados localmente após salvar
     // Aqui você pode chamar a função para enviar os dados à API se necessário
-  };  
+  };
 
   return (
     <div className='tela-perfil-completa'>
@@ -60,7 +66,9 @@ export default function Profile() {
         <div className="perfil">
           <div className="retangulo foto-nome-email">
             <div className="foto-container">
-              <Image src={PRimg} className="foto-perfil" alt="foto do perfil" />
+              <button className="foto_perfil">
+                <FaCircleUser size={170} />
+              </button>
             </div>
             <div>
               <h2 className="nome-perfil">{cliente.nome_completo}</h2>
@@ -78,7 +86,7 @@ export default function Profile() {
                 </div>
                 <div className="campo">
                   <p className="rotulo">Data de nascimento:</p>
-                  <p className="valor">{cliente.data_nascimento}</p>
+                  <p className="valor">{formatDate(cliente.data_nascimento)}</p>
                 </div>
                 <div className="campo">
                   <p className="rotulo">CPF:</p>
