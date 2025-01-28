@@ -48,24 +48,27 @@ export default function Profile() {
     setIsEditing(true);
   };
 
-  const handleDelete = async () => {
+  const deleteCliente = async (id) => {
+  
     try {
-      const response = await fetch(`/api/cliente/${cliente.id}`, {
+      const response = await fetch(`/api/cliente/${id}`, {
         method: 'DELETE',
       });
-
+  
       if (response.ok) {
         alert('Cliente excluído com sucesso.');
-        setCliente(null); // Limpa os dados do cliente após exclusão
+        fetchCliente(); // Atualiza a lista de clientes
+        setCliente(null); // Limpa os dados do cliente
       } else {
         alert('Erro ao excluir o cliente.');
       }
     } catch (error) {
       console.error('Erro ao excluir o cliente:', error);
+      alert('Erro ao excluir o cliente.');
     } finally {
-      setIsModalOpen(false); // Fecha o modal
+      setIsModalOpen(false); 
     }
-  };
+};
 
   const handleSave = (newData) => {
     const updatedData = { ...newData, email: cliente.email }; // Garantir que o email seja incluído
@@ -144,7 +147,7 @@ export default function Profile() {
           <div className="modal-content">
             <h3>Deseja realmente excluir o cliente?</h3>
             <div className="modal-actions">
-              <button className="btn-confirm" onClick={handleDelete}>Sim</button>
+              <button className="btn-confirm" onClick={deleteCliente}>Sim</button>
               <button className="btn-cancel" onClick={() => setIsModalOpen(false)}>Não</button>
             </div>
           </div>
