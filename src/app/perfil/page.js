@@ -14,6 +14,7 @@ export default function Profile() {
   const [loading, setLoading] = useState(true);
   const [isEditing, setIsEditing] = useState(false);
   const [updatedCliente, setUpdatedCliente] = useState(cliente);
+  const [isModalOpen, setIsModalOpen] = useState(false); // Controle do modal de exclusão
 
   useEffect(() => {
     const fetchCliente = async () => {
@@ -33,31 +34,47 @@ export default function Profile() {
       }
     };
 
-
     fetchCliente();
   }, []);
 
-   // Função para formatar a data
-   const formatDate = (dateString) => {
+  // Função para formatar a data
+  const formatDate = (dateString) => {
     const date = new Date(dateString);
     const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
     return date.toLocaleDateString('pt-BR', options);  // Exibe no formato 'dd/mm/yyyy'
   };
 
-  // Exibe um carregamento enquanto os dados não estão disponíveis
-  if (!cliente) {
-    return <center style={{ marginTop: '25%', fontFamily: 'Century Gothic, sans-serif', fontSize: '1.5rem' }}>Carregando...</center>;
-  }
-
   const handleEdit = () => {
     setIsEditing(true);
+  };
+
+  const handleDelete = async () => {
+    try {
+      const response = await fetch(`/api/cliente/${cliente.id}`, {
+        method: 'DELETE',
+      });
+
+      if (response.ok) {
+        alert('Cliente excluído com sucesso.');
+        setCliente(null); // Limpa os dados do cliente após exclusão
+      } else {
+        alert('Erro ao excluir o cliente.');
+      }
+    } catch (error) {
+      console.error('Erro ao excluir o cliente:', error);
+    } finally {
+      setIsModalOpen(false); // Fecha o modal
+    }
   };
 
   const handleSave = (newData) => {
     const updatedData = { ...newData, email: cliente.email }; // Garantir que o email seja incluído
     setUpdatedCliente(updatedData); // Atualiza os dados localmente após salvar
-    // Aqui você pode chamar a função para enviar os dados à API se necessário
   };
+
+  if (!cliente) {
+    return <center style={{ marginTop: '25%', fontFamily: 'Century Gothic, sans-serif', fontSize: '1.5rem' }}>Carregando...</center>;
+  }
 
   return (
     <div className='tela-perfil-completa'>
@@ -105,13 +122,14 @@ export default function Profile() {
                 </div>
                 <div className="icones-acoes">
                   <TbEdit className="icone-editar" onClick={handleEdit} />
-                  <RiDeleteBin6Line className="icone-deletar" />
+                  <RiDeleteBin6Line className="icone-deletar" onClick={() => setIsModalOpen(true)} />
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+
       {isEditing && (
         <UpdateFrom
           cliente={updatedCliente}
@@ -119,9 +137,21 @@ export default function Profile() {
           onSave={handleSave}
         />
       )}
+
+      {/* Modal de confirmação */}
+      {isModalOpen && (
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <h3>Deseja realmente excluir o cliente?</h3>
+            <div className="modal-actions">
+              <button className="btn-confirm" onClick={handleDelete}>Sim</button>
+              <button className="btn-cancel" onClick={() => setIsModalOpen(false)}>Não</button>
+            </div>
+          </div>
+        </div>
+      )}
+
       <Footer />
     </div>
   );
 }
-
-
