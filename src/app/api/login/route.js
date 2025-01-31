@@ -28,15 +28,15 @@ export async function POST(request) {
     // Configura o cookie seguro com o clienteId
     const response = NextResponse.json({ message: 'Login bem-sucedido' }, { status: 200 });
     response.cookies.set('clienteId', cliente.id, {
-      httpOnly: true, // Impede acesso via JavaScript (prevenir ataques)
-      secure: process.env.NODE_ENV === 'production', // Apenas HTTPS em produção
+      httpOnly: true, // Impede acesso via JavaScript
+      secure: process.env.NODE_ENV === 'production', // Só HTTPS em produção
       sameSite: 'strict', // Previne envio de cookies de sites externos
       maxAge: 60 * 60 * 24, // 1 dia em segundos
-      path: '/', // Faz o cookie estar disponível em toda a aplicação
+      path: '/', // O cookie é acessível por toda a aplicação
     });
 
     return response; // Retorna a resposta com o cookie configurado
-    
+
   } catch (error) {
     console.error('Erro ao verificar login:', error);
     return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
