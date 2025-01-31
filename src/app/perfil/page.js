@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import Header from '../header/header';
 import Footer from '../footer/footer';
 import Image from "next/image";
+import { useRouter } from 'next/navigation';
 import { TbEdit } from "react-icons/tb";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { FaCircleUser } from 'react-icons/fa6';
@@ -48,17 +49,18 @@ export default function Profile() {
     setIsEditing(true);
   };
 
+  const router = useRouter(); 
+
   const deleteCliente = async (id) => {
-  
     try {
       const response = await fetch(`/api/cliente/${id}`, {
         method: 'DELETE',
       });
-  
+
       if (response.ok) {
-        alert('Cliente excluído com sucesso.');
-        fetchCliente(); // Atualiza a lista de clientes
-        setCliente(null); // Limpa os dados do cliente
+        alert('Conta excluída com sucesso.');
+        setCliente(null);
+        router.push('/login'); 
       } else {
         alert('Erro ao excluir o cliente.');
       }
@@ -66,9 +68,9 @@ export default function Profile() {
       console.error('Erro ao excluir o cliente:', error);
       alert('Erro ao excluir o cliente.');
     } finally {
-      setIsModalOpen(false); 
+      setIsModalOpen(false);
     }
-};
+  };
 
   const handleSave = (newData) => {
     const updatedData = { ...newData, email: cliente.email }; // Garantir que o email seja incluído
@@ -141,13 +143,13 @@ export default function Profile() {
         />
       )}
 
-      {/* Modal de confirmação */}
-      {isModalOpen && (
+       {/* Modal de confirmação da Exclusão */}
+       {isModalOpen && (
         <div className="modal-overlay">
           <div className="modal-content">
-            <h3>Deseja realmente excluir o cliente?</h3>
+            <h3>Deseja realmente excluir a conta?</h3>
             <div className="modal-actions">
-              <button className="btn-confirm" onClick={deleteCliente}>Sim</button>
+              <button className="btn-confirm" onClick={() => deleteCliente(cliente.id)}>Sim</button>
               <button className="btn-cancel" onClick={() => setIsModalOpen(false)}>Não</button>
             </div>
           </div>
