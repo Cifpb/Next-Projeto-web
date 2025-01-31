@@ -1,13 +1,11 @@
 import Cimg1 from "../../../public/home/carrosel/marca1.png";
 import Cimg2 from "../../../public/home/carrosel/marca2.png";
-import Cimg3 from "../../../public/home/carrosel/marca3.png";
-import Timg1 from "../../../public/home/trabalhos/musical.png";
-import Timg2 from "../../../public/home/trabalhos/midia.png";
-import Timg3 from "../../../public/home/trabalhos/plotagem.png";
-import Timg4 from "../../../public/home/trabalhos/identidade.png";
-import CDimg1 from "../../../public/home/planos/imagens/imagem-plano.png";
-import CDimg2 from "../../../public/home/planos/imagens/imagem-plano.png";
-import CDimg3 from "../../../public/home/planos/imagens/imagem-plano.png";
+import Timg1 from "../../../public/home/trabalhos/logotipo.png";
+import Timg2 from "../../../public/home/trabalhos/flyer.png";
+import Timg3 from "../../../public/home/trabalhos/projGrafico.png";
+import Plimg1 from "../../../public/home/planos/imagens/pacoteGold.png";
+import Plimg2 from "../../../public/home/planos/imagens/pacotePlatinum.png";
+import Plimg3 from "../../../public/home/planos/imagens/pacoteDiamond.png";
 // import DPpdf1 from "../../../public/home/planos/documentos/documento-plano1.pdf";
 // import DPpdf2 from "../../../public/home/planos/documentos/documento-plano2.pdf";
 // import DPpdf3 from "../../../public/home/planos/documentos/documento-plano3.pdf";
@@ -15,14 +13,12 @@ import MPimg from "../../../public/home/marcas/times.png";
 import Image from "next/image";
 import { Carousel } from "antd";
 
-
 // Arrays da Tela Inicial
 
 // Lista de Imagens do Carrosel
 const carouselImages = [
   { id: "carouselImg1", img: Cimg1 },
-  { id: "carouselImg2", img: Cimg2 },
-  { id: "carouselImg3", img: Cimg3 },
+  { id: "carouselImg2", img: Cimg2 }
 ];
 
 // Imagem Unica das Marcas que passaram pela Empresa
@@ -32,12 +28,7 @@ const times = [{ id: "times01", img: MPimg }];
 const trabalhos = [
   { id: "trabalho1", img: Timg1, description: "LOGOTIPOS/Identidade Visual" },
   { id: "trabalho2", img: Timg2, description: "FLYERS" },
-  { id: "trabalho3", img: Timg3, description: "Projetos Gráficos" },
-  {
-    id: "trabalho4",
-    img: Timg4,
-    description: "Motions",
-  },
+  { id: "trabalho3", img: Timg3, description: "Projetos Gráficos" }
 ];
 
 // Lista de Cards
@@ -46,8 +37,7 @@ const cards = [
     id: "card001",
     tipo: "Gold",
     valor: "1000,00",
-    promotion: "",
-    img: CDimg1,
+    img: Plimg1,
     content:
       "15 post Mensais. 15 Stories Mensais. Desenvolvimento das Artes. Desenvolvimento do Conteúdo.",
     // document: DPpdf1,
@@ -57,8 +47,7 @@ const cards = [
     id: "card002",
     tipo: "Platinum",
     valor: "1800,00",
-    promotion: "Novo",
-    img: CDimg2,
+    img: Plimg2,
     content:
       "24 post Mensais. 24 Stories Mensais. Desenvolvimento das Artes. Desenvolvimento do Conteúdo. Gerenciamento de Anúncios.",
     // document: DPpdf2,
@@ -68,8 +57,7 @@ const cards = [
     id: "card003",
     tipo: "Diamond",
     valor: "2800",
-    promotion: "20%",
-    img: CDimg3,
+    img: Plimg3,
     content:
       "Quantidade de post Mensais LIVRE. Quantidade de Stories Mensais LIVRE. Desenvolvimento das Artes. Desenvolvimento do Conteúdo. Gerenciamento de Anúncios.",
     // document: DPpdf3,
@@ -82,14 +70,7 @@ export { carouselImages, times, trabalhos, cards };
 // Lógica dos Cards
 const cardTela = (card) => (
   <div className="card" key={card.id} id={card.id}>
-    {card.promotion !== "" && (
-      <div
-        className="promo-fita"
-        style={{ backgroundColor: card.promotion === "Novo" ? "#388E3C" : "#D32F2F" }} >
-        {card.promotion}
-      </div>
-    )}
-    <Image src={CDimg1} className="imagemCard" alt="logo" />
+    <Image src={card.img} className="imagemCard" alt="logo" />
     <div className="contentCard">
       <div className="conteudoDiv">
         {card.content.split(".").map((sentence, index) => {
