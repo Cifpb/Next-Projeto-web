@@ -1,4 +1,4 @@
-import "./About.css";
+import './about.css';
 import Header from "../header/header";
 import Footer from "../footer/footer";
 import Aimg1 from "../../../public/about/foto.jpg";

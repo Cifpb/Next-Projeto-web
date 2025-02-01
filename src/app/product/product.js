@@ -47,7 +47,7 @@ export default function Product({ product }) {
   const subCategoriaNormalizada = product.sub_categoria.toLowerCase().trim();
 
   // Atribui a imagem correspondente com base na subcategoria normalizada
-  const imagemProduto = imagens[subCategoriaNormalizada]; 
+  const imagemProduto = imagens[subCategoriaNormalizada] || Pimg1; 
 
   return (
     <div className={style.produto}>
