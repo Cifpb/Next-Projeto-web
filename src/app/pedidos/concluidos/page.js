@@ -23,12 +23,14 @@ export default async function Requests3() {
                 <p className="id-pedido"><strong>PED{pedido.id}{pedido.codigo_aleatorio}</strong></p>
                 <div className="valor-pedido1">
                   <p className="valor-total-pedido">Total:</p>
-                  <p className="valor-pedido2"><strong>{pedido.total}</strong></p>
+                  <p className="valor-pedido2"><strong>{
+                  Number(pedido.total).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+                  }</strong></p>
                 </div>
-                <p className="data-pedido">{
-                  pedido.data_conclusao ?
-                    new Date(pedido.data_conclusao).toLocaleDateString() : ''
+                <p className="data-pedido"> <strong> {
+                  pedido.data_conclusao ? new Date(pedido.data_conclusao).toLocaleDateString() : ''
                 }
+                </strong>
                 </p>
               </div>
             ))
