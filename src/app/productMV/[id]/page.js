@@ -23,26 +23,25 @@ export default async function ProductsMV({ params }) {
           <div className={style.line}></div>
         </center>
 
-        <Carousel autoplay>
-          <div>
-            {produtoMV.oferta !== "" && (
-              <div
-                className={style.promo_fita2}
-                style={{
-                  backgroundColor: produtoMV.oferta === "Novo" ? "#388E3C" : "#D32F2F",
-                }}
-              >
-                {produtoMV.oferta}
-              </div>
-            )}
-            <Image src="/produtos/produtos-pag/logotipo/logotipo1.png" fill={true} />
-          </div>
-          <div><Image src="/produtos/produtos-pag/logotipo/logotipo1.png" fill={true} /></div>
-          <div><Image src="/produtos/produtos-pag/logotipo/logotipo1.png" fill={true} /></div>
-          <div><Image src="/produtos/produtos-pag/logotipo/logotipo1.png" fill={true} /></div>
-          <div><Image src="/produtos/produtos-pag/logotipo/logotipo1.png" fill={true} /></div>
-          <div><Image src="/produtos/produtos-pag/logotipo/logotipo1.png" fill={true} /></div>
-        </Carousel>
+        <div className="carousel-container">
+          <Carousel autoplay>
+            <div>
+              {produtoMV.oferta !== "" && (
+                <div
+                  className={style.promo_fita2}
+                  style={{
+                    backgroundColor: produtoMV.oferta === "Novo" ? "#388E3C" : "#D32F2F",
+                  }}
+                >
+                  {produtoMV.oferta}
+                </div>
+              )}
+              <Image src="/produtos/produtos-pag/logotipo/logotipo1.png" width={1921} height={350} alt="Produto" />
+            </div>
+            <div><Image src="/produtos/produtos-pag/logotipo/logotipo1.png" width={1921} height={350} alt="Produto" /></div>
+            <div><Image src="/produtos/produtos-pag/logotipo/logotipo1.png" width={1921} height={350} alt="Produto" /></div>
+          </Carousel>
+        </div>
 
         <div className={style.itens_juntos_MV}>
           <div className={style.itens_direita_text}>

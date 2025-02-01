@@ -12,23 +12,17 @@ import Link from 'next/link';
 import './header.css';
 
 export default function Header() {
-  const [logado, setLogado] = useState(false);
 
-  // Verifica o estado do login ao carregar o componente
+  const [logado, setlogado] = useState(false);
+
   useEffect(() => {
-    // Verifica se o cookie 'clienteId' está presente
-    const cookie = document.cookie.split('; ').find(row => row.startsWith('clienteId='));
-    if (cookie) {
-      setLogado(true);
-    } else {
-      setLogado(false);
-    }
+    const status = sessionStorage.getItem('logado');
+    setlogado(status === 'true');
   }, []);
 
-  // Função para fazer logout e remover o cookie
-  const identificadorLogout = () => {
-    document.cookie = "clienteId=; Max-Age=-99999999; path=/"; // Remove o cookie
-    setLogado(false); // Atualiza o estado de login
+  const identificadorLogin = () => {
+    sessionStorage.removeItem('logado');
+    setlogado(false);
   };
 
   return (
@@ -38,32 +32,32 @@ export default function Header() {
         <div className="parte2" />
         <div className="parte1" />
       </div>
+      <div className="linha-cab" />
       <div className="Header">
-
-        <Image src={Himg1} alt="Logo" className="logoCab" />
+        <Image src={Himg1} alt="Logo" className="logoCab" width={100} height={100} />
         <div className="icones-cab">
           <a href="https://api.whatsapp.com/send/?phone=558386795396&text&type=phone_number&app_absent=0" target="_blank">
-            <Image src={Himg2} alt="Ícone 1" className="icone-cab" />
+            <Image src={Himg2} alt="Ícone 1" className="icone-cab" width={30} height={30} />
           </a>
           <a href="//www.facebook.com/saladamidiaoficial" target="_blank">
-            <Image src={Himg4} alt="Ícone 2" className="icone-cab" />
+            <Image src={Himg4} alt="Ícone 2" className="icone-cab" width={30} height={30} />
           </a>
           <a href="https://www.instagram.com/saladamidiaoficial/?igsh=ZTRneTAzd2RoZHF1n" target="_blank">
-            <Image src={Himg5} alt="Ícone 3" className="icone-cab" />
+            <Image src={Himg5} alt="Ícone 3" className="icone-cab" width={30} height={30} />
           </a>
           <a href="https://www.tiktok.com/@saladamidiamusic?_t=8IZjclsasaM&_r=1" target="_blank">
-            <Image src={Himg6} alt="Ícone 4" className="icone-cab" />
+            <Image src={Himg6} alt="Ícone 4" className="icone-cab" width={30} height={30} />
           </a>
           <a href="https://www.youtube.com/@MhoysesDesign" target="_blank">
-            <Image src={Himg3} alt="Ícone 5" className="icone-cab" />
+            <Image src={Himg3} alt="Ícone 5" className="icone-cab" width={30} height={30} />
           </a>
         </div>
         <div className="linha-cab" />
         <nav className="botoes-cab">
-          <Link href="/" className="botao-cab"> INÍCIO </Link>
-          <Link href="/sobre" className="botao-cab"> SOBRE </Link>
-          <Link href="/catalogo" className="botao-cab"> CATÁLOGO </Link>
-          {logado && (<Link href="/pedidos" className="botao-cab"> PEDIDOS </Link>)}
+          <Link href="/" className="botao-cab">INÍCIO</Link>
+          <Link href="/sobre" className="botao-cab">SOBRE</Link>
+          <Link href="/catalogo" className="botao-cab">CATÁLOGO</Link>
+          {logado && (<Link href="/pedidos" className="botao-cab">PEDIDOS</Link>)}
           {logado ? (
             <Link href="/perfil">
               <button className="user">

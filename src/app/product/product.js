@@ -4,6 +4,9 @@ import { MdFavoriteBorder } from 'react-icons/md';
 import { HiOutlineShoppingCart } from 'react-icons/hi';
 import { Tooltip } from 'antd';
 import Pimg1 from "../../../public/produtos/img-virgem-prod/logotipo.png";
+import Pimg2 from "../../../public/produtos/img-virgem-prod/flyer.png";
+import Pimg3 from "../../../public/produtos/img-virgem-prod/motion.png";
+import Pimg4 from "../../../public/produtos/img-virgem-prod/proj.png";
 import style from "./page.module.css";
 import Link from 'next/link';
 import Image from "next/image";
@@ -32,9 +35,23 @@ export default function Product({ product }) {
     }
   };
 
+  //Imagens Corretas
+  const imagens = {
+    logotipo: Pimg1,
+    flyer: Pimg2,
+    motion: Pimg3,
+    'projetos gráficos': Pimg4,
+  };
+
+  // Normaliza a subcategoria para comparações sem diferenças de capitalização ou espaços extras
+  const subCategoriaNormalizada = product.sub_categoria.toLowerCase().trim();
+
+  // Atribui a imagem correspondente com base na subcategoria normalizada
+  const imagemProduto = imagens[subCategoriaNormalizada]; 
+
   return (
     <div className={style.produto}>
-      <Image src={Pimg1} className={style.prod_img} alt="logo" />
+      <Image src={imagemProduto} className={style.prod_img} alt="Produto" />
       <h1 className={style.cat_text}>Mídia Visual</h1>
       <h2 className={style.sub_text}>{product.sub_categoria}</h2>
       <div className={style.linha_esquerda}></div>

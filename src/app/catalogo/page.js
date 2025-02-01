@@ -6,7 +6,7 @@ import { Carousel } from 'antd';
 import Footer from '../footer/footer';
 import Product from '../product/product';
 import MenuProdutos from '../../componentes/produtos/menu';
-import Cimg from '../../../public/catalogo/decoracao-img.png';
+import Cimg from '../../../public/catalogo/decoracaoImg.png';
 import style from './page.module.css';
 import db from '../../lib/db';
 

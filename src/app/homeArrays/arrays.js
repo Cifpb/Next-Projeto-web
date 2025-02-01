@@ -6,14 +6,10 @@ import Timg3 from "../../../public/home/trabalhos/projGrafico.png";
 import Plimg1 from "../../../public/home/planos/imagens/pacoteGold.png";
 import Plimg2 from "../../../public/home/planos/imagens/pacotePlatinum.png";
 import Plimg3 from "../../../public/home/planos/imagens/pacoteDiamond.png";
-// import DPpdf1 from "../../../public/home/planos/documentos/documento-plano1.pdf";
-// import DPpdf2 from "../../../public/home/planos/documentos/documento-plano2.pdf";
-// import DPpdf3 from "../../../public/home/planos/documentos/documento-plano3.pdf";
 import MPimg from "../../../public/home/marcas/times.png";
 import Image from "next/image";
 import { Carousel } from "antd";
-
-// Arrays da Tela Inicial
+import db from "../../lib/db";
 
 // Lista de Imagens do Carrosel
 const carouselImages = [
@@ -31,76 +27,58 @@ const trabalhos = [
   { id: "trabalho3", img: Timg3, description: "Projetos Gráficos" }
 ];
 
-// Lista de Cards
-const cards = [
-  {
-    id: "card001",
-    tipo: "Gold",
-    valor: "1000,00",
-    img: Plimg1,
-    content:
-      "15 post Mensais. 15 Stories Mensais. Desenvolvimento das Artes. Desenvolvimento do Conteúdo.",
-    // document: DPpdf1,
-    emblem: "",
-  },
-  {
-    id: "card002",
-    tipo: "Platinum",
-    valor: "1800,00",
-    img: Plimg2,
-    content:
-      "24 post Mensais. 24 Stories Mensais. Desenvolvimento das Artes. Desenvolvimento do Conteúdo. Gerenciamento de Anúncios.",
-    // document: DPpdf2,
-    emblem: "",
-  },
-  {
-    id: "card003",
-    tipo: "Diamond",
-    valor: "2800",
-    img: Plimg3,
-    content:
-      "Quantidade de post Mensais LIVRE. Quantidade de Stories Mensais LIVRE. Desenvolvimento das Artes. Desenvolvimento do Conteúdo. Gerenciamento de Anúncios.",
-    // document: DPpdf3,
-    emblem: "",
-  },
-];
+const planosImagens = {
+  gold: Plimg1, 
+  platinum: Plimg2, 
+  diamond: Plimg3, 
+};
 
-export { carouselImages, times, trabalhos, cards };
+// Função para renderizar os cards
+const renderizadorCards = async () => {
+  const planos = await db.query("SELECT * FROM planos");
 
-// Lógica dos Cards
-const cardTela = (card) => (
-  <div className="card" key={card.id} id={card.id}>
-    <Image src={card.img} className="imagemCard" alt="logo" />
-    <div className="contentCard">
-      <div className="conteudoDiv">
-        {card.content.split(".").map((sentence, index) => {
-          if (sentence.trim() !== "") {
-            return <p className="conteudo-text" key={index}>{sentence}</p>;
-          }
-          return null;
-        })}
+  const cardTela = (card) => {
+    
+    const tipoPlanoNormalizado = card.tipo.toLowerCase().trim();
+    const imagemPlano = planosImagens[tipoPlanoNormalizado];  
+
+    return (
+      <div className="card" key={card.id} id={card.id}>
+        <Image src={imagemPlano} className="imagemCard" alt={card.tipo} />
+        <div className="contentCard">
+          <div className="conteudoDiv">
+            {card.conteudo.split(".").map((sentence, index) => {
+              if (sentence.trim() !== "") {
+                return <p className="conteudo-text" key={index}>{sentence}</p>;
+              }
+              return null;
+            })}
+          </div>
+          <button type="button" className="botao-card">
+            <a
+              className="texto-bntCard"
+              href="https://api.whatsapp.com/send/?phone=558386795396&text&type=phone_number&app_absent=0"
+              target="_blank"
+            >
+              SAIBA MAIS
+            </a>
+          </button>
+        </div>
       </div>
-      <button type="button" className="botao-card">
-        <a className="texto-bntCard">
-          SAIBA MAIS
-        </a>
-      </button>
-    </div>
-  </div>
-);
+    );
+  };
 
-const renderizadorCards = () => {
-  if (cards.length < 4) {
-    return <div className="cards">{cards.map(cardTela)}</div>;
+  if (planos.rows.length < 4) {
+    return <div className="cards">{planos.rows.map(cardTela)}</div>;
   }
 
   const cardGrupoCarrosel = [];
-  for (let i = 0; i < cards.length; i += 3) {
-    cardGrupoCarrosel.push(cards.slice(i, i + 3));
+  for (let i = 0; i < planos.rows.length; i += 3) {
+    cardGrupoCarrosel.push(planos.rows.slice(i, i + 3));
   }
 
   return (
-    <Carousel autoplay>
+    <Carousel autoplay dots className="custom_dots1">
       {cardGrupoCarrosel.map((group, index) => (
         <div key={index}>
           <div className="cards"> {group.map(cardTela)} </div>
@@ -110,4 +88,4 @@ const renderizadorCards = () => {
   );
 };
 
-export { renderizadorCards };
+export { carouselImages, times, trabalhos, renderizadorCards };

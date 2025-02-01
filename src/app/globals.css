@@ -47,7 +47,7 @@
   text-transform: uppercase;
 }
 
-/* Cards */
+/* Planos*/
 
 * {
   box-sizing: border-box;
@@ -135,21 +135,11 @@
   color: #000000;
 }
 
-/* Ajustando propriedades dos cards dentro do carrossel */
-.ant-carousel .card .titulo-text,
-.ant-carousel .card .conteudo-text,
-.ant-carousel .promo-fita {
-  font-size: 15.2px; 
-}
-
-.ant-carousel .card .titulo-text,
-.ant-carousel .card .conteudo-text,
-.ant-carousel .card .texto-bntCard {
-  line-height: 1.2; 
-}
-
-.ant-carousel .promo-fita {
-  text-shadow: 5px 5px 5px rgb(255, 255, 255, 0.5);
+.custom_dots1 .slick-dots li {
+  width: 14px; 
+  height: 4px;  
+  background-color: #9e9e9e; 
+  border-radius: 3px; 
 }
 
 /* Marcas que já passaram por aqui (img) */
