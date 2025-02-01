@@ -46,7 +46,7 @@ export default async function ProductsMV({ params }) {
         <div className={style.itens_juntos_MV}>
           <div className={style.itens_direita_text}>
             <h1 className={style.categoria_text}>Mídia Visual</h1>
-            <h2 className={style.nomeProd_text}>{produtoMV.sub_categoria}</h2>
+            <h2 className={style.nomeProd_text}>{produtoMV.nome_produto}</h2>
             <h1 className={style.descricao_text}>DESCRIÇÃO</h1>
             <h2 className={style.conteudoDes_text}>{produtoMV.descricao}</h2>
           </div>

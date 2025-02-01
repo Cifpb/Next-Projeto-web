@@ -1,7 +1,5 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { MdFavoriteBorder } from 'react-icons/md';
-import { HiOutlineShoppingCart } from 'react-icons/hi';
 import { Carousel } from 'antd';
 import Footer from '../footer/footer';
 import Product from '../product/product';
@@ -12,7 +10,7 @@ import db from '../../lib/db';
 
 export default async function Catalog() {
   
-  const produtos = await db.query('select * from produto');
+  const produtos = await db.query('select * from produtos');
 
   const size = produtos.rows.length / 2;
   let matrizProdutos = [];
@@ -33,7 +31,7 @@ export default async function Catalog() {
       label: <span className={style.menu_midia_visual}>MÍDIA VISUAL</span>,
       key: 'sub1',
       children: produtos.rows.map(produto =>
-        getItem(produto.sub_categoria, produto.id, `/productMV/${produto.id}`)
+        getItem(produto.nome_produto, produto.id, `/productMV/${produto.id}`)
       ),
     },
   ];

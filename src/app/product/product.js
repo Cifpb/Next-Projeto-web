@@ -44,16 +44,16 @@ export default function Product({ product }) {
   };
 
   // Normaliza a subcategoria para comparações sem diferenças de capitalização ou espaços extras
-  const subCategoriaNormalizada = product.sub_categoria.toLowerCase().trim();
+  const nomeProdNormalizada = product.nome_produto.toLowerCase().trim();
 
   // Atribui a imagem correspondente com base na subcategoria normalizada
-  const imagemProduto = imagens[subCategoriaNormalizada] || Pimg1; 
+  const imagemProduto = imagens[nomeProdNormalizada] || Pimg1; 
 
   return (
     <div className={style.produto}>
       <Image src={imagemProduto} className={style.prod_img} alt="Produto" />
       <h1 className={style.cat_text}>Mídia Visual</h1>
-      <h2 className={style.sub_text}>{product.sub_categoria}</h2>
+      <h2 className={style.sub_text}>{product.nome_produto}</h2>
       <div className={style.linha_esquerda}></div>
       <div className={style.icones}>
         <Tooltip title={!logado ? mensagem('favoritar') : ''} placement="top">
