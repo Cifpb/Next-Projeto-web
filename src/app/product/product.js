@@ -21,7 +21,7 @@ export default function Product({ product }) {
 
   const mensagem = (action) => {
     return (
-      <center style={{ fontSize: '95%',  padding: '0.5%'}} >
+      <center style={{ fontSize: '95%', padding: '0.5%' }} >
         Faça login para <b>{action}</b> este produto. Se não possui uma conta, cadastre-se.
       </center>
     );
@@ -47,10 +47,18 @@ export default function Product({ product }) {
   const nomeProdNormalizada = product.nome_produto.toLowerCase().trim();
 
   // Atribui a imagem correspondente com base na subcategoria normalizada
-  const imagemProduto = imagens[nomeProdNormalizada] || Pimg1; 
+  const imagemProduto = imagens[nomeProdNormalizada] || Pimg1;
 
   return (
     <div className={style.produto}>
+
+      {product.oferta && product.oferta.trim() !== "" && (
+        <div
+          className={style.promo_fita3}
+          style={{ backgroundColor: product.oferta === 'Novo' ? '#388E3C' : '#D32F2F' }}>
+          {product.oferta}
+        </div>
+      )}
       <Image src={imagemProduto} className={style.prod_img} alt="Produto" />
       <h1 className={style.cat_text}>Mídia Visual</h1>
       <h2 className={style.sub_text}>{product.nome_produto}</h2>
