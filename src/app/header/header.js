@@ -14,16 +14,30 @@ import './header.css';
 export default function Header() {
 
   const [logado, setlogado] = useState(false);
+  const [pathname, setPathname] = useState('');
 
   useEffect(() => {
     const status = sessionStorage.getItem('logado');
     setlogado(status === 'true');
+    setPathname(window.location.pathname); // Aqui estamos pegando o pathname diretamente no cliente
   }, []);
 
   const identificadorLogin = () => {
     sessionStorage.removeItem('logado');
     setlogado(false);
   };
+
+  const isActive = (link) => {
+    // Se o pathname começar com "/pedidos", o link "/pedidos" será ativado
+    if (pathname.startsWith('/pedidos') && link === '/pedidos') {
+        return "active";
+    }
+    // Para os outros links, ativa se o pathname for exatamente igual ao link
+    if (pathname === link) {
+        return "active";
+    }
+    return "";
+};
 
   return (
     <div className="tela-cab">
@@ -54,18 +68,18 @@ export default function Header() {
         </div>
         <div className="linha-cab" />
         <nav className="botoes-cab">
-          <Link href="/" className="botao-cab">INÍCIO</Link>
-          <Link href="/sobre" className="botao-cab">SOBRE</Link>
-          <Link href="/catalogo" className="botao-cab">CATÁLOGO</Link>
-          {logado && (<Link href="/pedidos" className="botao-cab">PEDIDOS</Link>)}
+          <Link href="/" className={`botao-cab ${isActive('/')}`}>INÍCIO</Link>
+          <Link href="/sobre" className={`botao-cab ${isActive('/sobre')}`}>SOBRE</Link>
+          <Link href="/catalogo" className={`botao-cab ${isActive('/catalogo')}`}>CATÁLOGO</Link>
+          {logado && (<Link href="/pedidos" className={`botao-cab ${isActive('/pedidos')}`}>PEDIDOS</Link>)}
           {logado ? (
             <Link href="/perfil">
-              <button className="user">
+              <button className={`user ${isActive('/perfil')}`}>
                 <FaCircleUser size={30} />
               </button>
             </Link>
           ) : (
-            <Link href="/login" className="botao-cab botao-login">LOGIN</Link>
+            <Link href="/login" className={`botao-cab botao-login ${isActive('/login')}`}>LOGIN</Link>
           )}
         </nav>
       </div>

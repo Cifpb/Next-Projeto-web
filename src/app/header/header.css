@@ -101,10 +101,6 @@ body {
   color: #FDCA05;
 }
 
-.botao-cab:active {
-  color: #FDCA05;
-}
-
 .botao-login {
   background: linear-gradient(to bottom, #FFD54F, #FFB300);
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
@@ -117,9 +113,17 @@ body {
   color: #fff;
 }
 
-.botao-login:active {
-  background: linear-gradient(to bottom #FFD54F, #FFB300);
-  color: #000000;
+.botao-cab.active {
+  font-weight: bold; 
+  color: #FFD54F;
+  transform: scale(1.05);
+}
+
+.botao-login.active {
+  background: linear-gradient(to bottom, #FFD54F, #FFB300);
+  color:#545454;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); 
+  transform: scale(1.02); 
 }
 
 .user {
@@ -145,6 +149,23 @@ body {
   background-color: #fff; 
   border-color:  #B0B0B0; 
 }
+
+.user.active {
+  background-color: #fff;    /* Cor de fundo branca quando ativo */
+  border-color: #FFD54F;     /* Cor de borda amarela */
+  transform: scale(1.05);
+}
+
+.user.active svg {
+  fill: #FFD54F;             /* Muda a cor do ícone para amarelo quando ativo */
+}
+
+.user svg.active {
+  fill: #fff;  /* Cor do ícone em branco quando o SVG estiver ativo */
+  height: auto;
+}
+
+
 
 @media screen and (max-width: 600px) {
 

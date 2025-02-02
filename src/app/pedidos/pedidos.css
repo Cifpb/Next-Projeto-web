@@ -42,11 +42,25 @@
     transition: .3s;
 }
 
+.menu-pedido a.active {
+    font-weight: bold; 
+}
+
+.menu-pedido .icon-pedido.active {
+    filter: brightness(1.5); /* Destacar o ícone com brilho */
+}
+
 .icon-pedido {
     flex: 2;
     min-width: 45%;
     max-width: 45%;
     margin-left: 35%;
+}
+
+.menu-pedido .icon-pedido.active {
+    filter: brightness(1.5); 
+    transform: scale(1.1); 
+    transition: all 0.3s ease; 
 }
 
 .texto-pedido {
@@ -112,7 +126,6 @@ a {
     z-index: 2;
     min-height: 100%;
     overflow: hidden; 
-    /*transition: transform 0.3s ease, box-shadow 0.3s ease; */
     transition: all 0.3s ease-in-out;
     border: 3px solid transparent;
 }
@@ -120,6 +133,7 @@ a {
 .card-pedido:hover {
     transform: scale(1.05); 
     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.7); 
+    filter: brightness(1.05);
 }
 
 .img-pedido {
@@ -141,8 +155,8 @@ a {
 .estado-pedido {
     font-size: 80%;
     color: #e0c200;
-    margin-left: 13%;
     margin-top: 13%;
+    text-align: center;
 }
 
 .valor-pedido1 {
@@ -159,7 +173,7 @@ a {
 }
 
 .valor-pedido2 {
-    color: #e0c200; 
+    color: #e0c200f9; 
     font-weight: bold;
 }
 

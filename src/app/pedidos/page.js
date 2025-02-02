@@ -55,7 +55,7 @@ export default async function Requests1() {
                 <p className="id-pedido">
                   <strong>PED{pedido.id}{pedido.codigo_aleatorio}</strong>
                 </p>
-                <p className="estado-pedido"><strong>{pedido.estado}</strong></p>
+                <p className="estado-pedido"><strong>{pedido.estado}...</strong></p>
               </div>
             ))
           ) : (
