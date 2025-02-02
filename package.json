@@ -8,6 +8,8 @@
     "start": "next start",
     "lint": "next lint"
   },
+
+
   "dependencies": {
     "antd": "^5.20.2",
     "bcrypt": "^5.1.1",
