@@ -19,12 +19,13 @@
 .btn-pedido {
     display: flex;
     justify-content: flex-end;
+    
 }
 
 .btn-pedido img {
-    padding: 0 12px;
     transition: .3s;
-    height: 50%;
+    height: 70%;
+    margin-right: 10%;
 }
 
 .menu-pedido {
