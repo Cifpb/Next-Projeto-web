@@ -137,7 +137,6 @@ export default function UpdateForm({ cliente, onClose, onSave }) {
         const paisValido = formData.pais !== '';
         const estadoValido = formData.estado !== '';
 
-
         setFormValid(nomeValido && cpfValido && telefoneValido && dataValida && paisValido && estadoValido);
     }, [formData, erroDataNascimento]);
 

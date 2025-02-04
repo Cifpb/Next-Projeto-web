@@ -146,7 +146,7 @@ export default function Profile() {
        {/* Modal de confirmação da Exclusão */}
        {isModalOpen && (
         <div className="modal-overlay">
-          <div className="modal-content">
+          <div className="modal-content1">
             <h3>Deseja realmente excluir a conta?</h3>
             <div className="modal-actions">
               <button className="btn-confirm" onClick={() => deleteCliente(cliente.id)}>Sim</button>
