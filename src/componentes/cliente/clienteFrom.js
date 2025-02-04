@@ -50,7 +50,7 @@ export default function ClienteForm({ onAddCliente, etapa }) {
     const nomeValido = nome_completo.length >= 10 && nome_completo.length <= 150;
     const telefoneNumerico = telefone.replace(/\D/g, '');
     const telefoneValido = telefoneNumerico.length === 13;
-    const dataValida = data_nascimento !== '';
+    const dataValida = data_nascimento !== '' && !erroDataNascimento;
   
     // Atualizar a validade do formulário com base em todas as condições
     setFormValidDP(nomeValido && telefoneValido && dataValida);
