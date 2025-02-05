@@ -9,7 +9,7 @@ import style from './page.module.css';
 import db from '../../lib/db';
 
 export default async function Catalog() {
-  
+
   const produtos = await db.query('select * from produtos');
 
   const size = produtos.rows.length / 2;
@@ -39,12 +39,12 @@ export default async function Catalog() {
   return (
     <div className={style.telaC}>
       <div className={style.catalogo}>
-        
+
         <MenuProdutos items={items} />
 
         <center>
           <Image src={Cimg} className={style.catalogo_img} alt="logo" />
-          <h1 className={style.navegador_text}>NAVEGUE PELAS CATEGORIAS</h1>
+          <h1 className={style.navegador_text}>CONFIRA NOSSO CATÁLOGO</h1>
           <div className={style.decoracao_line}></div>
         </center>
 
