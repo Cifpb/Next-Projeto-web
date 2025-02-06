@@ -35,7 +35,37 @@ export default function Product({ product }) {
     }
   };
 
-  //Imagens Corretas
+  const handleAddToCart = async () => {
+    if (!logado) {
+      console.log('Usuário precisa estar logado para adicionar ao carrinho');
+      return;
+    }
+
+    try {
+      const response = await fetch('/api/carrinho', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          userId: sessionStorage.getItem('userId'),  // Supondo que o userId esteja na sessão
+          productId: product.id,
+          quantity: 1,
+        }),
+      });
+
+      if (response.ok) {
+        console.log('Produto adicionado ao carrinho');
+        // Aqui podemos também atualizar o estado do carrinho na UI se necessário
+      } else {
+        console.error('Erro ao adicionar o produto ao carrinho');
+      }
+    } catch (error) {
+      console.error('Erro de rede:', error);
+    }
+  };
+
+  // Imagens Corretas
   const imagens = {
     logotipo: Pimg1,
     flyer: Pimg2,
@@ -51,7 +81,6 @@ export default function Product({ product }) {
 
   return (
     <div className={style.produto}>
-
       {product.oferta && product.oferta.trim() !== "" && (
         <div
           className={style.promo_fita3}
@@ -79,7 +108,7 @@ export default function Product({ product }) {
           <button
             type="button"
             className={style.icone_car}
-            onClick={() => handleClick('adicionar ao carrinho')}
+            onClick={handleAddToCart}
             disabled={!logado}
           >
             <HiOutlineShoppingCart />

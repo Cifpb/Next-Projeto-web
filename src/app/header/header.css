@@ -151,21 +151,19 @@ body {
 }
 
 .user.active {
-  background-color: #fff;    /* Cor de fundo branca quando ativo */
-  border-color: #FFD54F;     /* Cor de borda amarela */
+  background-color: #fff;    
+  border-color: #FFD54F;    
   transform: scale(1.05);
 }
 
 .user.active svg {
-  fill: #FFD54F;             /* Muda a cor do ícone para amarelo quando ativo */
+  fill: #FFD54F;             
 }
 
 .user svg.active {
-  fill: #fff;  /* Cor do ícone em branco quando o SVG estiver ativo */
+  fill: #fff;  
   height: auto;
 }
-
-
 
 @media screen and (max-width: 600px) {
 

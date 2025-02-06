@@ -51,7 +51,7 @@ export default function MenuProdutos({ items }) {
             </button>
           </Link>
           <div className={style.espaco_fc}></div>
-          <Link href="/">
+          <Link href="/carrinho">
             <button type="button" className={style.carrinho}>
               <HiOutlineShoppingCart />
             </button>
