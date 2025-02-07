@@ -1,7 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
-import { MdFavoriteBorder } from 'react-icons/md';
-import { HiOutlineShoppingCart } from 'react-icons/hi';
+import { MdFavorite, MdFavoriteBorder } from 'react-icons/md';
+import { HiShoppingCart, HiOutlineShoppingCart } from 'react-icons/hi';
 import { Tooltip } from 'antd';
 import Pimg1 from "../../../public/produtos/img-virgem-prod/logotipo.png";
 import Pimg2 from "../../../public/produtos/img-virgem-prod/flyer.png";
@@ -40,7 +40,7 @@ export default function Product({ product }) {
       console.log('Usuário precisa estar logado para adicionar ao carrinho');
       return;
     }
-
+  
     try {
       const response = await fetch('/api/carrinho', {
         method: 'POST',
@@ -48,12 +48,12 @@ export default function Product({ product }) {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          userId: sessionStorage.getItem('userId'),  // Supondo que o userId esteja na sessão
-          productId: product.id,
-          quantity: 1,
+          clienteId: sessionStorage.getItem('userId'),  // Mudando para clienteId
+          itemdepedido_id: product.id,  // Certifique-se de que o id do produto está correto
+          quantidade: 1,
         }),
       });
-
+  
       if (response.ok) {
         console.log('Produto adicionado ao carrinho');
         // Aqui podemos também atualizar o estado do carrinho na UI se necessário
@@ -63,7 +63,7 @@ export default function Product({ product }) {
     } catch (error) {
       console.error('Erro de rede:', error);
     }
-  };
+  };  
 
   // Imagens Corretas
   const imagens = {

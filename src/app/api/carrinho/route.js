@@ -1,15 +1,22 @@
 import { NextResponse } from "next/server";
-import pool from '../../../lib/db';  
-
+import pool from '../../../lib/db';
 
 // Função POST para adicionar ou atualizar item no carrinho
-export async function POST(req, res) {
+export async function POST(request) {
   try {
-    const { cliente_id, itemdepedido_id, quantidade } = req.body;
+    // Obter o cliente_id do cookie, já que o cliente está logado e garantir que seja um número
+
+    const cliente_id = parseInt(request.cookies.get('clienteId'), 10);
+if (isNaN(cliente_id) || cliente_id <= 0) {
+  return NextResponse.json({ message: 'Cliente não autenticado' }, { status: 401 });
+}
+
+
+    const { itemdepedido_id, quantidade } = await request.json();
 
     // Verifica se todos os parâmetros necessários foram passados
-    if (!cliente_id || !itemdepedido_id || !quantidade) {
-      return res.status(400).json({ message: 'Dados inválidos!' });
+    if (!itemdepedido_id || !quantidade) {
+      return NextResponse.json({ message: 'Dados inválidos!' }, { status: 400 });
     }
 
     // Conectar ao banco de dados
@@ -29,7 +36,7 @@ export async function POST(req, res) {
       );
 
       client.release();
-      return res.status(200).json(updatedItem[0]);
+      return NextResponse.json(updatedItem[0], { status: 200 });
     }
 
     // Caso o item não esteja no carrinho, inserir um novo item
@@ -39,20 +46,20 @@ export async function POST(req, res) {
     );
 
     client.release();
-    return res.status(201).json(newItem[0]);
+    return NextResponse.json(newItem[0], { status: 201 });
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ message: 'Erro no servidor' });
+    return NextResponse.json({ message: 'Erro no servidor' }, { status: 500 });
   }
 }
 
 // Função GET para pegar todos os itens do carrinho de um cliente
-export async function GET(req, res) {
+export async function GET(request) {
   try {
-    const { cliente_id } = req.query;  // Recebe o cliente_id pela query
-
+    // Obter o cliente_id do cookie e garantir que seja um número
+    const cliente_id = parseInt(request.cookies.get('clienteId'), 10);
     if (!cliente_id) {
-      return res.status(400).json({ message: 'Cliente ID é necessário!' });
+      return NextResponse.json({ message: 'Cliente não autenticado' }, { status: 401 });
     }
 
     // Conectar ao banco de dados
@@ -65,11 +72,11 @@ export async function GET(req, res) {
     );
 
     client.release();
-    
+
     // Retorna os itens do carrinho
-    return res.status(200).json(cartItems);
+    return NextResponse.json(cartItems, { status: 200 });
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ message: 'Erro ao buscar carrinho' });
+    return NextResponse.json({ message: 'Erro ao buscar carrinho' }, { status: 500 });
   }
 }

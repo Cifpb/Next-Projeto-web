@@ -181,7 +181,7 @@ export default function Cart() {
               <tr className={style.carrinhoTr}>
                 <th className={style.carrinhoTh}>
                   <button
-                    className={`${style.selectProduct} ${todosSelecionados ? styles.selected : ""}`}
+                    className={`${style.selectProduct} ${todosSelecionados ? style.selected : ""}`}
                     onClick={selecionarTodos}
                   ></button>
                   <span className={style.thText}>Todos</span>
