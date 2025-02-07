@@ -111,11 +111,11 @@ export default function Cart() {
   const getMensagemPagamento = () => {
     switch (metodoPagamento) {
       case "pix":
-        return "Pagamento finalizado na hora. Você pode finalizar o seu Pix por meio do QR code ou código do banco que preferir! Este código será válido por 24 horas.";
+        return "Após a solicitação do pedido, o pagamento via PIX será realizado diretamente com o proprietário. Você receberá a chave PIX e poderá esclarecer qualquer dúvida pelo WhatsApp.";
       case "credito":
-        return "Pagamento com cartão de crédito. Podem ser aplicados juros, verifique o valor total antes de confirmar a compra.";
+        return "O pagamento via maquininha está disponível. A taxa da transação será combinada diretamente com o designer pelo WhatsApp após a solicitação do pedido.";
       case "debito":
-        return "Pagamento com cartão de débito. O valor será debitado na hora da compra.";
+        return "O pagamento via maquininha está disponível. A taxa da transação será combinada diretamente com o designer pelo WhatsApp após a solicitação do pedido.";
       default:
         return "";
     }

@@ -411,6 +411,8 @@
     background: linear-gradient(to bottom, #FFB300, #FFD54F);
     color: #fff;
     cursor: pointer;
+    filter: brightness(1.05);
+    transform: scale(1.05); 
 }
 
 /* Modal */
