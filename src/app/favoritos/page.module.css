@@ -14,37 +14,37 @@
     justify-content: space-between;
   }
   
-  .btn-favorito,
-  .btn-carrinho {
+  .btnFavorito,
+  .btnCarrinho {
     background-color: transparent;
     border: none;
     font-size: 125%;
     outline: none; 
   }
   
-  .btn-carrinho:hover {
+  .btnCarrinho:hover {
     color: #fff;
     cursor: pointer;
   }
   
-  .objetos-esquerda {
+  .objetosEsquerda {
     display: flex;
     justify-content: flex-end;
     padding: 0.4% 1.5%;
   }
   
-  .btn-favorito {
+  .btnFavorito {
     margin-right: 40%;
   }
   
-  .favoritos-text {
+  .favoritosText {
     font-size: 150%;
     color: #171717;
     font-weight: bold;
     margin-top: 5%;
   }
   
-  .decoracao-linha {
+  .decoracaoLinha {
     margin-top: 1%;
     display: flex;
     background-color: #FFD54F;
@@ -62,13 +62,13 @@
     justify-content: center;
   }
   
-  .mensagem-text { 
+  .mensagemText { 
     font-size: 95%;
     color: #4a4a4a;
     font-weight: normal;
   }
   
-  .icone-triste {
+  .iconeTriste {
     margin-left: 0.5%;
   }
   
@@ -79,25 +79,25 @@
       margin-top: 2%;
     }
   
-    .btn-favorito,
-    .btn-carrinho {
+    .btnFavorito,
+    .btnCarrinho {
       font-size: 90%;
     }
   
-    .objetos-esquerda {
+    .objetosEsquerda {
       padding: 1% 3%;
     }
   
-    .btn-favorito {
+    .btnFavorito {
       margin-right: 42%;
     }
   
-    .favoritos-text {
+    .favoritosText {
       font-size: 95%;
       margin-top: 10%;
     }
   
-    .decoracao-linha {
+    .decoracaoLinha {
       width: 10%;
     }
   
@@ -105,11 +105,11 @@
       margin-bottom: 10%;
     }
   
-    .mensagem-text { 
+    .mensagemText { 
       font-size: 85%;
     }
   
-    .icone-triste {
+    .iconeTriste {
       margin-left: 1.5%;
     }  
   }

@@ -5,12 +5,10 @@ import pool from '../../../lib/db';
 export async function POST(request) {
   try {
     // Obter o cliente_id do cookie, já que o cliente está logado e garantir que seja um número
-
     const cliente_id = parseInt(request.cookies.get('clienteId'), 10);
-if (isNaN(cliente_id) || cliente_id <= 0) {
-  return NextResponse.json({ message: 'Cliente não autenticado' }, { status: 401 });
-}
-
+    if (!cliente_id) {
+      return NextResponse.json({ message: 'Cliente não autenticado' }, { status: 401 });
+    }
 
     const { itemdepedido_id, quantidade } = await request.json();
 

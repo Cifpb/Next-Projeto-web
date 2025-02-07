@@ -13,6 +13,7 @@ import Image from "next/image";
 
 export default function Product({ product }) {
   const [logado, setLogado] = useState(false);
+  const [favorito, setFavorito] = useState(false);
 
   useEffect(() => {
     const status = sessionStorage.getItem('logado');
@@ -35,35 +36,36 @@ export default function Product({ product }) {
     }
   };
 
-  const handleAddToCart = async () => {
-    if (!logado) {
-      console.log('Usuário precisa estar logado para adicionar ao carrinho');
-      return;
-    }
-  
-    try {
-      const response = await fetch('/api/carrinho', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          clienteId: sessionStorage.getItem('userId'),  // Mudando para clienteId
-          itemdepedido_id: product.id,  // Certifique-se de que o id do produto está correto
-          quantidade: 1,
-        }),
-      });
-  
-      if (response.ok) {
-        console.log('Produto adicionado ao carrinho');
-        // Aqui podemos também atualizar o estado do carrinho na UI se necessário
-      } else {
-        console.error('Erro ao adicionar o produto ao carrinho');
+  //Favoritos
+
+  useEffect(() => {
+    const status = sessionStorage.getItem('logado');
+    setLogado(status === 'true');
+
+    async function fetchFavoritos() {
+      const res = await fetch('/api/favoritos', { method: 'GET' });
+      if (res.ok) {
+        const favoritos = await res.json();
+        setFavorito(favoritos.some(fav => fav.id === product.id));
       }
-    } catch (error) {
-      console.error('Erro de rede:', error);
     }
-  };  
+
+    if (status === 'true') fetchFavoritos();
+  }, [product.id]);
+
+  const handleFavorite = async () => {
+    if (!logado) return;
+
+    const res = await fetch('/api/favoritos', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id_produto: product.id }),
+    });
+
+    if (res.ok) {
+      setFavorito(!favorito);
+    }
+  };
 
   // Imagens Corretas
   const imagens = {
@@ -97,10 +99,9 @@ export default function Product({ product }) {
           <button
             type="button"
             className={style.icone_fav}
-            onClick={() => handleClick('favoritar')}
-            disabled={!logado}
-          >
-            <MdFavoriteBorder />
+            onClick={handleFavorite}
+            disabled={!logado}>
+            {favorito ?  <MdFavorite style={{color: '#fdd54f'}} /> : <MdFavoriteBorder />}
           </button>
         </Tooltip>
 
@@ -108,7 +109,6 @@ export default function Product({ product }) {
           <button
             type="button"
             className={style.icone_car}
-            onClick={handleAddToCart}
             disabled={!logado}
           >
             <HiOutlineShoppingCart />
