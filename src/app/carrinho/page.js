@@ -1,11 +1,12 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import Link from 'next/link';
 import { HiShoppingCart } from "react-icons/hi";
 import { MdFavoriteBorder, MdRemove, MdAdd } from "react-icons/md";
 import { TbHeartPlus } from "react-icons/tb";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import Footer from "../footer/footer";
+import Link from 'next/link';
+import style from "./page.module.css";
 
 export default function Cart() {
   const [cart, setCart] = useState([]);
@@ -154,69 +155,69 @@ export default function Cart() {
   const { prazoMinimoTotal, prazoMaximoTotal } = calcularPrazoEstimado();
 
   return (
-    <div className="tela-cart">
-      <div className="menuCart">
-        <div className="espaco-d"></div>
-        <div className="obj-esquerda">
+    <div className={style.telaCart}>
+      <div className={style.menuCart}>
+        <div className={style.espacoD}></div>
+        <div className={style.objEsquerda}>
           <Link href="/favoritos">
-            <button type="button" className="btn-favorito-Cart">
+            <button type="button" className={style.btnFavoritoCart}>
               <MdFavoriteBorder />
             </button>
           </Link>
-          <button type="button" className="btn-carrinho-Cart">
+          <button type="button" className={style.btnCarrinhoCart}>
             <HiShoppingCart />
           </button>
         </div>
       </div>
       <center>
-        <div className="titulo-cart">MEU CARRINHO</div>
-        <div className="decoracao-linhaCart"></div>
+        <div className={style.tituloCart}>MEU CARRINHO</div>
+        <div className={style.decoracaoLinhaCart}></div>
       </center>
 
-      <div className="conteudo">
+      <div className={style.conteudo}>
         <section>
-          <table>
-            <thead>
-              <tr>
-                <th>
+          <table className={style.carrinhoTable}>
+            <thead className={style.carrinhoThead}>
+              <tr className={style.carrinhoTr}>
+                <th className={style.carrinhoTh}>
                   <button
-                    className={`select-product ${todosSelecionados ? "selected" : ""}`}
+                    className={`${style.selectProduct} ${todosSelecionados ? styles.selected : ""}`}
                     onClick={selecionarTodos}
                   ></button>
-                  <span className="th-text">Todos</span>
+                  <span className={style.thText}>Todos</span>
                 </th>
-                <th>Produto</th>
-                <th>Preço</th>
-                <th>Quantidade</th>
-                <th>Total</th>
-                <th> </th>
+                <th className={style.carrinhoTh}>Produto</th>
+                <th className={style.carrinhoTh}>Preço</th>
+                <th className={style.carrinhoTh}>Quantidade</th>
+                <th className={style.carrinhoTh}>Total</th>
+                <th className={style.carrinhoTh}></th>
               </tr>
             </thead>
-            <tbody>
+            <tbody className={style.carrinhoTbody}>
               {cart.map((item, index) => (
-                <tr key={item.id}>
-                  <td>
+                <tr className={style.carrinhoTr} key={item.id}>
+                  <td className={style.carrinhoTd}>
                     <button
-                      className={`select-product ${selecionados[item.id] ? "selected" : ""}`}
+                      className={`${style.selectProduct} ${selecionados[item.id] ? style.selected : ""}`}
                       onClick={() => alterarSelecionado(item.id)}
                     />
                   </td>
-                  <td>
-                    <div className="produto-imagemCart">
+                  <td className={style.carrinhoTd}>
+                    <div className={style.produtoImagemCart}>
                       <Link href={`/produtos-e-servicos/${item.subCategory}`}>
-                        <img src={item.imgCart} className="produto-imagem" alt="Produto" />
+                        <img src={item.imgCart} className={style.produtoImagem} alt="Produto" />
                       </Link>
                     </div>
                   </td>
-                  <td>R$ {item.price}</td>
-                  <td>
-                    <div className="quantidade">
+                  <td className={style.carrinhoTd}>R$ {item.price}</td>
+                  <td className={style.carrinhoTd}>
+                    <div className={style.quantidade}>
                       {item.quantidade > 1 ? (
                         <>
                           <button onClick={() => diminuirQuantidade(index)}>
                             <MdRemove />
                           </button>
-                          <span className="quantidade">{item.quantidade}</span>
+                          <span className={style.quantidade}>{item.quantidade}</span>
                           <button onClick={() => aumentarQuantidade(index)}>
                             <MdAdd />
                           </button>
@@ -226,7 +227,7 @@ export default function Cart() {
                           <button onClick={() => removerItem(item.id)}>
                             <RiDeleteBin6Line />
                           </button>
-                          <span className="quatidade">{item.quantidade}</span>
+                          <span className={style.quantidade}>{item.quantidade}</span>
                           <button onClick={() => aumentarQuantidade(index)}>
                             <MdAdd />
                           </button>
@@ -234,17 +235,15 @@ export default function Cart() {
                       )}
                     </div>
                   </td>
-                  <td className="totalprod">
+                  <td className={style.totalProd}>
                     R${" "}
-                    {(
-                      item.quantidade * parseFloat(item.price.replace(",", "."))
-                    ).toLocaleString("pt-BR", {
+                    {(item.quantidade * parseFloat(item.price.replace(",", "."))).toLocaleString("pt-BR", {
                       minimumFractionDigits: 2,
                       maximumFractionDigits: 2,
                     })}
                   </td>
-                  <td>
-                    <button className="listaFav-bnt" onClick={() => openModal(item.id)}>
+                  <td className={style.carrinhoTd}>
+                    <button className={style.listaFavBnt} onClick={() => openModal(item.id)}>
                       <TbHeartPlus />
                     </button>
                   </td>
@@ -253,59 +252,72 @@ export default function Cart() {
             </tbody>
           </table>
         </section>
-        <aside>
-          <div className="caixa">
+        <aside className={style.carrinhoAside}>
+          <div className={style.caixa}>
             <center>
-              <header className="resumo-text">Resumo da Compra</header>
+              <header className={style.resumoText}>Resumo da Compra</header>
             </center>
-            <div className="informacao">
+            <div className={style.informacao}>
               {prazoMinimoTotal > 0 && prazoMaximoTotal > 0 && (
-                <p className="prazo">
+                <p className={style.prazo}>
                   Prazo Estimado: {prazoMinimoTotal} a {prazoMaximoTotal} dias úteis
                 </p>
               )}
               <br />
-              <div className="metodos-pagamento">
-                <div className="metodo-pagamento">
+              <div className={style.metodosPagamento}>
+                <div className={style.metodoPagamento}>
                   <input
                     type="radio"
                     id="pix"
-                    className="metodo_pagamento"
+                    className={style.metodoPagamento}
                     name="metodoPagamento"
+                    value="pix"
                     onChange={() => setMetodoPagamento("pix")}
                   />
-                  <label htmlFor="pix">PIX</label>
+                  <label htmlFor="pix">Pix</label>
+                  {metodoPagamento === "pix" && (
+                    <div className={style.mensagemPagamento}>
+                      {getMensagemPagamento()}
+                    </div>
+                  )}
                 </div>
-                <div className="metodo-pagamento">
-                  <input
-                    type="radio"
-                    id="credito"
-                    className="metodo_pagamento"
-                    name="metodoPagamento"
-                    onChange={() => setMetodoPagamento("credito")}
-                  />
-                  <label htmlFor="credito">Cartão de Crédito</label>
-                </div>
-                <div className="metodo-pagamento">
+                <div className={style.metodoPagamento}>
                   <input
                     type="radio"
                     id="debito"
-                    className="metodo_pagamento"
+                    className={style.metodoPagamento}
                     name="metodoPagamento"
+                    value="debito"
                     onChange={() => setMetodoPagamento("debito")}
                   />
                   <label htmlFor="debito">Cartão de Débito</label>
+                  {metodoPagamento === "debito" && (
+                    <div className={style.mensagemPagamento}>
+                      {getMensagemPagamento()}
+                    </div>
+                  )}
+                </div>
+                <div className={style.metodoPagamento}>
+                  <input
+                    type="radio"
+                    id="credito"
+                    className={style.metodoPagamento}
+                    name="metodoPagamento"
+                    value="credito"
+                    onChange={() => setMetodoPagamento("credito")}
+                  />
+                  <label htmlFor="credito">Cartão de Crédito</label>
+                  {metodoPagamento === "credito" && (
+                    <div className={style.mensagemPagamento}>
+                      {getMensagemPagamento()}
+                    </div>
+                  )}
                 </div>
               </div>
-              {metodoPagamento && (
-                <p className="metodo-msg">
-                  {getMensagemPagamento()}
-                </p>
-              )}
             </div>
-            <div className="total">
-              <span className="titulo">Subtotal:</span>
-              <span className="val">
+            <div id={style.subtotal} className={style.sub}>
+              <span className={style.textoAbaixo}>Sub-total:</span>
+              <span>
                 R${" "}
                 {calcularSubtotal().toLocaleString("pt-BR", {
                   minimumFractionDigits: 2,
@@ -313,33 +325,26 @@ export default function Cart() {
                 })}
               </span>
             </div>
-            {metodoPagamento && (
-              <div className="total">
-                <span className="titulo">Total com Juros:</span>
-                <span className="val">
-                  R${" "}
-                  {calcularTotalComJuros().toLocaleString("pt-BR", {
-                    minimumFractionDigits: 2,
-                    maximumFractionDigits: 2,
-                  })}
-                </span>
-              </div>
-            )}
+            <footer>
+              <span className={style.textoAbaixo}>Total:</span>
+              <span className={style.totalFinal}>
+                R${" "}
+                {calcularTotalComJuros().toLocaleString("pt-BR", {
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2,
+                })}
+              </span>
+            </footer>
           </div>
+          <center>
+            <Link href="/">
+              <button type="button" className={style.bntFinalizarCart}>
+                SOLICITAR PEDIDO
+              </button>
+            </Link>
+          </center>
         </aside>
       </div>
-
-      {janelaModal && (
-        <div className="modal">
-          <div className="conteudo-modal">
-            <button className="fechar" onClick={closeModal}>X</button>
-            <h2>Confirmação</h2>
-            <p>Você realmente deseja adicionar esse item aos favoritos?</p>
-            <button>Adicionar aos Favoritos</button>
-          </div>
-        </div>
-      )}
-
       <Footer />
     </div>
   );

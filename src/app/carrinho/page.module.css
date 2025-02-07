@@ -1,0 +1,470 @@
+/* Tela do Carrinho */
+
+.telaCart {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    font-family: 'Century Gothic', sans-serif;
+}
+
+.menuCart {
+    margin-top: 1%;
+    display: flex;
+    background-color: #FDCA05;
+    height: 35px;
+    justify-content: space-between;
+}
+
+.btnFavoritoCart,
+.btnCarrinhoCart {
+    background-color: transparent;
+    border: none;
+    font-size: 125%;
+    outline: none;
+}
+
+.btnFavoritoCart:hover {
+    color: #fff;
+    cursor: pointer;
+}
+
+.btnFavoritoCart {
+    margin-right: 15px;
+}
+
+.objEsquerda {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0.4% 1.5%;
+}
+
+.tituloCart {
+    font-size: 150%;
+    color: #171717;
+    font-weight: bold;
+    margin-top: 5%;
+}
+
+.decoracaoLinhaCart {
+    margin-top: 1%;
+    margin-bottom: 3%;
+    display: flex;
+    background-color: #FFD54F;
+    height: 5px;
+    width: 8%;
+}
+
+.conteudo {
+    padding: 0% 3%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.conteudo section {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+}
+
+.conteudo .carrinhoAside {
+    min-width: 27%;
+}
+
+.carrinhoTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 7%;
+}
+
+.carrinhoTr {
+    border-bottom: 3% solid #eee;
+}
+
+.carrinhoTr .carrinhoTh {
+    width: 10%;
+    text-align: left;
+    padding-bottom: 2%;
+    text-transform: uppercase;
+    color: #000;
+}
+
+.carrinhoTh .thText {
+    padding-left: 1%;
+}
+
+.carrinhoTable .carrinhoTbody .carrinhoTr {
+    border-bottom: 3% solid #eee;
+}
+
+.carrinhoTable .carrinhoTbody .carrinhoTr {
+    border-bottom: 3px solid #eee;
+}
+
+/*table tbody tr:last-child {
+    border: 0;
+  }
+  
+  table tbody tr td {
+    padding: 3% 0;
+  }*/
+
+.produto1 {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.produtoImagem {
+    border-radius: 6%;
+}
+
+.selectProduct {
+    vertical-align: middle;
+    margin-left: 25%;
+    margin-right: 3%;
+    width: 22px;
+    height: 22px;
+    background-color: #fff;
+    border: 2px solid #ffb300;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.selectProduct.selected {
+    background-color: #FFB300;
+    color: #fff;
+}
+
+.selectProduct.selected::after {
+    content: '✓';
+    font-size: 15px;
+    color: white;
+}
+
+.quantidade {
+    background: #eee;
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    padding: 0 0;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    border-radius: 20vh;
+    overflow: visible;
+    height: 50%;
+}
+
+.quantidade span {
+    margin: 0 3%;
+}
+
+.quantidade button {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    background: transparent;
+    border: 0;
+    padding: 0 2vh;
+    font-size: 90%;
+    ;
+    height: 100%;
+}
+
+.quantidade button:hover {
+    background: #ddd;
+    cursor: pointer;
+}
+
+.listaFavBnt {
+    background: #eee;
+    border: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    font-size: 130%;
+    cursor: pointer;
+}
+
+.listaFavBnt:hover {
+    background: #ddd;
+}
+
+.carrinhoAside {
+    margin-left: 5%;
+}
+
+.carrinhoAside .caixa {
+    margin-bottom: 2%;
+    border: 1px solid #d9d8d8;
+    background: #fafafa;
+    color: #000;
+    border-radius: 2%;
+}
+
+.carrinhoAside .caixa header {
+    padding: 10% 20%;
+    font-size: 100%;
+    border-bottom: 1px solid #d9d8d8;
+}
+
+.carrinhoAside .caixa .informacao {
+    padding: 10%;
+    font-size: 95%;
+}
+
+/* TESTE */
+.informacao {
+    max-width: 25vw;
+}
+
+.sub {
+    font-size: 0.8rem;
+    padding: 0 0% 5% 9%;
+}
+
+.textoAbaixo {
+    font-weight: bold;
+}
+
+.carrinhoAside .caixa .informacao button {
+    color: #FDCA05;
+    background: transparent;
+    border: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    font-size: 95%;
+}
+
+/*referente ao quadrado do total */
+.carrinhoAside .caixa footer {
+    padding: 3% 10%;
+    background: #e6e6e6;
+    font-size: 95%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    border-radius: 0px 0px 5px 5px;
+}
+
+.globalButton {
+    text-decoration: none;
+    border: none;
+    outline: none;
+}
+
+.resumoText {
+    font-weight: bold;
+}
+
+.subCategoria-t {
+    font-weight: bold;
+    font-size: 120%;
+    color: #f2c307;
+    margin-top: 5%;
+}
+
+.duracaoContraText {
+    font-size: 105%;
+    color: #414141;
+    font-weight: bold;
+    margin-bottom: 5%;
+}
+
+.duracaoContrato {
+    display: inline-block;
+    margin-bottom: 5%;
+    position: relative;
+    padding: 0% 6%;
+}
+
+.duracaoContrato label::before {
+    cursor: pointer;
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 12px;
+    height: 12px;
+    margin-top: 0.5%;
+    border-radius: 50%;
+    border: 0.5px solid #0d0d0d;
+}
+
+.duracaoContrato input[type="radio"] {
+    display: none;
+}
+
+.duracaoContrato input[type="radio"]:checked+label::before {
+    background-color: #fdca05;
+}
+
+.linkCD {
+    font-weight: normal;
+    text-decoration: underline;
+    cursor: poiter;
+    font-size: 100%;
+    color: #414141;
+}
+
+.linkCD:hover {
+    color: #1a1a1a;
+}
+
+.metodosPagamento {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.mensagemPagamento {
+    font-size: 90%;
+    color: #666666;
+    word-wrap: break-word;
+    text-align: justify;
+}
+
+.metodosPagamento label {
+    position: relative;
+    padding-left: 8%;
+    cursor: pointer;
+    display: block;
+    margin-top: 2%;
+    margin-bottom: 3%;
+    font-size: 100%;
+    font-weight: normal;
+    color: #0d0d0d;
+}
+
+.metodosPagamento label::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 15px;
+    height: 15px;
+    margin-top: 0.5%;
+    border-radius: 50%;
+    border: 0.5px solid #0d0d0d;
+}
+
+.metodosPagamento input[type="radio"] {
+    display: none;
+}
+
+.metodosPagamento input[type="radio"]:checked+label::before {
+    background-color: #fdca05;
+}
+
+.sub span:first-child {
+    margin-right: 50%;
+}
+
+.bntFinalizarCart {
+    border: 0;
+    margin-top: 7%;
+    margin-bottom: 12%;
+    padding: 5% 0;
+    font-weight: bold;
+    display: block;
+    width: 70%;
+    text-transform: uppercase;
+    letter-spacing: 1%;
+    font-size: 95%;
+    border-radius: 10px;
+    background: linear-gradient(to bottom, #FFD54F, #FFB300);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    color: #fff;
+    transition: all 0.3s ease;
+    text-decoration: none !important;
+    display: inline-block;
+}
+
+.bntFinalizarCart:hover {
+    background: linear-gradient(to bottom, #FFB300, #FFD54F);
+    color: #fff;
+    cursor: pointer;
+}
+
+/* Modal */
+
+.fundoModalC {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.confirmModalC {
+    background-color: #fff;
+    padding: 3%;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    max-width: 27%;
+    width: 100%;
+    text-align: center;
+}
+
+.textModalCart {
+    margin-bottom: 10%;
+}
+
+.modalButtonsC {
+    display: flex;
+    justify-content: center;
+}
+
+.btnNoCart,
+.btnYesCart {
+    padding: 3% 7%;
+    margin: 0 5%;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    font-size: 85%;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    background-color: #FFB300;
+    color: #fafafa;
+}
+
+.btnYesCart:hover,
+.btnNoCart:hover {
+    background-color: #ffffff;
+    border: 0.1px solid #FFB300;
+    color: #FFB300;
+}
