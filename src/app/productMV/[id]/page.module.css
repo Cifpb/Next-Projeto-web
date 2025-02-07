@@ -60,17 +60,6 @@
   object-fit: contain;
 }
 
-.promo_fita2 {
-  font-size: 100%;
-  width: 1%;
-  position: absolute;
-  top: 5%;
-  padding: 5px 0;
-  color: white;
-  text-align: center;
-  transform: rotate(-45deg) translateX(-20%);
-}
-
 .itens_juntos_MV {
   display: flex;
   gap: 25%;
@@ -150,25 +139,13 @@
   color: #0d0d0d;
 }
 
+
+
 .pix_text {
   font-size: 90%;
   font-weight: normal;
   color: #0d0d0d;
   display: inline-block;
-}
-
-.tipopg2_text,
-.tipopg3_text {
-  font-size: 100%;
-  padding: 3% 0%;
-  color: #0d0d0d;
-}
-
-.tipopg2_text {
-  font-weight: bold;
-  text-decoration: underline;
-  margin-left: 4%;
-  margin-right: 15%;
 }
 
 .tipopg3_text {
@@ -183,6 +160,15 @@
   border: 1px solid #666666;
   width: 93%;
   height: auto;
+  border-radius: 4px;
+}
+
+.tipopg4_text {
+  font-size: 16px; 
+  color: #333; 
+  font-weight: bold;
+  text-align: center;
+  line-height: 1.8;
 }
 
 .botao_adicionar {
@@ -276,11 +262,6 @@
     font-size: 55%;
     margin-bottom: 5%;
     margin-top: 1%;
-  }
-
-  .tipopg2_text {
-    font-size: 65%;
-    margin-bottom: -6%;
   }
 
   .tipopg3_text {
