@@ -25,19 +25,10 @@ export default async function ProductsMV({ params }) {
 
         <div className="carousel-container">
           <Carousel autoplay>
-            <div>
-              {produtoMV.oferta !== "" && (
-                <div
-                  className={style.promo_fita2}
-                  style={{
-                    backgroundColor: produtoMV.oferta === "Novo" ? "#388E3C" : "#D32F2F",
-                  }}
-                >
-                  {produtoMV.oferta}
-                </div>
-              )}
-              <Image src="/produtos/produtos-pag/logotipo/logotipo1.png" width={1921} height={350} alt="Produto" />
-            </div>
+            <div><Image src="/produtos/produtos-pag/logotipo/logotipo1.png" width={1921} height={350} alt="Produto" /></div>
+            <div><Image src="/produtos/produtos-pag/logotipo/logotipo1.png" width={1921} height={350} alt="Produto" /></div>
+            <div><Image src="/produtos/produtos-pag/logotipo/logotipo1.png" width={1921} height={350} alt="Produto" /></div>
+            <div><Image src="/produtos/produtos-pag/logotipo/logotipo1.png" width={1921} height={350} alt="Produto" /></div>
             <div><Image src="/produtos/produtos-pag/logotipo/logotipo1.png" width={1921} height={350} alt="Produto" /></div>
             <div><Image src="/produtos/produtos-pag/logotipo/logotipo1.png" width={1921} height={350} alt="Produto" /></div>
           </Carousel>
@@ -60,10 +51,7 @@ export default async function ProductsMV({ params }) {
               <h2 className={style.pix_text}>no pix</h2>
             </div>
             <div className={style.cartao_credito}>
-              <h1 className={style.tipopg2_text}>cartão de crédito</h1>
-              <h2 className={style.tipopg3_text}>
-                R$ 1200,00 <br /> 100,00 X 12
-              </h2>
+              <h1 className={style.tipopg4_text}>A taxa de maquineta será combinada via WhatsApp</h1>
             </div>
             <button type="button" className={style.botao_adicionar}>Adicionar ao Carrinho</button>
           </div>
