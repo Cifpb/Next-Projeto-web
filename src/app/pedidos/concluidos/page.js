@@ -1,3 +1,4 @@
+import { cookies } from 'next/headers';  // Para pegar o cookie
 import "../pedidos.css";
 import Header from '../../header/header';
 import Footer from "../../footer/footer";
@@ -7,8 +8,23 @@ import ped from '../../../../public/pedidos/cards/ped.png';
 import db from '../../../lib/db';
 
 export default async function Requests3() {
+  // Pega o cookie do cliente logado
+  const clienteId = cookies().get('clienteId')?.value;
 
-  const pedidosConclu = await db.query("SELECT * FROM pedidos WHERE estado = 'Concluído'");
+  if (!clienteId) {
+    // Se não encontrar o clienteId no cookie, redirecionar ou tratar erro
+    return (
+      <div>
+        <p>Você precisa estar logado para visualizar os pedidos.</p>
+      </div>
+    );
+  }
+
+  // Buscar pedidos "Concluídos" do cliente logado
+  const pedidosConclu = await db.query(
+    "SELECT * FROM pedidos WHERE estado = 'Concluído' AND email_cliente = (SELECT email FROM cliente WHERE id = $1)",
+    [clienteId]
+  );
 
   return (
     <div className='Tela-pedidos'>
@@ -24,7 +40,7 @@ export default async function Requests3() {
                 <div className="valor-pedido1">
                   <p className="valor-total-pedido">Total:</p>
                   <p className="valor-pedido2"><strong>{
-                  Number(pedido.total).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+                    Number(pedido.total).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
                   }</strong></p>
                 </div>
                 <p className="data-pedido"> <strong> {

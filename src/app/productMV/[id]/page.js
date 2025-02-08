@@ -4,6 +4,8 @@ import { Carousel } from "antd";
 import { getprodutoById } from '../../../lib/produto';
 import Image from "next/image";
 import style from './page.module.css';
+import logo1 from "../../../../public/produtos/produtos-pag/logotipo/logotipo1.png";
+import proj1 from "../../../../public/produtos/produtos-pag/projG/projG1.png";
 
 export default async function ProductsMV({ params }) {
 
@@ -25,12 +27,12 @@ export default async function ProductsMV({ params }) {
 
         <div className="carousel-container">
           <Carousel autoplay>
-            <div><Image src="/produtos/produtos-pag/logotipo/logotipo1.png" width={1921} height={350} alt="Produto" /></div>
-            <div><Image src="/produtos/produtos-pag/logotipo/logotipo1.png" width={1921} height={350} alt="Produto" /></div>
-            <div><Image src="/produtos/produtos-pag/logotipo/logotipo1.png" width={1921} height={350} alt="Produto" /></div>
-            <div><Image src="/produtos/produtos-pag/logotipo/logotipo1.png" width={1921} height={350} alt="Produto" /></div>
-            <div><Image src="/produtos/produtos-pag/logotipo/logotipo1.png" width={1921} height={350} alt="Produto" /></div>
-            <div><Image src="/produtos/produtos-pag/logotipo/logotipo1.png" width={1921} height={350} alt="Produto" /></div>
+            <div><Image src="/produtos/produtos-pag/projG/projG1.png" width={1920} height={350} alt="Produto" /></div>
+            <div><Image src="/produtos/produtos-pag/logotipo/logotipo1.png" width={1920} height={350} alt="Produto" /></div>
+            <div><Image src="/produtos/produtos-pag/logotipo/logotipo1.png" width={1920} height={350} alt="Produto" /></div>
+            <div><Image src="/produtos/produtos-pag/logotipo/logotipo1.png" width={1920} height={350} alt="Produto" /></div>
+            <div><Image src="/produtos/produtos-pag/logotipo/logotipo1.png" width={1920} height={350} alt="Produto" /></div>
+            <div><Image src="/produtos/produtos-pag/logotipo/logotipo1.png" width={1920} height={350} alt="Produto" /></div>
           </Carousel>
         </div>
 

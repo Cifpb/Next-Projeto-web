@@ -1,3 +1,4 @@
+import { cookies } from 'next/headers';  // Para pegar o cookie
 import "./pedidos.css";
 import Header from "../header/header";
 import Footer from "../footer/footer";
@@ -36,11 +37,23 @@ const garantirCodigoAleatorio = async () => {
 };
 
 export default async function Requests1() {
+  // Pega o cookie do cliente logado
+  const clienteId = cookies().get('clienteId')?.value;
+
+  if (!clienteId) {
+    // Se não encontrar o clienteId no cookie, redirecionar ou tratar erro
+    return (
+      <div>
+        <p>Você precisa estar logado para visualizar os pedidos.</p>
+      </div>
+    );
+  }
+
   // Garantir que os pedidos 'Aguardando' tenham código aleatório
   await garantirCodigoAleatorio();
 
-  // Buscar pedidos do estado 'Aguardando'
-  const pedidos = await db.query("SELECT * FROM pedidos WHERE estado = 'Aguardando'");
+  // Buscar pedidos do estado 'Aguardando' para o cliente logado
+  const pedidos = await db.query("SELECT * FROM pedidos WHERE estado = 'Aguardando' AND email_cliente = (SELECT email FROM cliente WHERE id = $1)", [clienteId]);
 
   return (
     <div className="Tela-pedidos">
