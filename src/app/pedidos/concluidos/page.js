@@ -6,6 +6,7 @@ import MenuPed from "../menudepedidos/menu";
 import Image from "next/image";
 import ped from '../../../../public/pedidos/cards/ped.png';
 import db from '../../../lib/db';
+import Link from 'next/link';
 
 export default async function Requests3() {
   // Pega o cookie do cliente logado
@@ -35,6 +36,7 @@ export default async function Requests3() {
           {pedidosConclu.rows.length > 0 ? (
             pedidosConclu.rows.map((pedido, index) => (
               <div className="card-pedido" key={index}>
+                 <Link href="/pedidos/pedido">
                 <Image className="img-pedido" src={ped} alt="Imagem de Pedido" />
                 <p className="id-pedido"><strong>PED{pedido.id}{pedido.codigo_aleatorio}</strong></p>
                 <div className="valor-pedido1">
@@ -48,6 +50,7 @@ export default async function Requests3() {
                 }
                 </strong>
                 </p>
+                </Link>
               </div>
             ))
           ) : (
