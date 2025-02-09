@@ -7,6 +7,12 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import Footer from "../footer/footer";
 import Link from 'next/link';
 import style from "./page.module.css";
+import Image from "next/image";
+import LogotipoC from "../../../public/produtos/carrinho/icon1.png";
+import FlyerC from "../../../public/produtos/carrinho/icon2.png";
+import MotionC from "../../../public/produtos/carrinho/icon3.png";
+import ProjGraficoC from "../../../public/produtos/carrinho/icon4.png";
+
 
 export default function Cart() {
   const [cart, setCart] = useState([]);
@@ -16,22 +22,35 @@ export default function Cart() {
   const [selecionados, setSelecionados] = useState({});
   const [todosSelecionados, setTodosSelecionados] = useState(false);
 
+
+  const fetchCarrinho = async () => {
+    const res = await fetch('/api/itensDePedido');
+
+
+    if (res.ok) {
+      const itensCarrinho = await res.json();
+      setCart(itensCarrinho);
+    }
+  }
+
+
   useEffect(() => {
-    // Simulando o carregamento do carrinho
-    const localCart = JSON.parse(localStorage.getItem('cart')) || [];
-    setCart(localCart);
+    fetchCarrinho();
+
 
     const novosSelecionados = {};
-    localCart.forEach(item => {
+    cart.forEach(item => {
       novosSelecionados[item.id] = selecionados[item.id] || false;
     });
     setSelecionados(novosSelecionados);
   }, []);
 
+
   useEffect(() => {
     const allSelected = cart.length > 0 && cart.every(item => selecionados[item.id]);
     setTodosSelecionados(allSelected);
   }, [selecionados, cart]);
+
 
   const selecionarTodos = () => {
     if (todosSelecionados) {
@@ -47,6 +66,7 @@ export default function Cart() {
     }
   };
 
+
   const alterarSelecionado = (id) => {
     setSelecionados(prevSelecionados => {
       const novosSelecionados = { ...prevSelecionados, [id]: !prevSelecionados[id] };
@@ -54,12 +74,14 @@ export default function Cart() {
     });
   };
 
+
   const aumentarQuantidade = (index) => {
     const newCart = [...cart];
     newCart[index].quantidade += 1;
     setCart(newCart);
     localStorage.setItem('cart', JSON.stringify(newCart));
   };
+
 
   const diminuirQuantidade = (index) => {
     const newCart = [...cart];
@@ -70,42 +92,33 @@ export default function Cart() {
     }
   };
 
+
   const removerItem = (productId) => {
     const newCart = cart.filter(item => item.id !== productId);
     setCart(newCart);
     localStorage.setItem('cart', JSON.stringify(newCart));
   };
 
+
   const calcularSubtotal = () => {
     return cart.reduce((subtotal, item) => {
       if (selecionados[item.id]) {
-        const precoFloat = parseFloat(item.price.replace(",", "."));
+        const precoFloat = parseFloat(item.preco.replace(",", "."));
         subtotal += item.quantidade * precoFloat;
       }
       return subtotal;
     }, 0);
   };
 
+
   const openModal = (id) => {
     setProdutoId(id);
     setJanelaModal(true);
   };
 
+
   const closeModal = () => {
     setJanelaModal(false);
-  };
-
-  const calcularTotalComJuros = () => {
-    const subtotal = calcularSubtotal();
-    let juros = 0;
-
-    if (metodoPagamento === "credito") {
-      juros = 0.02;
-    } else if (metodoPagamento === "debito") {
-      juros = 0.01;
-    }
-
-    return subtotal * (1 + juros);
   };
 
   const getMensagemPagamento = () => {
@@ -120,39 +133,6 @@ export default function Cart() {
         return "";
     }
   };
-
-  const calcularPrazoEstimado = () => {
-    let prazoMinimoTotal = 0;
-    let prazoMaximoTotal = 0;
-
-    cart.forEach(item => {
-      if (selecionados[item.id]) {
-        let prazoMin = 0;
-        let prazoMax = 0;
-
-        if (item.subCategory === "Logotipo/Identidade Visual") {
-          prazoMin = 2;
-          prazoMax = 4;
-        } else if (item.subCategory === "Flyer") {
-          prazoMin = 2;
-          prazoMax = 4;
-        } else if (item.subCategory === "Projetos Gráficos") {
-          prazoMin = 10;
-          prazoMax = 15;
-        } else if (item.subCategory === "Motion") {
-          prazoMin = 1;
-          prazoMax = 3;
-        }
-
-        prazoMinimoTotal += prazoMin * item.quantidade;
-        prazoMaximoTotal += prazoMax * item.quantidade;
-      }
-    });
-
-    return { prazoMinimoTotal, prazoMaximoTotal };
-  };
-
-  const { prazoMinimoTotal, prazoMaximoTotal } = calcularPrazoEstimado();
 
   return (
     <div className={style.telaCart}>
@@ -173,6 +153,7 @@ export default function Cart() {
         <div className={style.tituloCart}>MEU CARRINHO</div>
         <div className={style.decoracaoLinhaCart}></div>
       </center>
+
 
       <div className={style.conteudo}>
         <section>
@@ -204,12 +185,22 @@ export default function Cart() {
                   </td>
                   <td className={style.carrinhoTd}>
                     <div className={style.produtoImagemCart}>
-                      <Link href={`/produtos-e-servicos/${item.subCategory}`}>
-                        <img src={item.imgCart} className={style.produtoImagem} alt="Produto" />
-                      </Link>
+                      <Image
+                        src={
+                          item.produto_id === 1 ? LogotipoC :
+                          item.produto_id === 2 ? FlyerC :
+                          item.produto_id === 3 ? MotionC :
+                          item.produto_id === 4 ? ProjGraficoC :
+                          null
+                        }
+                        alt="Produto"
+                        className={style.produtoImagem}
+                        width={100}
+                        height={115}
+                      />
                     </div>
                   </td>
-                  <td className={style.carrinhoTd}>R$ {item.price}</td>
+                  <td className={style.carrinhoTd}>R$ {item.preco}</td>
                   <td className={style.carrinhoTd}>
                     <div className={style.quantidade}>
                       {item.quantidade > 1 ? (
@@ -237,7 +228,7 @@ export default function Cart() {
                   </td>
                   <td className={style.totalProd}>
                     R${" "}
-                    {(item.quantidade * parseFloat(item.price.replace(",", "."))).toLocaleString("pt-BR", {
+                    {(item.quantidade * parseFloat(item.preco.replace(",", "."))).toLocaleString("pt-BR", {
                       minimumFractionDigits: 2,
                       maximumFractionDigits: 2,
                     })}
@@ -258,12 +249,6 @@ export default function Cart() {
               <header className={style.resumoText}>Resumo da Compra</header>
             </center>
             <div className={style.informacao}>
-              {prazoMinimoTotal > 0 && prazoMaximoTotal > 0 && (
-                <p className={style.prazo}>
-                  Prazo Estimado: {prazoMinimoTotal} a {prazoMaximoTotal} dias úteis
-                </p>
-              )}
-              <br />
               <div className={style.metodosPagamento}>
                 <div className={style.metodoPagamento}>
                   <input
@@ -315,21 +300,11 @@ export default function Cart() {
                 </div>
               </div>
             </div>
-            <div id={style.subtotal} className={style.sub}>
-              <span className={style.textoAbaixo}>Sub-total:</span>
-              <span>
-                R${" "}
-                {calcularSubtotal().toLocaleString("pt-BR", {
-                  minimumFractionDigits: 2,
-                  maximumFractionDigits: 2,
-                })}
-              </span>
-            </div>
             <footer>
               <span className={style.textoAbaixo}>Total:</span>
               <span className={style.totalFinal}>
                 R${" "}
-                {calcularTotalComJuros().toLocaleString("pt-BR", {
+                {calcularSubtotal().toLocaleString("pt-BR", {
                   minimumFractionDigits: 2,
                   maximumFractionDigits: 2,
                 })}

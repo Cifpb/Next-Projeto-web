@@ -17,12 +17,12 @@ export default function Favorites() {
   useEffect(() => {
     const fetchFavoritos = async () => {
       const clienteId = Cookies.get('clienteId'); // Obtém o clienteId do cookie
-      console.log("ID:", clienteId); 
+      console.log("ID:", clienteId);
       if (!clienteId) {
         setCarregando(false);
         return;
       }
-  
+
       try {
         const response = await fetch(`/api/favoritos?clienteId=${clienteId}`, {
           method: 'GET', // Usando o método GET corretamente
@@ -38,13 +38,19 @@ export default function Favorites() {
         setCarregando(false);
       }
     };
-  
-    fetchFavoritos();
-  }, []);  
 
-  // Definição da variável heading com base na quantidade de favoritos
+    fetchFavoritos();
+  }, []);
+
+  // Definição da variável heading com base no estado de carregamento e favoritos
   let heading = null;
-  if (!carregando && favoritos.length === 0) {
+  if (carregando) {
+    heading = (
+      <div style={{ display: 'flex',  fontSize: '24px', justifyContent: 'center', height: '70vh', alignItems: 'center' }}>
+        Carregando...
+      </div>
+    );
+  } else if (favoritos.length === 0) {
     heading = (
       <div style={{ display: 'flex', justifyContent: 'center', height: '70vh', alignItems: 'center' }}>
         Não há favoritos
@@ -52,7 +58,6 @@ export default function Favorites() {
       </div>
     );
   }
-  
 
   return (
     <div className={style.telaF}>

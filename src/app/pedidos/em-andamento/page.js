@@ -22,7 +22,7 @@ export default async function Requests1() {
 
   // Buscar pedidos "Em andamento" do cliente logado
   const pedidos = await db.query(
-    "SELECT * FROM pedidos WHERE estado = 'Em andamento' AND email_cliente = (SELECT email FROM cliente WHERE id = $1)",
+    "SELECT * FROM pedidos WHERE estado = 'Em andamento' AND cliente_id = $1",  // Alterado para buscar pelo cliente_id
     [clienteId]
   );
 

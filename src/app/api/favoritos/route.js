@@ -3,8 +3,12 @@ import db from '../../../lib/db';
 
 export async function GET(request) {
     try {
-      const clienteId = request.cookies.get('clienteId')?.value; 
-      if (!clienteId) return NextResponse.json({ error: 'Não autenticado' }, { status: 401 });
+      const clienteIdCookie = request.cookies.get('clienteId'); 
+      const clienteId = clienteIdCookie?.value; 
+
+      if (!clienteId || isNaN(clienteId)) { 
+          return NextResponse.json({ error: 'Não autenticado' }, { status: 400 });
+      }
   
       const client = await db.connect();
       const result = await client.query(`
@@ -22,7 +26,6 @@ export async function GET(request) {
         valor: produto.valor,
       }));
   
-      console.log('Produtos retornados:', produtos);
       return NextResponse.json(produtos);
     } catch (error) {
       console.error('Erro ao buscar favoritos:', error);

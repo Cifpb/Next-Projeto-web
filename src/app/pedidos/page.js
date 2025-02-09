@@ -53,7 +53,7 @@ export default async function Requests1() {
   await garantirCodigoAleatorio();
 
   // Buscar pedidos do estado 'Aguardando' para o cliente logado
-  const pedidos = await db.query("SELECT * FROM pedidos WHERE estado = 'Aguardando' AND email_cliente = (SELECT email FROM cliente WHERE id = $1)", [clienteId]);
+  const pedidos = await db.query("SELECT * FROM pedidos WHERE estado = 'Aguardando' AND cliente_id = $1", [clienteId]);
 
   return (
     <div className="Tela-pedidos">
