@@ -33,7 +33,6 @@ export async function DELETE(request, { params }) {
  try {
    const { id } = params;
 
-
    const client = await db.connect();
    await client.query('DELETE FROM carrinho WHERE itempedido_id = $1', [id]);
    client.release();

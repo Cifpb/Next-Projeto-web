@@ -18,3 +18,32 @@ export async function DELETE(request, { params }) {
   }
 }
 
+export async function PUT(request, { params }) {
+  try {
+    const { id } = params; // ID do item a ser atualizado
+    const { quantidade } = await request.json(); // Nova quantidade recebida
+
+    const client = await db.connect();
+
+    // Verifica se o item existe no banco antes de atualizar
+    const checkItem = await client.query('SELECT id FROM itemdepedido WHERE id = $1', [id]);
+    if (checkItem.rowCount === 0) {
+      client.release();
+      return NextResponse.json({ error: 'Item não encontrado' }, { status: 404 });
+    }
+
+    // Atualiza o item de pedido
+    const result = await client.query(
+      'UPDATE itemdepedido SET quantidade = $1 WHERE id = $2',
+      [quantidade, id]
+    );
+
+    client.release();
+
+    return NextResponse.json({ message: 'Item atualizado com sucesso' }, { status: 200 });
+  } catch (error) {
+    console.error('Erro atualizando item:', error);
+    return NextResponse.json({ error: 'Erro interno do servidor' }, { status: 500 });
+  }
+}
+

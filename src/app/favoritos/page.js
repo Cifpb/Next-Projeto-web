@@ -14,10 +14,36 @@ export default function Favorites() {
   const [favoritos, setFavoritos] = useState([]);
   const [carregando, setCarregando] = useState(true);
 
+  // Função para remover um favorito
+  const removerFavorito = async (id_produto) => {
+    setCarregando(true); // Define como 'carregando' enquanto a remoção é processada
+
+    try {
+      const clienteId = Cookies.get('clienteId');
+      if (!clienteId) {
+        setCarregando(false);
+        return;
+      }
+
+      const response = await fetch('/api/favoritos', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id_produto })
+      });
+
+      if (!response.ok) throw new Error('Erro ao remover favorito');
+      // Atualiza a lista de favoritos removendo o produto da lista local
+      setFavoritos((prevFavoritos) => prevFavoritos.filter(produto => produto.id !== id_produto));
+    } catch (error) {
+      console.error('Erro ao remover favorito:', error);
+    } finally {
+      setCarregando(false);
+    }
+  };
+
   useEffect(() => {
     const fetchFavoritos = async () => {
       const clienteId = Cookies.get('clienteId'); // Obtém o clienteId do cookie
-      console.log("ID:", clienteId);
       if (!clienteId) {
         setCarregando(false);
         return;
@@ -26,14 +52,13 @@ export default function Favorites() {
       try {
         const response = await fetch(`/api/favoritos?clienteId=${clienteId}`, {
           method: 'GET', // Usando o método GET corretamente
-          // O clienteId já estará disponível no cookie automaticamente
         });
+
         if (!response.ok) throw new Error('Erro ao buscar favoritos');
         const data = await response.json();
-        console.log(data);  // Verificando os dados recebidos
-        setFavoritos(data);
+        setFavoritos(data);  // Atualiza a lista de favoritos
       } catch (error) {
-        console.error(error);
+        console.error('Erro ao buscar favoritos:', error);
       } finally {
         setCarregando(false);
       }
@@ -46,7 +71,7 @@ export default function Favorites() {
   let heading = null;
   if (carregando) {
     heading = (
-      <div style={{ display: 'flex',  fontSize: '24px', justifyContent: 'center', height: '70vh', alignItems: 'center' }}>
+      <div style={{ display: 'flex', fontSize: '24px', justifyContent: 'center', height: '70vh', alignItems: 'center' }}>
         Carregando...
       </div>
     );
@@ -85,7 +110,11 @@ export default function Favorites() {
         {/* Lista de Favoritos */}
         <section className={style.produtos}>
           {favoritos.length > 0 && favoritos.map((produto) => (
-            <Product product={produto} key={produto.id} />
+            <Product 
+              key={produto.id} 
+              product={produto} 
+              onRemove={() => removerFavorito(produto.id)}  // Passando função para remoção
+            />
           ))}
         </section>
       </div>

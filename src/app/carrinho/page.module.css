@@ -414,8 +414,42 @@
     color: #fff;
     cursor: pointer;
     filter: brightness(1.05);
-    transform: scale(1.05); 
+    transform: scale(1.05);
 }
+
+.bntFinalizarCart:disabled {
+    background: linear-gradient(to bottom, #636363, #aaa7a7);
+    color: #2e2e2e;
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+/* Carregado */
+
+.carregando {
+    display: flex;
+    padding: 20px;
+    font-size: 18px;
+    color: #666;
+    width: 100%;
+    margin-top: 60%; 
+    margin-left: 130%;
+    white-space: nowrap; /* Garante que o texto não quebre para outra linha */
+    font-size: 22.5px;
+  }
+  
+  .iconCarregando {
+    font-size: 20px;
+    color: #28a745;
+    animation: loadingAnimation 1s infinite;
+  }
+  
+  @keyframes loadingAnimation {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+  }
+  
 
 /* Modal */
 
@@ -473,7 +507,63 @@
     color: #FFB300;
 }
 
-/* Estilo do Modal */
+/* Modal Transferencia eentre listas */
+
+.fundomodalC {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; 
+  }
+  
+  .confirmModalC {
+    background-color: #fff;
+    padding: 3%;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    max-width: 27%;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .textModalCart {
+    margin-bottom: 10%;
+  }
+  
+  .modalButtonsC {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .btnnoCart,
+  .btnyesCart {
+    padding: 3% 7%;
+    margin: 0 5%;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    font-size: 85%;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    background-color: #FFB300; 
+    color: #fafafa;
+  }
+  
+  .btnyesCart:hover, .btnnoCart:hover {
+    background-color: #ffffff;
+    border: 0.1px solid #FFB300;
+    color: #FFB300;
+  }
+  
+
+/* Estilo do Modal - Pedido Solicitado */
 
 .modalOverlay {
     position: fixed;
@@ -486,49 +576,58 @@
     justify-content: center;
     align-items: center;
     z-index: 1000;
-  }
-  
-  .modal {
+}
+
+.modal {
     background-color: white;
     padding: 20px;
     border-radius: 10px;
     width: 80%;
     max-width: 500px;
     text-align: center;
-  }
-  
-  .tituloModal {
+}
+
+.tituloModal {
     font-weight: bold;
     font-size: 1.5rem;
     margin-top: 2%;
     margin-bottom: 5%;
     color: rgba(0, 0, 0, 0.821);
-  }
-  
-  .mensagemModal {
+}
+
+.mensagemModal {
     color: #414141;
     margin-bottom: 20px;
     font-size: 1rem;
-    margin-bottom: 3%;
-  }
-  
-  .whatsappLink {
+    text-align: center;
+    margin-bottom: 6%;
+}
+
+.whatsappLink {
     color: #ffd015;
     font-weight: bold;
     text-decoration: underline;
-  }
-  
-  .fecharModal {
-    background-color: #414141;
+}
+
+.pedidosSolicitadosBtn {
+    background: linear-gradient(to bottom, #FFD54F, #FF9800);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     color: white;
     border: none;
     padding: 10px 20px;
     font-size: 1rem;
     cursor: pointer;
     border-radius: 5px;
-  }
-  
-  .fecharModal:hover {
-    background-color: #333;
-  }
-  
+    margin-left: 55%;
+    margin-top: 4%;
+    margin-top: 8%; 
+    font-weight: bold;
+}
+
+.pedidosSolicitadosBtn:hover {
+    background: linear-gradient(to bottom, #FF9800, #FFD54F);
+    color: #fff;
+    cursor: pointer;
+    filter: brightness(1.05);
+    transform: scale(1.05);
+}
