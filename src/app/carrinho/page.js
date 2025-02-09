@@ -10,8 +10,8 @@ import style from "./page.module.css";
 import Image from "next/image";
 import LogotipoC from "../../../public/produtos/carrinho/icon1.png";
 import FlyerC from "../../../public/produtos/carrinho/icon2.png";
-import MotionC from "../../../public/produtos/carrinho/icon3.png";
-import ProjGraficoC from "../../../public/produtos/carrinho/icon4.png";
+import MotionC from "../../../public/produtos/carrinho/icon4.png";
+import ProjGraficoC from "../../../public/produtos/carrinho/icon3.png";
 
 
 export default function Cart() {
@@ -92,13 +92,20 @@ export default function Cart() {
     }
   };
 
+  // Função para remover item do carrinho
+  const handleRemoveItem = async (id) => {
+    const res = await fetch(`/api/itensDePedido/${id}`, {
+      method: 'DELETE'
+    });
 
-  const removerItem = (productId) => {
-    const newCart = cart.filter(item => item.id !== productId);
-    setCart(newCart);
-    localStorage.setItem('cart', JSON.stringify(newCart));
+    if (res.ok) {
+      // Atualizar o estado do carrinho para refletir a remoção do item
+      const newCart = cart.filter(item => item.id !== id);
+      setCart(newCart);
+    } else {
+      console.error('Erro ao remover item do carrinho');
+    }
   };
-
 
   const calcularSubtotal = () => {
     return cart.reduce((subtotal, item) => {
@@ -188,10 +195,10 @@ export default function Cart() {
                       <Image
                         src={
                           item.produto_id === 1 ? LogotipoC :
-                          item.produto_id === 2 ? FlyerC :
-                          item.produto_id === 3 ? MotionC :
-                          item.produto_id === 4 ? ProjGraficoC :
-                          null
+                            item.produto_id === 2 ? FlyerC :
+                              item.produto_id === 3 ? MotionC :
+                                item.produto_id === 4 ? ProjGraficoC :
+                                  null
                         }
                         alt="Produto"
                         className={style.produtoImagem}
@@ -215,7 +222,7 @@ export default function Cart() {
                         </>
                       ) : (
                         <>
-                          <button onClick={() => removerItem(item.id)}>
+                          <button  onClick={() => handleRemoveItem(item.id)}>
                             <RiDeleteBin6Line />
                           </button>
                           <span className={style.quantidade}>{item.quantidade}</span>

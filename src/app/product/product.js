@@ -56,7 +56,6 @@ export default function Product({ product }) {
 
  //Favoritos
 
-
  useEffect(() => {
    const status = sessionStorage.getItem('logado');
    setLogado(status === 'true');
@@ -91,7 +90,7 @@ export default function Product({ product }) {
    }
  };
 
-
+ // Carrinho
  const handleCart = async () => {
    if (!logado) return;
 
@@ -118,7 +117,6 @@ export default function Product({ product }) {
      }
    }
  };
-
 
  // Imagens Corretas
  const imagens = {
