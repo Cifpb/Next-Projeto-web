@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import pool from '../../../lib/db';
 
 
+
+
 // Função GET para pegar todos os itens do carrinho de um cliente
 export async function GET(request) {
  try {
@@ -23,24 +25,17 @@ export async function GET(request) {
    );
 
 
-   if (cartItems.length > 0) {
-     let itensPedido = [];
+   let itensPedido = [];
 
 
-     for (let item of cartItems) {
-       const res = await client.query('SELECT * FROM itemdepedido WHERE id = $1', [item.itempedido_id]);
-       itensPedido.push(res.rows[0]);
-     }
-     client.release();
-     return NextResponse.json(itensPedido, { status: 200 });
+   for (let item of cartItems) {
+     const res = await client.query('SELECT * FROM itemdepedido WHERE id = $1', [item.itempedido_id]);
+     itensPedido.push(res.rows[0]);
    }
 
 
    client.release();
-
-
-   // Retorna os itens do carrinho
-   return NextResponse.json({ message: 'Carrinho não encontrado para o cliente dado' }, { status: 404 });
+   return NextResponse.json(itensPedido, { status: 200 });
  } catch (error) {
    console.error(error);
    return NextResponse.json({ message: 'Erro ao buscar carrinho' }, { status: 500 });
